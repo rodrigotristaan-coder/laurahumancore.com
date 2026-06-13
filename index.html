@@ -27,7 +27,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<!-- Fuentes sin bloquear el render: se cargan async y el texto aparece de inmediato con la fuente de sistema, luego intercambia. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" /></noscript>
 <style>
   :root{
     --navy:#002060;
@@ -469,7 +472,7 @@
 <!-- =============== MANIFESTO =============== -->
 <section class="manifesto on-dark" data-screen-label="Manifiesto">
   <div class="glow"></div>
-  <img data-logo data-reveal src="assets/logo-gold.webp" alt="" />
+  <img data-logo data-reveal src="assets/logo-gold-sm.webp" alt="" width="84" height="60" />
   <p class="big" data-reveal style="--d:.1s">Dejas de invertir en programas. Empiezas a invertir en <em>resultados medibles.</em></p>
   <p class="small" data-reveal style="--d:.2s">No es un curso ni un taller motivacional. Es un sistema a la medida, con entregables y resultados al cierre de cada fase.</p>
 </section>
@@ -806,34 +809,30 @@
 (function () {
   function init() {
     var nav = document.querySelector('.nav');
-    function onScroll() {
-      if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
-      var de = document.documentElement;
-      var max = de.scrollHeight - de.clientHeight;
-      var p = max > 0 ? (window.scrollY / max) : 0;
-      if (prog) prog.style.width = (Math.max(0, Math.min(1, p)) * 100) + '%';
-    }
     var prog = document.getElementById('progress');
+    var de = document.documentElement;
+    /* cache layout-reads (scrollHeight/clientHeight) so the scroll handler never
+       forces a reflow — recompute only on resize / size changes */
+    var scrollMax = 0;
+    function measure() { scrollMax = de.scrollHeight - de.clientHeight; }
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY;
+        if (nav) nav.classList.toggle('scrolled', y > 40);
+        if (prog) prog.style.width = (scrollMax > 0 ? Math.max(0, Math.min(1, y / scrollMax)) * 100 : 0) + '%';
+        ticking = false;
+      });
+    }
+    measure();
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () { measure(); onScroll(); });
+    if (window.ResizeObserver) { new ResizeObserver(measure).observe(document.body); }
     onScroll();
 
-    /* scroll-triggered reveals — rect-based (reliable everywhere) */
-    var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
-    function checkReveals() {
-      var h = window.innerHeight || document.documentElement.clientHeight;
-      for (var i = reveals.length - 1; i >= 0; i--) {
-        if (reveals[i].getBoundingClientRect().top < h * 0.92) {
-          reveals[i].classList.add('in');
-          reveals.splice(i, 1);
-        }
-      }
-    }
-    window.addEventListener('scroll', checkReveals, { passive: true });
-    window.addEventListener('resize', checkReveals);
-    checkReveals();
-    /* safety net: never leave anything stuck hidden */
-    setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 4000);
-
+    /* reveals + counters via IntersectionObserver — no per-scroll geometry reads */
     function runCounter(el) {
       var target = parseFloat(el.getAttribute('data-count'));
       var prefix = el.getAttribute('data-prefix') || '', suffix = el.getAttribute('data-suffix') || '';
@@ -846,15 +845,29 @@
       }
       requestAnimationFrame(step);
     }
+
+    var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
     var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
-    function checkCounters() {
-      var h = window.innerHeight || document.documentElement.clientHeight;
-      for (var i = counters.length - 1; i >= 0; i--) {
-        if (counters[i].getBoundingClientRect().top < h * 0.88) { runCounter(counters[i]); counters.splice(i, 1); }
-      }
+    if ('IntersectionObserver' in window) {
+      var ro = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); obs.unobserve(en.target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      reveals.forEach(function (el) { ro.observe(el); });
+
+      var co = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { runCounter(en.target); obs.unobserve(en.target); }
+        });
+      }, { rootMargin: '0px 0px -12% 0px' });
+      counters.forEach(function (el) { co.observe(el); });
+      /* safety net: never leave anything stuck hidden */
+      setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 4000);
+    } else {
+      reveals.forEach(function (el) { el.classList.add('in'); });
+      counters.forEach(runCounter);
     }
-    window.addEventListener('scroll', checkCounters, { passive: true });
-    checkCounters();
 
     /* ---- quotation form → builds a pre-filled email ---- */
     var form = document.getElementById('cotiza');

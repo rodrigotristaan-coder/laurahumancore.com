@@ -1,0 +1,5 @@
+# Dependencias / artefactos (este sitio no tiene build, pero por si acaso)
+node_modules/
+.vercel
+.DS_Store
+*.log

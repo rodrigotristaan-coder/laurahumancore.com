@@ -744,6 +744,8 @@
       <div class="contact-right" data-reveal style="--d:.12s">
         <form id="cotiza" class="cform" novalidate>
           <div class="cform-head">Solicita tu cotización</div>
+          <!-- honeypot anti-spam: invisible para humanos; si un bot lo llena, se descarta -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
           <div class="frow">
             <label class="field">
               <span class="fl">Nombre</span>
@@ -879,22 +881,56 @@
       counters.forEach(runCounter);
     }
 
-    /* ---- quotation form → builds a pre-filled email ---- */
+    /* ---- quotation form → envía al webhook de n8n (Excel + avisos);
+           si el webhook falla, cae al mailto pre-llenado para no perder el lead ---- */
+    var LEAD_WEBHOOK = 'https://n8n.satorimkt.com/webhook/lead-humancore';
     var form = document.getElementById('cotiza');
     if (form) {
       var note = document.getElementById('cform-note');
+      var submitBtn = form.querySelector('.cform-submit');
+
+      function buildMailto(p) {
+        var body =
+          'Hola Laura, me interesa una cotización del sistema HUMAN-CORE.\n\n' +
+          'Nombre: ' + p.nombre + '\n' +
+          'Empresa: ' + (p.empresa || '—') + '\n' +
+          'Correo: ' + p.email + '\n' +
+          'Teléfono: ' + (p.telefono || '—') + '\n' +
+          'Sistema de interés: ' + (p.sistema || '—') + '\n' +
+          'Tamaño del equipo: ' + (p.equipo || '—') + '\n' +
+          'Contacto preferido: ' + (p.via || '—') + '\n\n' +
+          'Contexto:\n' + (p.mensaje || '—');
+        return 'mailto:lauracoaching369@gmail.com' +
+          '?subject=' + encodeURIComponent('Cotización HUMAN-CORE — ' + p.nombre) +
+          '&body=' + encodeURIComponent(body);
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var d = new FormData(form);
-        var nombre = (d.get('nombre') || '').trim();
-        var email = (d.get('email') || '').trim();
-        // minimal validation
+        // honeypot: si un bot llenó el campo oculto, fingimos éxito y descartamos
+        if ((d.get('website') || '').trim()) {
+          note.textContent = '¡Gracias! Te respondemos en menos de 48 h hábiles.';
+          note.classList.add('ok');
+          form.reset();
+          return;
+        }
+        var p = {
+          nombre: (d.get('nombre') || '').trim(),
+          empresa: (d.get('empresa') || '').trim(),
+          email: (d.get('email') || '').trim(),
+          telefono: (d.get('telefono') || '').trim(),
+          sistema: d.get('sistema') || '',
+          equipo: d.get('equipo') || '',
+          via: d.get('via') || '',
+          mensaje: (d.get('mensaje') || '').trim()
+        };
+        // validación mínima
         var bad = false;
         ['nombre', 'email'].forEach(function (n) {
           var f = form.querySelector('[name="' + n + '"]');
-          var v = (d.get(n) || '').trim();
-          var ok = n === 'email' ? /.+@.+\..+/.test(v) : v.length > 0;
-          f.classList.toggle('err', !ok);
+          var ok = n === 'email' ? /.+@.+\..+/.test(p[n]) : p[n].length > 0;
+          if (f) f.classList.toggle('err', !ok);
           if (!ok) bad = true;
         });
         if (bad) {
@@ -902,22 +938,31 @@
           note.classList.remove('ok');
           return;
         }
-        var body =
-          'Hola Laura, me interesa una cotización del sistema HUMAN-CORE.\n\n' +
-          'Nombre: ' + nombre + '\n' +
-          'Empresa: ' + ((d.get('empresa') || '').trim() || '—') + '\n' +
-          'Correo: ' + email + '\n' +
-          'Teléfono: ' + ((d.get('telefono') || '').trim() || '—') + '\n' +
-          'Sistema de interés: ' + (d.get('sistema') || '—') + '\n' +
-          'Tamaño del equipo: ' + (d.get('equipo') || '—') + '\n' +
-          'Contacto preferido: ' + (d.get('via') || '—') + '\n\n' +
-          'Contexto:\n' + ((d.get('mensaje') || '').trim() || '—');
-        var href = 'mailto:lauracoaching369@gmail.com' +
-          '?subject=' + encodeURIComponent('Cotización HUMAN-CORE — ' + nombre) +
-          '&body=' + encodeURIComponent(body);
-        window.location.href = href;
-        note.textContent = 'Abrimos tu correo con la solicitud lista. Solo presiona enviar.';
-        note.classList.add('ok');
+
+        p.origen = 'laurahumancore.com';
+        p.fecha = new Date().toISOString();
+
+        note.classList.remove('ok');
+        note.textContent = 'Enviando…';
+        if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
+
+        fetch(LEAD_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(p)
+        }).then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          note.textContent = '¡Gracias! Recibimos tu solicitud. Te respondemos en menos de 48 h hábiles.';
+          note.classList.add('ok');
+          form.reset();
+        }).catch(function () {
+          // respaldo: abrir correo pre-llenado para no perder el lead
+          window.location.href = buildMailto(p);
+          note.textContent = 'Abrimos tu correo con la solicitud lista. Solo presiona enviar.';
+          note.classList.add('ok');
+        }).then(function () {
+          if (submitBtn) submitBtn.removeAttribute('disabled');
+        });
       });
     }
   }

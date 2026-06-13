@@ -389,7 +389,7 @@
 <nav class="nav">
   <div class="wrap">
     <div class="brand">
-      <img data-logo src="assets/logo-white.webp" alt="Lau de la Peña" />
+      <img data-logo src="assets/logo-white.webp" alt="Lau de la Peña" width="50" height="36" />
       <div class="nm">Lau de la Peña<span>Human-Core System</span></div>
     </div>
     <div class="nav-links">
@@ -579,7 +579,10 @@
     <div class="auth-grid">
       <div class="portrait" data-reveal>
         <div class="fr"></div>
-        <img src="assets/laura-portrait.webp" alt="Laura de la Peña" />
+        <img src="assets/laura-portrait-360.webp"
+             srcset="assets/laura-portrait-360.webp 360w, assets/laura-portrait.webp 720w"
+             sizes="(max-width:940px) 88vw, 460px"
+             alt="Laura de la Peña" width="360" height="359" />
       </div>
       <div>
         <div class="label" data-reveal>Detrás del sistema</div>
@@ -797,7 +800,7 @@
 <footer class="footer">
   <div class="wrap">
     <div class="brand">
-      <img data-logo src="assets/logo-white.webp" alt="Lau de la Peña" />
+      <img data-logo src="assets/logo-white.webp" alt="Lau de la Peña" width="44" height="32" />
       <div class="nm">Lau de la Peña</div>
     </div>
     <div class="cr">HUMAN-CORE System · © 2026 · Todos los derechos reservados</div>
@@ -811,25 +814,22 @@
     var nav = document.querySelector('.nav');
     var prog = document.getElementById('progress');
     var de = document.documentElement;
-    /* cache layout-reads (scrollHeight/clientHeight) so the scroll handler never
-       forces a reflow — recompute only on resize / size changes */
-    var scrollMax = 0;
-    function measure() { scrollMax = de.scrollHeight - de.clientHeight; }
+    /* All geometry reads happen inside a throttled rAF (once per frame, before any
+       write) so they never trigger a synchronous forced reflow. */
     var ticking = false;
     function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(function () {
         var y = window.scrollY;
+        var max = de.scrollHeight - de.clientHeight;
         if (nav) nav.classList.toggle('scrolled', y > 40);
-        if (prog) prog.style.width = (scrollMax > 0 ? Math.max(0, Math.min(1, y / scrollMax)) * 100 : 0) + '%';
+        if (prog) prog.style.width = (max > 0 ? Math.max(0, Math.min(1, y / max)) * 100 : 0) + '%';
         ticking = false;
       });
     }
-    measure();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', function () { measure(); onScroll(); });
-    if (window.ResizeObserver) { new ResizeObserver(measure).observe(document.body); }
+    window.addEventListener('resize', onScroll, { passive: true });
     onScroll();
 
     /* reveals + counters via IntersectionObserver — no per-scroll geometry reads */

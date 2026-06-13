@@ -14,11 +14,12 @@ Landing **estática** (HTML + CSS inline, sin build, sin dependencias) de
 ```
 human-core-site/
 ├── index.html        ← TODO el sitio (HTML + CSS + JS inline)
-├── assets/
-│   ├── logo-white.png   logo blanco (para fondos oscuros)
-│   ├── logo-gold.png    logo dorado (hero, marcas de agua, favicon)
-│   ├── logo-navy.png    logo azul marino (OG image / fondos claros)
-│   └── laura-portrait.png  retrato de Laura (sección Authority)
+├── assets/   (imágenes optimizadas: WebP redimensionado a su tamaño de uso)
+│   ├── logo-white.webp     logo blanco (nav/footer, ~220px)
+│   ├── logo-gold.webp      logo dorado (anillo hero ~1000px, manifiesto, final)
+│   ├── logo-navy.png       logo azul marino — SOLO para OG image (PNG por compat. WhatsApp/FB)
+│   ├── laura-portrait.webp retrato de Laura (sección Authority, ~760px retina)
+│   └── favicon.png         favicon 96px (recorte de logo-gold)
 ├── vercel.json       ← static, cache de assets + headers de seguridad
 ├── README.md         ← instrucciones de deploy (Vercel / GitHub)
 └── CLAUDE.md         ← este archivo

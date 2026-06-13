@@ -144,6 +144,16 @@
   .scrollcue::after{content:"";width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:cue 2.2s ease-in-out infinite;}
   @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.5);transform-origin:top;}50%{opacity:1;transform:scaleY(1);}}
 
+  /* hero entrance — pure CSS, runs on load (NOT gated by JS/IntersectionObserver)
+     so the H1 (LCP element) paints immediately instead of waiting for scripting. */
+  @keyframes heroIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+  .hero .inner > *{animation:heroIn .8s var(--ease) both;}
+  .hero .inner > *:nth-child(2){animation-delay:.07s;}
+  .hero .inner > *:nth-child(3){animation-delay:.14s;}
+  .hero .inner > *:nth-child(4){animation-delay:.22s;}
+  .hero .inner > *:nth-child(5){animation-delay:.3s;}
+  @media(prefers-reduced-motion:reduce){.hero .inner > *{animation:none;}}
+
   /* ---------- STRIP ---------- */
   .strip{background:var(--dark-deep);color:#fff;border-top:1px solid var(--line-navy);}
   .strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;padding-top:30px;padding-bottom:30px;flex-wrap:wrap;}
@@ -410,14 +420,14 @@
   <div class="vmeta">Estrategia · Liderazgo · Transformación</div>
   <div class="wrap">
     <div class="inner">
-      <div class="label" data-reveal>Strategic Executive Leadership</div>
-      <h1 data-reveal style="--d:.1s">Tu empresa no tiene un problema de talento.<br /><em>Tiene un problema de sistema.</em></h1>
-      <p class="sub" data-reveal style="--d:.2s">El talento correcto existe. Lo que falta es el sistema para atraerlo, alinearlo y retenerlo. HUMAN-CORE convierte a tu gente en tu mayor ventaja.</p>
-      <div class="cta-row" data-reveal style="--d:.3s">
+      <div class="label">Strategic Executive Leadership</div>
+      <h1>Tu empresa no tiene un problema de talento.<br /><em>Tiene un problema de sistema.</em></h1>
+      <p class="sub">El talento correcto existe. Lo que falta es el sistema para atraerlo, alinearlo y retenerlo. HUMAN-CORE convierte a tu gente en tu mayor ventaja.</p>
+      <div class="cta-row">
         <a href="#contacto" class="btn btn-gold">Agenda tu diagnóstico <span class="arr">→</span></a>
         <a href="#sistemas" class="btn-line"><span class="u">Conoce los 3 sistemas</span> <span class="arr">→</span></a>
       </div>
-      <div class="promise" data-reveal style="--d:.42s">
+      <div class="promise">
         <p class="q">"No vendo sistemas. Vendo <b>resultados</b> a través de mis sistemas."</p>
       </div>
     </div>

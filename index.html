@@ -98,6 +98,9 @@
   .btn-line:hover .u::after{transform:scaleX(1);}
   .arr{transition:transform .3s var(--ease);}
   .btn:hover .arr,.btn-line:hover .arr{transform:translateX(5px);}
+  /* btn-line por defecto es oscuro (fondos claros); en hero / fondos oscuros va claro */
+  .hero .btn-line,.on-dark .btn-line{color:#fff;}
+  .hero .btn-line:hover,.on-dark .btn-line:hover{color:var(--gold);}
 
   /* ---------- NAV ---------- */
   .nav{position:fixed;top:0;left:0;right:0;z-index:8000;transition:background .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);border-bottom:1px solid transparent;padding:8px 0;}

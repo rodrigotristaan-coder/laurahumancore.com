@@ -77,24 +77,27 @@ Acento de marca: hairline dorado fijo de 3px en el borde superior de la página
 - **Progress bar** (`#progress`) — barra de progreso de scroll arriba.
 - **Reveal on scroll** — elementos con `data-reveal` aparecen con
   `IntersectionObserver`; soportan delay via `style="--d:.12s"`.
-- **Formulario** (`#cotiza`) — validación básica con `novalidate`; nota de
-  respuesta en `#cform-note`. **No envía a backend todavía** (ver pendientes).
+- **Formulario** (`#cotiza`) — validación básica + honeypot (`website`). **Envía a
+  un webhook de n8n** (`https://n8n.satorimkt.com/webhook/lead-humancore`) que escribe
+  en Excel y avisa por Telegram (grupo `@LauraDlp_Bot`) + Outlook. Si el webhook falla,
+  cae a un `mailto:lauracoaching369@gmail.com` pre-llenado. En éxito dispara el evento
+  GA4 `generate_lead`. Nota de respuesta en `#cform-note`.
 - Respeta `prefers-reduced-motion`.
 
 ---
 
-## Pendientes / cosas a configurar antes de producción
+## Estado (al 2026-06-15)
 
-1. **Contacto real:** el CTA "Agenda tu diagnóstico" abre `mailto:hola@laudelapena.com`.
-   Cambia esa dirección por la real o por un enlace de agenda (Calendly, etc.).
-   Busca `mailto:` en `index.html`.
-2. **Envío del formulario `#cotiza`:** hoy solo valida en el front, no envía a
-   ningún lado. Conectar a un endpoint (Formspree, Vercel serverless function,
-   email service, etc.).
-3. **SEO / dominio:** actualizar `<link rel="canonical">`, `og:image` y las metas
-   Open Graph con el dominio final. Hoy apuntan a `https://human-core.vercel.app/`.
-4. **Favicon / OG:** usa `logo-gold.png` (favicon) y `logo-navy.png` (OG). Revisar
-   si se quiere una OG image dedicada (1200×630).
+- **EN VIVO** en `laurahumancore.com` (+ `www` redirige al apex) con SSL. Canonical/OG ya apuntan al dominio real.
+- **Formulario conectado** a n8n (Excel + Telegram + Outlook); ver "Comportamiento".
+- **Analytics:** GA4 `G-LKP371EQ8Q` en vivo (pageviews + evento `generate_lead` en el submit). `robots.txt` + `sitemap.xml` presentes. Headers de seguridad en `vercel.json` (HSTS + CSP en Report-Only).
+
+## Pendientes
+
+1. **Meta Pixel:** BLOQUEADO — Rodrigo sin acceso a Meta de momento. Al desbloquear: agregar el snippet del Pixel antes de `</head>`.
+2. **Google Search Console:** dar de alta el dominio y enviar el `sitemap.xml`.
+3. **CSP:** está en `Content-Security-Policy-Report-Only`; validar en consola del navegador (sin violaciones) y promover a `Content-Security-Policy` (enforced).
+4. **Favicon / OG:** revisar si se quiere una OG image dedicada (1200×630).
 
 ---
 

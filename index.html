@@ -1008,6 +1008,7 @@
           if (!r.ok) throw new Error('HTTP ' + r.status);
           note.textContent = '¡Gracias! Recibimos tu solicitud. Te respondemos en menos de 48 h hábiles.';
           note.classList.add('ok');
+          if (window.gtag) gtag('event', 'generate_lead', { method: 'form_cotiza', form_name: 'cotiza', value: 1, currency: 'MXN' });
           form.reset();
         }).catch(function () {
           // respaldo: abrir correo pre-llenado para no perder el lead

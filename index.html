@@ -158,13 +158,6 @@
   .hero .inner > *:nth-child(5){animation-delay:.3s;}
   @media(prefers-reduced-motion:reduce){.hero .inner > *{animation:none;}}
 
-  /* ---------- STRIP ---------- */
-  .strip{background:var(--dark-deep);color:#fff;border-top:1px solid var(--line-navy);}
-  .strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;padding-top:30px;padding-bottom:30px;flex-wrap:wrap;}
-  .strip .item{font-family:var(--font-label);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.66);display:flex;align-items:center;gap:12px;}
-  .strip .item b{color:var(--gold);font-weight:600;}
-  .strip .dot{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);}
-
   /* ---------- SECTION SHELL ---------- */
   .sec{padding:150px 0;position:relative;}
   .sec-head{max-width:780px;}
@@ -192,33 +185,10 @@
   .prob-foot .big{font-family:var(--font-display);font-style:italic;font-size:clamp(26px,3.2vw,40px);color:var(--ink);line-height:1.25;max-width:24ch;}
   .prob-foot .big b{color:var(--gold-deep);font-style:italic;}
 
-  /* ---------- MANIFESTO ---------- */
-  .manifesto{background:var(--dark);color:#fff;text-align:center;position:relative;overflow:hidden;padding:160px 0;}
-  .manifesto .glow{position:absolute;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(194,163,107,.12),transparent 64%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
-  .manifesto [data-logo]{width:84px;color:var(--gold);margin:0 auto 44px;position:relative;}
-  .manifesto .big{font-family:var(--font-display);font-weight:500;font-size:clamp(38px,6vw,82px);line-height:1.04;letter-spacing:-.02em;color:#fff;position:relative;max-width:15ch;margin:0 auto;}
-  .manifesto .big em{font-style:italic;color:var(--gold);}
-  .manifesto .small{position:relative;margin:38px auto 0;font-size:19px;color:rgba(255,255,255,.72);max-width:46ch;}
-
-  /* ---------- ECOSYSTEM ---------- */
-  .eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:72px;border:1px solid var(--line);}
-  .eco{padding:50px 40px;background:var(--cream-card);position:relative;transition:background .4s var(--ease);}
-  .eco:not(:last-child){border-right:1px solid var(--line);}
-  .eco::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);}
-  .eco:hover{background:#fff;box-shadow:0 40px 70px -44px rgba(0,18,51,.45);}
-  .eco:hover::before{transform:scaleX(1);}
-  .eco h4,.eco .step{transition:transform .5s var(--ease);}
-  .eco:hover h4,.eco:hover .step{transform:translateY(-3px);}
-  .eco .step{font-family:var(--font-label);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);}
-  .eco h4{font-size:29px;margin:18px 0 14px;}
-  .eco p{margin:0;font-size:15.5px;color:var(--body-solid);line-height:1.62;}
-  .eco .plus{position:absolute;top:50%;right:-13px;transform:translateY(-50%);z-index:2;width:26px;height:26px;background:var(--cream);border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold-deep);font-family:var(--font-label);font-size:14px;}
-  .eco:last-child .plus{display:none;}
-
   /* ---------- SYSTEMS ---------- */
   .systems{background:var(--dark-deep);color:#fff;}
   .sys-list{margin-top:30px;border-top:1px solid var(--line-navy);}
-  .sys{display:grid;grid-template-columns:96px 1fr 300px;gap:50px;align-items:start;padding:58px 0;border-bottom:1px solid var(--line-navy);transition:padding-left .4s var(--ease);position:relative;}
+  .sys{display:grid;grid-template-columns:96px 1fr;gap:50px;align-items:start;padding:46px 0;border-bottom:1px solid var(--line-navy);transition:padding-left .4s var(--ease);position:relative;}
   .sys::before{content:"";position:absolute;left:-56px;top:0;width:3px;height:100%;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .5s var(--ease);}
   .sys:hover::before{transform:scaleY(1);}
   .sys:hover{padding-left:18px;}
@@ -245,12 +215,6 @@
   .phase li{font-size:16px;color:var(--body-solid);padding:14px 0 14px 28px;position:relative;border-top:1px solid var(--line);}
   .phase li:first-child{border-top:0;}
   .phase li::before{content:"";position:absolute;left:0;top:20px;width:8px;height:8px;background:var(--gold);}
-  .method-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:0;border:1px solid var(--line);border-top:0;}
-  .method-meta .m{padding:40px 48px;}
-  .method-meta .m:not(:last-child){border-right:1px solid var(--line);}
-  .method-meta .v{font-family:var(--font-display);font-weight:600;font-size:60px;color:var(--gold-deep);line-height:.9;}
-  .method-meta .l{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);margin-top:14px;}
-
   /* ---------- AUTHORITY ---------- */
   .auth{background:var(--cream-card);border-top:1px solid var(--line);}
   .auth-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center;}
@@ -318,20 +282,6 @@
   .contact{background:var(--dark);color:#fff;position:relative;overflow:hidden;}
   .contact .cglow{position:absolute;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(194,163,107,.13),transparent 64%);top:-260px;right:-200px;pointer-events:none;}
   .contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;margin-top:64px;align-items:start;}
-
-  .phases-mini{display:flex;flex-direction:column;}
-  .pm{display:grid;grid-template-columns:auto 1fr;gap:26px;padding:30px 0;border-top:1px solid var(--line-navy);}
-  .pm:last-child{border-bottom:1px solid var(--line-navy);}
-  .pm .pmnum{font-family:var(--font-display);font-style:italic;font-size:54px;color:var(--gold);line-height:.8;}
-  .pm .pmh{font-family:var(--font-label);font-weight:700;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:12px;}
-  .pm .pmt{font-size:15.5px;line-height:1.6;color:rgba(255,255,255,.74);}
-  .pm .pmt b{color:var(--gold);font-weight:600;}
-
-  .contact-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:36px;border:1px solid var(--line-navy);}
-  .contact-meta .cm{padding:24px 22px;}
-  .contact-meta .cm:not(:last-child){border-right:1px solid var(--line-navy);}
-  .contact-meta .cv{font-family:var(--font-display);font-weight:600;font-size:44px;color:var(--gold);line-height:.9;}
-  .contact-meta .cl{font-family:var(--font-label);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:12px;line-height:1.4;}
 
   .contact-direct{margin-top:36px;display:flex;flex-direction:column;gap:8px;}
   .contact-direct .cdlab{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);}
@@ -476,7 +426,7 @@
     <div class="inner">
       <div class="label">Strategic Executive Leadership</div>
       <h1>Tu empresa no tiene un problema de talento.<br /><em>Tiene un problema de sistema.</em></h1>
-      <p class="sub">El talento correcto existe. Lo que falta es el sistema para atraerlo, alinearlo y retenerlo. HUMAN-CORE convierte a tu gente en tu mayor ventaja.</p>
+      <p class="sub">El talento correcto existe. Falta el sistema para atraerlo, alinearlo y retenerlo. HUMAN-CORE lo construye.</p>
       <div class="cta-row">
         <a href="#contacto" class="btn btn-gold">Agenda tu diagnóstico <span class="arr">→</span></a>
         <a href="#sistemas" class="btn-line"><span class="u">Conoce los 3 sistemas</span> <span class="arr">→</span></a>
@@ -489,17 +439,6 @@
   <div class="scrollcue">Desliza</div>
 </header>
 
-<!-- =============== STRIP =============== -->
-<section class="strip">
-  <div class="wrap">
-    <div class="item" data-reveal>Metodologías <b>patentadas</b> como propiedad intelectual</div>
-    <span class="dot"></span>
-    <div class="item" data-reveal style="--d:.1s">Programas premium <b>a la medida</b></div>
-    <span class="dot"></span>
-    <div class="item" data-reveal style="--d:.2s">Resultados con <b>entregables</b> en cada fase</div>
-  </div>
-</section>
-
 <!-- =============== PROBLEM =============== -->
 <section class="sec prob" id="problema" data-screen-label="El problema">
   <div class="watermark">01</div>
@@ -507,18 +446,18 @@
     <div class="sec-head">
       <div class="label" data-reveal>El costo invisible</div>
       <h2 data-reveal style="--d:.08s">Cada decisión humana sin sistema <em>te cuesta dinero.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">No aparece en tus números, pero lo vives todos los días: rotación, equipos que no avanzan y líderes que apagan fuegos en lugar de construir.</p>
+      <p class="lead" data-reveal style="--d:.16s">No aparece en tus números, pero lo vives a diario:</p>
     </div>
     <div class="prob-grid">
       <div class="prob-cell" data-reveal>
         <div class="n">01</div>
         <h4>Talento que se fuga</h4>
-        <p>Inviertes meses en formarlos y se van. Cada salida se lleva conocimiento, relaciones y dinero.</p>
+        <p>Inviertes meses en formarlos y se van con tu conocimiento y tu dinero.</p>
       </div>
       <div class="prob-cell" data-reveal style="--d:.12s">
         <div class="n">02</div>
         <h4>Equipos desalineados</h4>
-        <p>Gente capaz remando en direcciones distintas. El esfuerzo se diluye y la estrategia nunca aterriza.</p>
+        <p>Gente capaz remando en direcciones distintas: el esfuerzo se diluye y la estrategia no aterriza.</p>
       </div>
       <div class="prob-cell" data-reveal style="--d:.24s">
         <div class="n">03</div>
@@ -533,53 +472,14 @@
   </div>
 </section>
 
-<!-- =============== MANIFESTO =============== -->
-<section class="manifesto on-dark" data-screen-label="Manifiesto">
-  <div class="glow"></div>
-  <img data-logo data-reveal src="assets/logo-gold-sm.webp" alt="" width="84" height="60" />
-  <p class="big" data-reveal style="--d:.1s">Dejas de invertir en programas. Empiezas a invertir en <em>resultados medibles.</em></p>
-  <p class="small" data-reveal style="--d:.2s">No es un curso ni un taller motivacional. Es un sistema a la medida, con entregables y resultados al cierre de cada fase.</p>
-</section>
-
-<!-- =============== ECOSYSTEM =============== -->
-<section class="sec" id="ecosistema" data-screen-label="Ecosistema">
-  <div class="watermark">02</div>
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label" data-reveal>El ecosistema HUMAN-CORE</div>
-      <h2 data-reveal style="--d:.08s">Un ecosistema estratégico humano, <em>no una solución suelta.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Tres dimensiones que trabajan juntas para transformar tu empresa desde la raíz.</p>
-    </div>
-    <div class="eco-grid">
-      <div class="eco" data-reveal>
-        <div class="step">Punto de partida</div>
-        <h4>Diagnóstico Etiológico</h4>
-        <p>Detectamos la causa raíz, no el síntoma. Entendemos tu contexto antes de actuar.</p>
-        <span class="plus">+</span>
-      </div>
-      <div class="eco" data-reveal style="--d:.12s">
-        <div class="step">Dirección</div>
-        <h4>Liderazgo Estratégico</h4>
-        <p>Alineamos a tus líderes con la estrategia para que cada decisión humana sume al resultado.</p>
-        <span class="plus">+</span>
-      </div>
-      <div class="eco" data-reveal style="--d:.24s">
-        <div class="step">Resultado</div>
-        <h4>Transformación Organizacional</h4>
-        <p>Implementamos el cambio en cultura, procesos y personas, hasta verlo operar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- =============== SYSTEMS =============== -->
 <section class="sec systems on-dark" id="sistemas" data-screen-label="Los 3 sistemas">
-  <div class="watermark">03</div>
+  <div class="watermark">02</div>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-reveal>Las metodologías premium</div>
       <h2 data-reveal style="--d:.08s">Tres sistemas. <em>Un mismo núcleo.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Metodologías exclusivas, patentadas. Cada sistema resuelve un frente crítico — solo o como un mismo recorrido de transformación.</p>
+      <p class="lead" data-reveal style="--d:.16s">Metodologías exclusivas, patentadas. Cada sistema resuelve un frente crítico — solo o como un recorrido completo.</p>
     </div>
     <div class="sys-list">
       <div class="sys" data-reveal>
@@ -587,16 +487,7 @@
         <div class="main">
           <div class="en">Talent Alignment System</div>
           <h3>Atracción, alineación y <em>conservación</em> de talento</h3>
-          <p>Detectamos patrones humanos y compatibilidad real. El equipo correcto llega — y se queda.</p>
-          <p class="benefit"><span>Lo que ganas —</span> dejas de perder dinero en rotación: contratas con criterio y retienes a quien mueve la aguja.</p>
-        </div>
-        <div class="side">
-          <div class="lab">Incluye</div>
-          <ul>
-            <li>Profound Behavioral Detection &amp; Alignment</li>
-            <li>Blindaje de talento y cultura</li>
-            <li>Alineación cultural y organizacional</li>
-          </ul>
+          <p class="benefit"><span>Lo que ganas —</span> dejas de perder dinero en rotación: contratas con criterio y retienes al mejor talento.</p>
         </div>
       </div>
       <div class="sys" data-reveal>
@@ -604,16 +495,7 @@
         <div class="main">
           <div class="en">Cultural Evolution System</div>
           <h3>Evolución de mindset y <em>gestión del cambio</em></h3>
-          <p>Llevamos a tu organización a nuevos paradigmas: la actitud y aptitud para liderar el cambio en vez de resistirlo.</p>
-          <p class="benefit"><span>Lo que ganas —</span> una cultura que abraza el cambio en lugar de frenarlo: la estrategia por fin aterriza y avanza.</p>
-        </div>
-        <div class="side">
-          <div class="lab">Incluye</div>
-          <ul>
-            <li>Mindset &amp; Organizational Evolution</li>
-            <li>Change Management estructurado</li>
-            <li>Nuevos paradigmas culturales</li>
-          </ul>
+          <p class="benefit"><span>Lo que ganas —</span> una cultura que abraza el cambio: la estrategia por fin aterriza y avanza.</p>
         </div>
       </div>
       <div class="sys" data-reveal>
@@ -621,16 +503,7 @@
         <div class="main">
           <div class="en">People Transformation System</div>
           <h3>Liderazgo estratégico y <em>colaborativo 360</em></h3>
-          <p>Desarrollamos líderes que dirigen personas, no solo tareas, y multiplican resultados a través de sus equipos.</p>
-          <p class="benefit"><span>Lo que ganas —</span> líderes que multiplican en vez de apagar fuegos: equipos que rinden solos y un cuello de botella menos.</p>
-        </div>
-        <div class="side">
-          <div class="lab">Incluye</div>
-          <ul>
-            <li>Leader Power Skills</li>
-            <li>Liderazgo estratégico 360</li>
-            <li>Cultura de colaboración</li>
-          </ul>
+          <p class="benefit"><span>Lo que ganas —</span> líderes que multiplican en vez de apagar fuegos: equipos que rinden solos.</p>
         </div>
       </div>
     </div>
@@ -652,8 +525,7 @@
         <div class="label" data-reveal>Detrás del sistema</div>
         <h2 data-reveal style="--d:.08s">Laura <em>de la Peña</em></h2>
         <div class="role" data-reveal style="--d:.12s">Strategic Executive Leadership · Human &amp; Organizational Transformation</div>
-        <p data-reveal style="--d:.16s">Laura no llega con teoría, llega con un sistema probado para resolver el frente más complejo de tu empresa: el humano. Diagnóstico, liderazgo y transformación cultural en una sola metodología.</p>
-        <p data-reveal style="--d:.2s">Su promesa en cada proyecto: resultados reales, medibles y sostenibles.</p>
+        <p data-reveal style="--d:.16s">Laura no llega con teoría, sino con un sistema probado para el frente más complejo de tu empresa: el humano. Diagnóstico, liderazgo y transformación cultural en una metodología, con resultados medibles y sostenibles.</p>
         <div class="badges" data-reveal style="--d:.26s">
           <span class="badge">Metodologías patentadas</span>
           <span class="badge">Propiedad intelectual</span>
@@ -666,22 +538,20 @@
 
 <!-- =============== METHOD =============== -->
 <section class="sec" id="metodo" data-screen-label="Metodología">
-  <div class="watermark">04</div>
+  <div class="watermark">03</div>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-reveal>La metodología</div>
       <h2 data-reveal style="--d:.08s">8 semanas. Dos fases. <em>Entregables en cada una.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Sin cursos sueltos: un recorrido claro con entregables. Sabes qué recibes, cuándo y qué resultado respalda tu inversión.</p>
+      <p class="lead" data-reveal style="--d:.16s">Un recorrido claro: sabes qué recibes, cuándo y qué resultado respalda tu inversión.</p>
     </div>
     <div class="method-grid">
       <div class="phase" data-reveal>
         <div class="pnum">1</div>
         <div class="ph">Fase 1 · Semanas 1 – 4</div>
         <h4>Evaluación, diagnóstico real y reestructura</h4>
-        <div class="wk">Diagnóstico profundo del contexto real</div>
         <ul>
-          <li>Diagnóstico etiológico profundo: la causa raíz, no el síntoma</li>
-          <li>Evaluación del contexto real de tu organización</li>
+          <li>Diagnóstico etiológico: la causa raíz, no el síntoma</li>
           <li>Reestructura inicial con base en hallazgos</li>
           <li><b>Entregable:</b> Reporte de Diagnóstico Profundo</li>
         </ul>
@@ -690,19 +560,12 @@
         <div class="pnum">2</div>
         <div class="ph">Fase 2 · Semanas 4 – 8</div>
         <h4>Estrategia humana, capacitación y ejecución</h4>
-        <div class="wk">Del diseño a la operación</div>
         <ul>
-          <li>Diseño de la estrategia humana a la medida</li>
-          <li>Reestructuración y capacitación de equipos y líderes</li>
+          <li>Estrategia humana a la medida + capacitación de equipos y líderes</li>
           <li>Aplicación del sistema en la operación real</li>
           <li><b>Entregable:</b> Reporte de Resultados</li>
         </ul>
       </div>
-    </div>
-    <div class="method-meta" data-reveal>
-      <div class="m"><div class="v" data-count="8">8</div><div class="l">Semanas por sistema</div></div>
-      <div class="m"><div class="v" data-count="21" data-prefix="~">~21</div><div class="l">Intervenciones (2–3 por semana)</div></div>
-      <div class="m"><div class="v" data-count="2">2</div><div class="l">Reportes formales de entrega</div></div>
     </div>
   </div>
 </section>
@@ -713,13 +576,13 @@
     <div class="sec-head">
       <div class="label" data-reveal>La inversión</div>
       <h2 data-reveal style="--d:.08s">Una inversión clara, <em>en dos pagos.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Sin letras chicas: un valor por sistema, en dos pagos. Tú decides si empiezas con uno o vas por la transformación completa.</p>
+      <p class="lead" data-reveal style="--d:.16s">Sin letras chicas: un valor por sistema, en dos pagos. Empiezas con uno o vas por la transformación completa.</p>
     </div>
     <div class="price-main" data-reveal>
       <div class="ll">
         <div class="k">Por sistema · Metodología patentada</div>
         <h3>Talent Alignment · Cultural Evolution · People Transformation</h3>
-        <p>8 semanas completas: diagnóstico, estrategia a la medida, capacitación, ejecución y reportes en ambas fases.</p>
+        <p>8 semanas: diagnóstico, estrategia a la medida, capacitación, ejecución y reportes en ambas fases.</p>
         <div class="feat">
           <div><div class="v">8</div><div class="l">Semanas</div></div>
           <div><div class="v">~21</div><div class="l">Intervenciones</div></div>
@@ -739,7 +602,7 @@
       <div class="cl">
         <div class="k">Opcional · Después de tu sistema</div>
         <h4>Fase de Continuidad de Transformación Cultural</h4>
-        <p>3 meses de acompañamiento, con 1 a 2 sesiones semanales para sostener y profundizar el cambio. Pago al inicio del programa.</p>
+        <p>3 meses de acompañamiento, 1 a 2 sesiones semanales para sostener y profundizar el cambio.</p>
       </div>
       <div class="cr">
         <div class="amt">$57,690</div>
@@ -755,39 +618,19 @@
 
 <!-- =============== CONTACT / CTA =============== -->
 <section class="sec contact on-dark" id="contacto" data-screen-label="Contacto">
-  <div class="watermark">05</div>
+  <div class="watermark">04</div>
   <div class="cglow"></div>
   <div class="wrap">
     <div class="sec-head" style="max-width:680px">
       <div class="label" data-reveal>Empieza aquí</div>
       <h2 data-reveal style="--d:.08s">Empieza por entender <em>la raíz.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Cuéntanos qué está pasando en tu empresa y te respondemos con el camino indicado para tu caso. Sin compromiso.</p>
+      <p class="lead" data-reveal style="--d:.16s">Cuéntanos qué pasa en tu empresa y te decimos el camino para tu caso. Sin compromiso.</p>
     </div>
 
     <div class="contact-grid">
-      <!-- LEFT — phases, no prices -->
+      <!-- LEFT — contacto directo -->
       <div class="contact-left" data-reveal>
-        <div class="phases-mini">
-          <div class="pm">
-            <div class="pmnum">01</div>
-            <div class="pmbody">
-              <div class="pmh">Fase 1 · Semanas 1 – 4</div>
-              <div class="pmt">Evaluación, diagnóstico real y reestructura. Cerramos con la entrega del <b>Reporte de Diagnóstico Profundo.</b></div>
-            </div>
-          </div>
-          <div class="pm">
-            <div class="pmnum">02</div>
-            <div class="pmbody">
-              <div class="pmh">Fase 2 · Semanas 4 – 8</div>
-              <div class="pmt">Estrategia humana, capacitación y ejecución del sistema. Cerramos con la entrega del <b>Reporte de Resultados.</b></div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-meta">
-          <div class="cm"><div class="cv" data-count="8">8</div><div class="cl">Semanas por sistema</div></div>
-          <div class="cm"><div class="cv" data-count="21" data-prefix="~">~21</div><div class="cl">Intervenciones</div></div>
-          <div class="cm"><div class="cv" data-count="2">2</div><div class="cl">Reportes de entrega</div></div>
-        </div>
+        <p class="lead" style="color:rgba(255,255,255,.78);margin-top:0">8 semanas, dos fases, un reporte de entrega en cada una. Cuéntanos tu caso y te decimos por dónde empezar.</p>
         <div class="contact-direct">
           <span class="cdlab">¿Prefieres hablarlo directo?</span>
           <a class="cdmail" href="mailto:lauracoaching369@gmail.com?subject=Cotizaci%C3%B3n%20HUMAN-CORE">lauracoaching369@gmail.com</a>

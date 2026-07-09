@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>HUMAN-CORE System — Laura de la Peña | Liderazgo Estratégico</title>
-<meta name="description" content="HUMAN-CORE es el ecosistema estratégico de Laura de la Peña para atraer, alinear y transformar el talento de tu empresa. Metodologías premium con entregables en cada fase." />
+<meta name="description" content="¿Se te va la gente que formaste? ¿Tus líderes solo apagan fuegos? HUMAN-CORE es el sistema de Laura de la Peña para ordenar talento, cultura y liderazgo en 8 semanas." />
 <meta name="author" content="Laura de la Peña" />
 <meta name="theme-color" content="#002060" />
 <link rel="canonical" href="https://laurahumancore.com/" />
@@ -13,12 +13,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="es_MX" />
 <meta property="og:title" content="HUMAN-CORE System — Laura de la Peña" />
-<meta property="og:description" content="El ecosistema estratégico que convierte a tu gente en tu ventaja competitiva. Atrae, alinea y transforma tu talento." />
+<meta property="og:description" content="Tu gente no falla. Falla el sistema. Talento, cultura y liderazgo ordenados en 8 semanas." />
 <meta property="og:url" content="https://laurahumancore.com/" />
 <meta property="og:image" content="https://laurahumancore.com/assets/logo-navy.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="HUMAN-CORE System — Laura de la Peña" />
-<meta name="twitter:description" content="El ecosistema estratégico que convierte a tu gente en tu ventaja competitiva." />
+<meta name="twitter:description" content="Tu gente no falla. Falla el sistema." />
 <meta name="twitter:image" content="https://laurahumancore.com/assets/logo-navy.png" />
 
 <!-- Favicon -->
@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <!-- Fuentes sin bloquear el render: se cargan async y el texto aparece de inmediato con la fuente de sistema, luego intercambia. -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" /></noscript>
 <style>
   :root{
     --navy:#002060;
@@ -41,11 +41,10 @@
     --cream:#f7f3ec;
     --cream-card:#fcfaf5;
     --ink:#111a30;
-    --body:#41496180;
     --body-solid:#414961;
     --taupe:#857c6c;
     --line:#e6dfd1;
-    --line-navy:rgba(255,255,255,.13);
+    --line-navy:rgba(255,255,255,.14);
     --dark:#002060;
     --dark-deep:#001233;
     --font-display:'Cormorant Garamond', Georgia, serif;
@@ -53,104 +52,111 @@
     --font-label:'Archivo', system-ui, sans-serif;
     --maxw:1240px;
     --ease:cubic-bezier(.16,1,.3,1);
+    /* radios — todo es burbuja, nada es rectángulo */
+    --r-xl:44px;
+    --r-lg:30px;
+    --r-md:22px;
+    --r-sm:14px;
+    --r-pill:999px;
+    --shadow-card:0 2px 4px rgba(17,26,48,.03), 0 12px 32px -14px rgba(17,26,48,.14);
+    --shadow-lift:0 4px 8px rgba(17,26,48,.04), 0 26px 54px -20px rgba(17,26,48,.24);
   }
   *{box-sizing:border-box;min-width:0;}
   html{scroll-behavior:smooth;overflow-x:hidden;}
   body{margin:0;background:var(--cream);color:var(--body-solid);font-family:var(--font-body);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;overflow-wrap:break-word;width:100%;}
   img{max-width:100%;height:auto;}
-  /* gold signature hairline at the very top — brand accent */
-  body::after{content:"";position:fixed;top:0;left:0;right:0;height:3px;z-index:9100;background:linear-gradient(90deg,var(--gold-deep),var(--gold) 30%,var(--gold) 70%,var(--gold-deep));pointer-events:none;}
-  ::selection{background:var(--gold);color:#fff;}
+  ::selection{background:var(--navy);color:#fff;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 56px;}
-  h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--ink);margin:0;line-height:1.04;letter-spacing:-.015em;}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--ink);margin:0;line-height:1.06;letter-spacing:-.015em;font-style:normal;}
 
   /* grain overlay */
-  .grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.045;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.04;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
-  /* labels */
-  .label{font-family:var(--font-label);font-weight:600;font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:14px;}
-  .label::before{content:"";width:30px;height:1px;background:var(--gold);}
-  .on-dark .label{color:var(--gold);}
+  /* labels — kicker en píldora, ya no una línea con guion */
+  .label{font-family:var(--font-label);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);display:inline-block;background:rgba(194,163,107,.12);border:1px solid rgba(194,163,107,.28);padding:9px 18px;border-radius:var(--r-pill);}
+  .on-dark .label{color:var(--gold);background:rgba(194,163,107,.14);border-color:rgba(194,163,107,.3);}
   .on-dark{color:#fff;}
   .on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:#fff;}
 
-  /* reveal — fade + rise, triggered as each element scrolls into view via
-     IntersectionObserver. Hidden state is scoped to .js so that if scripting
-     is unavailable, all content renders visible (never stuck invisible). */
-  .js [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s);will-change:opacity,transform;}
+  /* reveal — fade + rise, disparado al entrar en viewport con IntersectionObserver.
+     El estado oculto vive bajo .js: sin scripting, todo renderiza visible. */
+  .js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease);transition-delay:var(--d,0s);will-change:opacity,transform;}
   .js [data-reveal].in{opacity:1;transform:none;}
   @media(prefers-reduced-motion:reduce){.js [data-reveal]{opacity:1;transform:none;transition:none;}}
 
-  /* scroll progress — refined gold fill riding the top hairline */
-  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:9200;background:linear-gradient(90deg,var(--gold-deep),var(--gold));box-shadow:0 0 14px rgba(194,163,107,.5);transition:width .12s linear;pointer-events:none;}
+  /* scroll progress */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:9200;background:linear-gradient(90deg,var(--gold-deep),var(--gold));border-radius:0 var(--r-pill) var(--r-pill) 0;transition:width .12s linear;pointer-events:none;}
 
-  /* buttons */
-  .btn{font-family:var(--font-label);font-weight:600;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;padding:18px 36px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:.3s var(--ease);white-space:nowrap;}
-  .btn-gold{background:var(--gold);color:var(--dark-deep);border-color:var(--gold);box-shadow:0 10px 30px -12px rgba(194,163,107,.55);}
-  .btn-gold:hover{background:transparent;color:var(--gold);border-color:var(--gold);box-shadow:0 0 0 0 rgba(194,163,107,0);}
-  .btn-dark{background:var(--dark);color:#fff;border-color:var(--dark);}
-  .btn-dark:hover{background:transparent;color:var(--dark);}
-  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35);}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
-  .btn-line{background:transparent;color:var(--ink);border:none;padding:0;font-family:var(--font-label);font-weight:600;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;gap:10px;align-items:center;cursor:pointer;text-decoration:none;}
-  .btn-line .u{position:relative;padding-bottom:5px;}
-  .btn-line .u::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(.3);transform-origin:left;transition:transform .35s var(--ease);}
-  .btn-line:hover .u::after{transform:scaleX(1);}
+  /* ---------- BOTONES (píldora) ---------- */
+  .btn{font-family:var(--font-label);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;padding:17px 34px;border:1px solid transparent;border-radius:var(--r-pill);cursor:pointer;display:inline-flex;align-items:center;gap:11px;text-decoration:none;white-space:nowrap;transition:transform .35s var(--ease),background .3s var(--ease),color .3s var(--ease),box-shadow .35s var(--ease),border-color .3s var(--ease);}
+  .btn:active{transform:scale(.97);}
+  .btn-gold{background:var(--gold);color:var(--dark-deep);border-color:var(--gold);box-shadow:0 10px 26px -12px rgba(194,163,107,.7);}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(194,163,107,.85);}
+  .btn-dark{background:var(--dark);color:#fff;border-color:var(--dark);box-shadow:0 10px 26px -14px rgba(0,32,96,.7);}
+  .btn-dark:hover{transform:translateY(-2px);box-shadow:0 18px 34px -16px rgba(0,32,96,.8);}
+  .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.3);}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.55);transform:translateY(-2px);}
+  .btn-soft{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:var(--shadow-card);}
+  .btn-soft:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift);}
   .arr{transition:transform .3s var(--ease);}
-  .btn:hover .arr,.btn-line:hover .arr{transform:translateX(5px);}
-  /* btn-line por defecto es oscuro (fondos claros); en hero / fondos oscuros va claro */
-  .hero .btn-line,.on-dark .btn-line{color:#fff;}
-  .hero .btn-line:hover,.on-dark .btn-line:hover{color:var(--gold);}
+  .btn:hover .arr{transform:translateX(5px);}
 
-  /* ---------- NAV ---------- */
-  .nav{position:fixed;top:0;left:0;right:0;z-index:8000;transition:background .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);border-bottom:1px solid transparent;padding:8px 0;}
-  .nav.scrolled{background:rgba(0,18,51,.86);backdrop-filter:blur(14px) saturate(140%);border-bottom-color:var(--line-navy);padding:0;}
-  .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;}
-  .nav .brand{display:flex;align-items:center;gap:15px;color:#fff;}
-  .nav .brand [data-logo]{width:50px;color:var(--gold);display:block;transition:transform .5s var(--ease);}
-  .nav .brand:hover [data-logo]{transform:rotate(-8deg) scale(1.06);}
-  .nav .brand [data-logo] svg{display:block;width:100%;height:auto;overflow:visible;}
-  .nav .brand .nm{font-family:var(--font-label);font-weight:600;letter-spacing:.26em;font-size:12px;text-transform:uppercase;color:#fff;}
-  .nav .brand .nm span{display:block;color:var(--gold);font-size:9px;letter-spacing:.2em;margin-top:4px;}
-  .nav-links{display:flex;align-items:center;gap:38px;}
-  .nav-links a:not(.btn){color:rgba(255,255,255,.8);text-decoration:none;font-family:var(--font-label);font-weight:500;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;transition:color .25s;position:relative;}
-  .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-7px;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
-  .nav-links a:not(.btn):hover{color:var(--gold);}
-  .nav-links a:not(.btn):hover::after{transform:scaleX(1);}
-  .nav-links .btn{padding:13px 26px;}
-  @media(max-width:940px){.nav-links a:not(.btn){display:none;}}
+  /* ---------- NAV (píldora flotante) ---------- */
+  .nav{position:fixed;top:14px;left:0;right:0;z-index:8000;transition:top .4s var(--ease);}
+  .nav .wrap{display:flex;justify-content:center;padding:0 20px;}
+  .nav .bar{display:flex;align-items:center;justify-content:space-between;gap:34px;width:100%;max-width:var(--maxw);
+    background:rgba(0,18,51,.5);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+    border:1px solid rgba(255,255,255,.12);border-radius:var(--r-pill);padding:11px 11px 11px 22px;
+    transition:background .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);}
+  .nav.scrolled .bar{background:rgba(0,18,51,.94);box-shadow:0 16px 40px -22px rgba(0,0,0,.8);border-color:rgba(255,255,255,.16);}
+  .nav .brand{display:flex;align-items:center;gap:13px;color:#fff;}
+  .nav .brand [data-logo]{width:42px;display:block;transition:transform .5s var(--ease);}
+  .nav .brand:hover [data-logo]{transform:rotate(-8deg) scale(1.07);}
+  .nav .brand .nm{font-family:var(--font-label);font-weight:600;letter-spacing:.2em;font-size:11px;text-transform:uppercase;color:#fff;line-height:1.3;}
+  .nav .brand .nm span{display:block;color:var(--gold);font-size:8.5px;letter-spacing:.16em;margin-top:3px;}
+  .nav-links{display:flex;align-items:center;gap:8px;}
+  .nav-links a:not(.btn){color:rgba(255,255,255,.78);text-decoration:none;font-family:var(--font-label);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:10px 15px;border-radius:var(--r-pill);transition:color .25s var(--ease),background .25s var(--ease);}
+  .nav-links a:not(.btn):hover{color:#fff;background:rgba(255,255,255,.1);}
+  .nav-links .btn{padding:12px 22px;font-size:10.5px;letter-spacing:.1em;}
+  @media(max-width:1040px){.nav-links a:not(.btn){display:none;}}
 
-  /* logo helper */
   [data-logo]{display:block;height:auto;}
-  img[data-logo]{height:auto;}
+
+  /* ---------- PANEL (bloques oscuros redondeados, estilo Apple) ---------- */
+  .panel{border-radius:var(--r-xl);overflow:hidden;position:relative;margin:0 12px;}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:
-      radial-gradient(140% 120% at 82% -10%, #0b3179 0%, var(--dark) 44%, var(--dark-deep) 100%);
-      color:#fff;overflow:hidden;padding:150px 0 90px;}
-  .hero .ringwrap{position:absolute;top:48%;right:-15%;transform:translateY(-50%) rotate(-9deg);width:1000px;height:auto;opacity:1;pointer-events:none;}
-  .hero .ringwrap [data-logo]{width:100%;opacity:.14;}
-  .hero .glow{position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(194,163,107,.18),transparent 60%);top:-160px;left:-100px;pointer-events:none;}
+  .hero{position:relative;min-height:calc(100vh - 24px);display:flex;align-items:center;margin:12px 12px 0;border-radius:var(--r-xl);
+    background:radial-gradient(140% 120% at 82% -10%, #0b3179 0%, var(--dark) 44%, var(--dark-deep) 100%);
+    color:#fff;overflow:hidden;padding:170px 0 96px;}
+  .hero .ringwrap{position:absolute;top:48%;right:-13%;transform:translateY(-50%);width:860px;pointer-events:none;animation:drift 26s ease-in-out infinite;}
+  /* El logo del anillo es de un solo color (--gold): en vez de un bitmap a color
+     usamos su silueta (canal alfa) como máscara y la pintamos con CSS. El alfa se
+     interpola suave al escalar, así que no aparecen escalones como en el bitmap. */
+  .hero .ringwrap .ringmark{width:100%;aspect-ratio:1000/717;opacity:.12;background:var(--gold);
+    -webkit-mask:url("assets/logo-gold-mask.webp") center/contain no-repeat;
+            mask:url("assets/logo-gold-mask.webp") center/contain no-repeat;}
+  @keyframes drift{0%,100%{transform:translateY(-50%) rotate(-9deg) scale(1);}50%{transform:translateY(-54%) rotate(-4deg) scale(1.04);}}
+  .hero .glow{position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(194,163,107,.2),transparent 62%);top:-180px;left:-120px;pointer-events:none;animation:breathe 12s ease-in-out infinite;}
+  @keyframes breathe{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
+  @media(prefers-reduced-motion:reduce){.hero .ringwrap,.hero .glow{animation:none;}}
   .hero .wrap{position:relative;z-index:2;}
-  .hero .vmeta{position:absolute;left:18px;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font-family:var(--font-label);font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.4);}
-  .hero .inner{max-width:920px;}
-  .hero .label{margin-bottom:34px;}
-  .hero .label{color:var(--gold);}
-  .hero .label::before{background:var(--gold);}
-  .hero h1{color:#fff;font-weight:500;font-size:clamp(48px,7.2vw,104px);line-height:.98;letter-spacing:-.025em;}
-  .hero h1 em{font-style:italic;color:var(--gold);font-weight:500;}
-  .hero .sub{font-size:clamp(19px,1.8vw,23px);color:rgba(255,255,255,.8);margin-top:34px;max-width:54ch;line-height:1.55;}
-  .hero .cta-row{display:flex;gap:20px;margin-top:46px;flex-wrap:wrap;align-items:center;}
-  .hero .promise{margin-top:56px;display:flex;align-items:center;gap:22px;border-top:1px solid var(--line-navy);padding-top:30px;max-width:640px;}
-  .hero .promise .q{font-family:var(--font-display);font-style:italic;font-size:23px;line-height:1.3;color:#fff;}
-  .hero .promise .q b{color:var(--gold);font-weight:500;}
-  .scrollcue{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--font-label);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;gap:12px;}
-  .scrollcue::after{content:"";width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:cue 2.2s ease-in-out infinite;}
-  @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.5);transform-origin:top;}50%{opacity:1;transform:scaleY(1);}}
+  .hero .inner{max-width:900px;}
+  .hero .label{margin-bottom:30px;}
+  .hero h1{color:#fff;font-weight:600;font-size:clamp(46px,7vw,100px);line-height:1;letter-spacing:-.025em;}
+  .hero .sub{font-size:clamp(18px,1.7vw,22px);color:rgba(255,255,255,.82);margin-top:28px;max-width:50ch;line-height:1.6;}
+  .hero .cta-row{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;align-items:center;}
+  /* chips de datos duros */
+  .chips{display:flex;gap:10px;margin-top:44px;flex-wrap:wrap;}
+  .chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-pill);padding:11px 20px;font-family:var(--font-label);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.86);transition:transform .35s var(--ease),background .3s var(--ease);}
+  .chip:hover{transform:translateY(-3px);background:rgba(255,255,255,.12);}
+  .chip b{color:var(--gold);font-family:var(--font-body);font-size:15px;font-weight:700;letter-spacing:0;text-transform:none;}
+  .scrollcue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--font-label);font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .scrollcue::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);animation:cue 1.9s ease-in-out infinite;}
+  @keyframes cue{0%,100%{opacity:.25;transform:translateY(0);}50%{opacity:1;transform:translateY(9px);}}
 
-  /* hero entrance — pure CSS, runs on load (NOT gated by JS/IntersectionObserver)
-     so the H1 (LCP element) paints immediately instead of waiting for scripting. */
-  @keyframes heroIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+  /* entrada del hero — CSS puro, no depende de JS, para que el H1 (LCP) pinte ya */
+  @keyframes heroIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
   .hero .inner > *{animation:heroIn .8s var(--ease) both;}
   .hero .inner > *:nth-child(2){animation-delay:.07s;}
   .hero .inner > *:nth-child(3){animation-delay:.14s;}
@@ -158,231 +164,216 @@
   .hero .inner > *:nth-child(5){animation-delay:.3s;}
   @media(prefers-reduced-motion:reduce){.hero .inner > *{animation:none;}}
 
-  /* ---------- SECTION SHELL ---------- */
-  .sec{padding:150px 0;position:relative;}
-  .sec-head{max-width:780px;}
-  .sec-head h2{font-size:clamp(38px,5vw,68px);font-weight:500;margin-top:26px;}
-  .sec-head h2 em{font-style:italic;color:var(--gold-deep);}
-  .on-dark .sec-head h2 em{color:var(--gold);}
-  .sec-head .lead{font-size:clamp(19px,1.7vw,22px);line-height:1.55;color:var(--body-solid);margin-top:26px;max-width:56ch;}
-  .on-dark .sec-head .lead{color:rgba(255,255,255,.78);}
-  .watermark{position:absolute;font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(180px,30vw,420px);line-height:.7;color:var(--ink);opacity:.035;top:-40px;right:-10px;pointer-events:none;user-select:none;z-index:0;}
-  .on-dark .watermark{color:#fff;opacity:.04;}
-  .sec .wrap{position:relative;z-index:1;}
+  /* ---------- SHELL DE SECCIÓN ---------- */
+  .sec{padding:130px 0;position:relative;}
+  .panel .sec{padding:120px 0;}
+  .sec-head{max-width:760px;}
+  .sec-head h2{font-size:clamp(36px,4.6vw,62px);font-weight:600;margin-top:24px;}
+  .sec-head .lead{font-size:clamp(18px,1.6vw,21px);line-height:1.6;color:var(--body-solid);margin-top:22px;max-width:54ch;}
+  .on-dark .sec-head .lead{color:rgba(255,255,255,.8);}
 
-  /* ---------- PROBLEM ---------- */
-  .prob{background:var(--cream-card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:72px;border-top:1px solid var(--line);}
-  .prob-cell{padding:48px 40px 48px 0;border-bottom:1px solid var(--line);position:relative;}
-  .prob-cell:not(:last-child){border-right:1px solid var(--line);padding-right:40px;}
-  .prob-cell{padding-left:40px;}
-  .prob-cell:first-child{padding-left:0;}
-  .prob-cell .n{font-family:var(--font-display);font-style:italic;font-size:30px;color:var(--gold);line-height:1;transition:transform .45s var(--ease);transform-origin:left;}
-  .prob-cell:hover .n{transform:scale(1.18);}
-  .prob-cell h4{font-size:27px;margin:20px 0 14px;}
+  /* ---------- PROBLEMA ---------- */
+  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:38px 34px;box-shadow:var(--shadow-card);transition:transform .45s var(--ease),box-shadow .45s var(--ease);}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift);}
+  .prob-cell .dot{width:44px;height:44px;border-radius:50%;background:var(--cream);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--font-label);font-weight:700;font-size:13px;color:var(--gold-deep);transition:transform .45s var(--ease),background .3s var(--ease),color .3s var(--ease);}
+  .prob-cell:hover .dot{transform:scale(1.1);background:var(--navy);color:#fff;border-color:var(--navy);}
+  .prob-cell h4{font-size:26px;margin:22px 0 12px;}
   .prob-cell p{margin:0;font-size:16px;line-height:1.65;color:var(--body-solid);}
-  .prob-foot{margin-top:60px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;}
-  .prob-foot .big{font-family:var(--font-display);font-style:italic;font-size:clamp(26px,3.2vw,40px);color:var(--ink);line-height:1.25;max-width:24ch;}
-  .prob-foot .big b{color:var(--gold-deep);font-style:italic;}
+  .prob-foot{margin-top:44px;background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+  .prob-foot p{margin:0;font-family:var(--font-display);font-size:clamp(24px,2.9vw,36px);line-height:1.25;color:#fff;max-width:22ch;}
+  .prob-foot .btn{flex-shrink:0;}
 
-  /* ---------- SYSTEMS ---------- */
-  .systems{background:var(--dark-deep);color:#fff;}
-  .sys-list{margin-top:30px;border-top:1px solid var(--line-navy);}
-  .sys{display:grid;grid-template-columns:96px 1fr;gap:50px;align-items:start;padding:46px 0;border-bottom:1px solid var(--line-navy);transition:padding-left .4s var(--ease);position:relative;}
-  .sys::before{content:"";position:absolute;left:-56px;top:0;width:3px;height:100%;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .5s var(--ease);}
-  .sys:hover::before{transform:scaleY(1);}
-  .sys:hover{padding-left:18px;}
-  .sys .idx{font-family:var(--font-display);font-style:italic;font-size:64px;color:var(--gold);line-height:.85;}
-  .sys .main .en{font-family:var(--font-label);font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);}
-  .sys .main h3{font-size:clamp(28px,3.4vw,42px);font-weight:500;color:#fff;margin:14px 0 18px;}
-  .sys .main h3 em{font-style:italic;color:var(--gold);}
-  .sys .main p{margin:0;font-size:16px;color:rgba(255,255,255,.72);max-width:54ch;line-height:1.65;}
-  .sys .side{border-left:1px solid var(--line-navy);padding-left:32px;}
-  .sys .side .lab{font-family:var(--font-label);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-  .sys .side ul{margin:0;padding:0;list-style:none;}
-  .sys .side li{font-size:14.5px;color:rgba(255,255,255,.8);padding:8px 0 8px 22px;position:relative;line-height:1.5;}
-  .sys .side li::before{content:"";position:absolute;left:0;top:15px;width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg);}
+  /* ---------- ACORDEÓN (sistemas / método / inversión) ---------- */
+  .acc-list{margin-top:52px;display:flex;flex-direction:column;gap:14px;}
+  .acc{border-radius:var(--r-lg);border:1px solid var(--line);background:#fff;overflow:hidden;transition:box-shadow .45s var(--ease),transform .45s var(--ease),border-color .3s var(--ease);box-shadow:var(--shadow-card);}
+  .acc:hover{box-shadow:var(--shadow-lift);}
+  .acc.open{border-color:rgba(194,163,107,.5);box-shadow:var(--shadow-lift);}
+  .on-dark .acc{background:rgba(255,255,255,.05);border-color:var(--line-navy);box-shadow:none;backdrop-filter:blur(2px);}
+  .on-dark .acc.open{background:rgba(255,255,255,.08);border-color:rgba(194,163,107,.45);}
+  .acc-btn{width:100%;background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:22px;text-align:left;padding:30px 34px;font-family:inherit;color:inherit;}
+  .acc-idx{flex-shrink:0;width:46px;height:46px;border-radius:50%;background:var(--cream);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--font-label);font-weight:700;font-size:13px;color:var(--gold-deep);transition:transform .45s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);}
+  .on-dark .acc-idx{background:rgba(255,255,255,.07);border-color:var(--line-navy);color:var(--gold);}
+  .acc.open .acc-idx{background:var(--gold);color:var(--dark-deep);border-color:var(--gold);transform:scale(1.06);}
+  .acc-txt{flex:1;}
+  .acc-txt .t{display:block;font-family:var(--font-display);font-size:clamp(22px,2.4vw,30px);font-weight:600;color:var(--ink);line-height:1.2;}
+  .on-dark .acc-txt .t{color:#fff;}
+  .acc-txt .s{display:block;font-family:var(--font-label);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);margin-top:7px;}
+  .on-dark .acc-txt .s{color:rgba(255,255,255,.5);}
+  .acc-ico{flex-shrink:0;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .45s var(--ease),background .3s var(--ease),border-color .3s var(--ease);}
+  .on-dark .acc-ico{border-color:var(--line-navy);}
+  .acc-btn:hover .acc-ico{background:var(--cream);}
+  .on-dark .acc-btn:hover .acc-ico{background:rgba(255,255,255,.08);}
+  .acc-ico::before,.acc-ico::after{content:"";position:absolute;background:var(--gold-deep);border-radius:2px;transition:transform .4s var(--ease),opacity .3s var(--ease);}
+  .on-dark .acc-ico::before,.on-dark .acc-ico::after{background:var(--gold);}
+  .acc-ico{position:relative;}
+  .acc-ico::before{width:13px;height:1.6px;}
+  .acc-ico::after{width:1.6px;height:13px;}
+  .acc.open .acc-ico{transform:rotate(180deg);}
+  .acc.open .acc-ico::after{opacity:0;transform:scaleY(0);}
+  /* panel: grid-template-rows 0fr→1fr = transición de altura sin medir con JS */
+  .acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease);}
+  .acc.open .acc-panel{grid-template-rows:1fr;}
+  .acc-panel > .inner{overflow:hidden;}
+  .acc-body{padding:0 34px 32px 102px;}
+  .acc-body p{margin:0 0 20px;font-size:16.5px;line-height:1.65;color:var(--body-solid);max-width:58ch;}
+  .on-dark .acc-body p{color:rgba(255,255,255,.76);}
+  .acc-body p:last-child{margin-bottom:0;}
+  .acc-body .win{display:inline-flex;align-items:flex-start;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 24px;font-size:16px;line-height:1.55;color:var(--ink);max-width:56ch;}
+  .on-dark .acc-body .win{background:rgba(194,163,107,.1);border-color:rgba(194,163,107,.28);color:#fff;}
+  .acc-body .win b{color:var(--gold-deep);font-weight:700;}
+  .on-dark .acc-body .win b{color:var(--gold);}
+  .acc-tags{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:22px;}
+  .tag{font-family:var(--font-label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--body-solid);background:var(--cream);border:1px solid var(--line);border-radius:var(--r-pill);padding:8px 16px;}
+  .on-dark .tag{background:rgba(255,255,255,.06);border-color:var(--line-navy);color:rgba(255,255,255,.75);}
+  @media(prefers-reduced-motion:reduce){.acc-panel{transition:none;}}
 
-  /* ---------- METHOD ---------- */
-  .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:72px;border:1px solid var(--line);}
-  .phase{background:var(--cream-card);padding:54px 48px;position:relative;}
-  .phase:first-child{border-right:1px solid var(--line);}
-  .phase .pnum{position:absolute;top:40px;right:44px;font-family:var(--font-display);font-style:italic;font-size:80px;color:var(--gold);opacity:.18;line-height:1;}
-  .phase .ph{font-family:var(--font-label);font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);}
-  .phase h4{font-size:30px;margin:16px 0 8px;max-width:14ch;}
-  .phase .wk{font-family:var(--font-label);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe);margin-bottom:26px;}
+  /* ---------- MÉTODO ---------- */
+  .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:60px;}
+  .phase{position:relative;}
+  .phase .pill{display:inline-block;font-family:var(--font-label);font-weight:700;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);background:rgba(194,163,107,.12);border:1px solid rgba(194,163,107,.28);border-radius:var(--r-pill);padding:8px 16px;}
+  .phase h4{font-size:28px;margin:20px 0 10px;}
+  .phase .wk{font-family:var(--font-label);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe);margin-bottom:24px;}
   .phase ul{margin:0;padding:0;list-style:none;}
-  .phase li{font-size:16px;color:var(--body-solid);padding:14px 0 14px 28px;position:relative;border-top:1px solid var(--line);}
-  .phase li:first-child{border-top:0;}
-  .phase li::before{content:"";position:absolute;left:0;top:20px;width:8px;height:8px;background:var(--gold);}
-  /* ---------- AUTHORITY ---------- */
-  .auth{background:var(--cream-card);border-top:1px solid var(--line);}
-  .auth-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center;}
-  .auth .portrait{position:relative;}
-  .auth .portrait img{width:100%;display:block;filter:grayscale(.14) contrast(1.03);position:relative;z-index:1;}
-  .auth .portrait .fr{position:absolute;inset:0;border:1px solid var(--gold);transform:translate(20px,20px);z-index:0;}
-  .auth h2{font-size:clamp(40px,4.6vw,62px);font-weight:500;}
-  .auth h2 em{font-style:italic;color:var(--gold-deep);}
-  .auth .role{font-family:var(--font-label);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin:20px 0 28px;}
-  .auth p{max-width:50ch;}
-  .auth .badges{display:flex;gap:0;margin-top:34px;border:1px solid var(--line);flex-wrap:wrap;}
-  .auth .badge{font-family:var(--font-label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:14px 22px;background:var(--cream);flex:1;text-align:center;min-width:140px;}
-  .auth .badge:not(:last-child){border-right:1px solid var(--line);}
+  .phase li{font-size:16px;color:var(--body-solid);padding:13px 0 13px 30px;position:relative;line-height:1.6;}
+  .phase li::before{content:"";position:absolute;left:0;top:22px;width:9px;height:9px;border-radius:50%;background:var(--gold);}
+  .phase li.deliv{margin-top:8px;background:var(--cream);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 20px 16px 42px;color:var(--ink);}
+  .phase li.deliv::before{left:20px;top:25px;background:var(--navy);}
+  .phase li.deliv b{font-weight:700;}
 
-  /* ---------- PRICING ---------- */
-  .pricing{background:var(--dark);color:#fff;}
-  .price-main{border:1px solid var(--line-navy);background:rgba(255,255,255,.035);margin-top:72px;display:grid;grid-template-columns:1.25fr 1fr;}
-  .price-main .ll{padding:56px 54px;}
-  .price-main .ll .k{font-family:var(--font-label);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
-  .price-main .ll h3{color:#fff;font-size:30px;font-weight:500;margin:16px 0 16px;line-height:1.15;}
-  .price-main .ll p{margin:0;font-size:15.5px;color:rgba(255,255,255,.72);max-width:42ch;}
-  .price-main .feat{display:flex;gap:38px;margin-top:34px;}
-  .price-main .feat .v{font-family:var(--font-display);font-style:italic;font-size:38px;color:var(--gold);line-height:1;}
-  .price-main .feat .l{font-family:var(--font-label);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:8px;}
-  .price-main .rr{padding:56px 54px;border-left:1px solid var(--line-navy);background:rgba(0,0,0,.18);display:flex;flex-direction:column;justify-content:center;}
-  .price-main .rr .amt{font-family:var(--font-display);font-weight:600;font-size:58px;color:#fff;line-height:1;}
-  .price-main .rr .amt span{font-size:18px;color:var(--gold);font-family:var(--font-label);font-weight:600;letter-spacing:.04em;display:inline-block;margin-left:6px;}
-  .price-main .rr .iva{font-family:var(--font-label);font-size:11.5px;letter-spacing:.12em;color:rgba(255,255,255,.55);margin-top:10px;text-transform:uppercase;}
-  .price-main .rr .split{margin-top:28px;border-top:1px solid var(--line-navy);padding-top:24px;}
-  .price-main .rr .split .row{display:flex;justify-content:space-between;font-family:var(--font-label);font-size:13px;color:rgba(255,255,255,.78);padding:8px 0;letter-spacing:.03em;}
-  .price-main .rr .split .row b{color:var(--gold);font-weight:600;}
+  /* ---------- LAURA ---------- */
+  .auth-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:center;}
+  .auth .portrait{position:relative;width:100%;max-width:400px;margin:0 auto;aspect-ratio:1;}
+  .auth .portrait img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;position:relative;z-index:1;filter:grayscale(.12) contrast(1.03);transition:transform .6s var(--ease);}
+  .auth .portrait:hover img{transform:scale(1.03);}
+  .auth .portrait .ring{position:absolute;inset:-14px;border:1px solid rgba(194,163,107,.55);border-radius:50%;z-index:0;animation:spin 34s linear infinite;border-style:dashed;}
+  .auth .portrait .ring2{position:absolute;inset:-30px;border:1px solid rgba(194,163,107,.2);border-radius:50%;z-index:0;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media(prefers-reduced-motion:reduce){.auth .portrait .ring{animation:none;}}
+  .auth h2{font-size:clamp(38px,4.4vw,58px);font-weight:600;margin-top:22px;}
+  .auth .role{font-family:var(--font-label);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin:18px 0 24px;}
+  .auth p{max-width:50ch;font-size:17px;}
+  .auth .badges{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap;}
+  .auth .badge{font-family:var(--font-label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);padding:12px 20px;background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);box-shadow:var(--shadow-card);transition:transform .4s var(--ease);}
+  .auth .badge:hover{transform:translateY(-3px);}
 
-  .continuity{margin-top:0;border:1px solid var(--line-navy);border-top:0;padding:36px 54px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
-  .continuity .cl .k{font-family:var(--font-label);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
-  .continuity .cl h4{color:#fff;font-size:22px;font-weight:500;margin:10px 0 6px;}
-  .continuity .cl p{margin:0;font-size:14px;color:rgba(255,255,255,.68);}
-  .continuity .cr{text-align:right;}
-  .continuity .cr .amt{font-family:var(--font-display);font-weight:600;font-size:34px;color:#fff;}
-  .continuity .cr .l{font-family:var(--font-label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);}
-  .price-note{margin-top:28px;font-family:var(--font-label);font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.5);text-align:center;}
+  /* ---------- INVERSIÓN ---------- */
+  .price-card{margin-top:56px;border:1px solid var(--line-navy);background:rgba(255,255,255,.05);border-radius:var(--r-xl);display:grid;grid-template-columns:1.2fr 1fr;overflow:hidden;backdrop-filter:blur(2px);}
+  .price-card .ll{padding:52px 50px;}
+  .price-card .ll .k{font-family:var(--font-label);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+  .price-card .ll h3{color:#fff;font-size:28px;font-weight:600;margin:16px 0 14px;line-height:1.25;}
+  .price-card .ll p{margin:0;font-size:16px;color:rgba(255,255,255,.74);max-width:42ch;}
+  .price-card .feat{display:flex;gap:10px;margin-top:32px;flex-wrap:wrap;}
+  .price-card .rr{padding:52px 50px;border-left:1px solid var(--line-navy);background:rgba(0,0,0,.2);display:flex;flex-direction:column;justify-content:center;}
+  .price-card .rr .amt{font-family:var(--font-display);font-weight:600;font-size:54px;color:#fff;line-height:1;}
+  .price-card .rr .amt span{font-size:17px;color:var(--gold);font-family:var(--font-label);font-weight:600;letter-spacing:.03em;display:inline-block;margin-left:6px;}
+  .price-card .rr .iva{font-family:var(--font-label);font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.56);margin-top:10px;text-transform:uppercase;}
+  .price-card .rr .split{margin-top:26px;border-top:1px solid var(--line-navy);padding-top:22px;}
+  .price-card .rr .split .row{display:flex;justify-content:space-between;gap:16px;font-family:var(--font-label);font-size:13px;color:rgba(255,255,255,.8);padding:8px 0;}
+  .price-card .rr .split .row b{color:var(--gold);font-weight:600;}
+  .cont{margin-top:16px;border:1px solid var(--line-navy);border-radius:var(--r-lg);padding:32px 44px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;background:rgba(255,255,255,.03);}
+  .cont .cl .k{font-family:var(--font-label);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+  .cont .cl h4{color:#fff;font-size:22px;font-weight:600;margin:10px 0 6px;}
+  .cont .cl p{margin:0;font-size:14.5px;color:rgba(255,255,255,.7);}
+  .cont .cr{text-align:right;}
+  .cont .cr .amt{font-family:var(--font-display);font-weight:600;font-size:32px;color:#fff;}
+  .cont .cr .l{font-family:var(--font-label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.56);}
+  .price-note{margin-top:26px;font-family:var(--font-label);font-size:11.5px;letter-spacing:.03em;color:rgba(255,255,255,.5);text-align:center;}
 
-  /* ---------- FINAL ---------- */
-  .final{background:var(--dark-deep);color:#fff;text-align:center;padding:170px 0;position:relative;overflow:hidden;}
-  .final .frame{position:absolute;inset:32px;border:1px solid rgba(194,163,107,.32);pointer-events:none;}
-  .final .glow{position:absolute;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(194,163,107,.12),transparent 64%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
-  .final [data-logo]{width:96px;color:var(--gold);margin:0 auto 34px;position:relative;}
-  .final h2{color:#fff;font-weight:500;font-size:clamp(42px,6vw,80px);line-height:1.0;position:relative;max-width:16ch;margin:0 auto;letter-spacing:-.02em;}
-  .final h2 em{font-style:italic;color:var(--gold);}
-  .final p{position:relative;margin:30px auto 0;font-size:19px;color:rgba(255,255,255,.75);max-width:48ch;}
-  .final .cta-row{position:relative;display:flex;gap:20px;justify-content:center;margin-top:48px;flex-wrap:wrap;}
+  /* ---------- CONTACTO ---------- */
+  .contact .cglow{position:absolute;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(194,163,107,.14),transparent 64%);top:-280px;right:-220px;pointer-events:none;animation:breathe 14s ease-in-out infinite;}
+  @media(prefers-reduced-motion:reduce){.contact .cglow{animation:none;}}
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;margin-top:56px;align-items:start;}
+  .contact-direct{margin-top:32px;background:rgba(255,255,255,.05);border:1px solid var(--line-navy);border-radius:var(--r-lg);padding:28px 32px;}
+  .contact-direct .cdlab{font-family:var(--font-label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.56);display:block;margin-bottom:12px;}
+  .contact-direct .cdmail{font-family:var(--font-body);font-weight:600;font-size:20px;color:#fff;text-decoration:none;overflow-wrap:anywhere;transition:color .3s var(--ease);}
+  .contact-direct .cdmail:hover{color:var(--gold);}
 
-  /* ---------- FOOTER ---------- */
-  .footer{background:#00060f;color:rgba(255,255,255,.55);padding:60px 0;}
-  .footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
-  .footer .brand{display:flex;align-items:center;gap:15px;}
-  .footer .brand [data-logo]{width:44px;color:var(--gold);}
-  .footer .brand .nm{font-family:var(--font-label);font-weight:600;letter-spacing:.24em;font-size:11px;text-transform:uppercase;color:#fff;}
-  .footer .cr{font-family:var(--font-label);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;}
-
-  /* ---------- SYSTEM BENEFIT LINE ---------- */
-  .sys .main .benefit{margin:20px 0 0;font-family:var(--font-display);font-style:italic;font-size:20px;line-height:1.4;color:#fff;max-width:52ch;padding-left:20px;border-left:2px solid var(--gold);}
-  .sys .main .benefit span{font-family:var(--font-label);font-style:normal;font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:inline;margin-right:2px;}
-
-  /* ---------- CONTACT / CTA ---------- */
-  .contact{background:var(--dark);color:#fff;position:relative;overflow:hidden;}
-  .contact .cglow{position:absolute;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(194,163,107,.13),transparent 64%);top:-260px;right:-200px;pointer-events:none;}
-  .contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;margin-top:64px;align-items:start;}
-
-  .contact-direct{margin-top:36px;display:flex;flex-direction:column;gap:8px;}
-  .contact-direct .cdlab{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);}
-  .contact-direct .cdmail{font-family:var(--font-display);font-style:italic;font-size:27px;color:#fff;text-decoration:none;max-width:100%;overflow-wrap:anywhere;border-bottom:1px solid rgba(194,163,107,.5);padding-bottom:3px;transition:color .3s var(--ease),border-color .3s var(--ease);}
-  .contact-direct .cdmail:hover{color:var(--gold);border-color:var(--gold);}
-
-  /* form */
-  .cform{background:rgba(255,255,255,.04);border:1px solid var(--line-navy);padding:42px 40px;backdrop-filter:blur(2px);}
-  .cform-head{font-family:var(--font-display);font-weight:600;font-size:30px;color:#fff;margin-bottom:30px;letter-spacing:-.01em;}
-  .frow{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-  .field{display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
-  .field .fl{font-family:var(--font-label);font-weight:600;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+  /* formulario — todo redondeado */
+  .cform{background:rgba(255,255,255,.05);border:1px solid var(--line-navy);border-radius:var(--r-xl);padding:42px 40px;backdrop-filter:blur(3px);}
+  .cform-head{font-family:var(--font-display);font-weight:600;font-size:30px;color:#fff;margin-bottom:28px;letter-spacing:-.01em;}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .field{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
+  .field .fl{font-family:var(--font-label);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
   .cform input,.cform select,.cform textarea{
-    font-family:var(--font-body);font-size:15.5px;color:#fff;background:rgba(0,0,0,.22);
-    border:1px solid var(--line-navy);border-radius:0;padding:14px 16px;width:100%;
-    transition:border-color .25s var(--ease),background .25s var(--ease);-webkit-appearance:none;appearance:none;
+    font-family:var(--font-body);font-size:15.5px;color:#fff;background:rgba(0,0,0,.24);
+    border:1px solid var(--line-navy);border-radius:var(--r-sm);padding:15px 18px;width:100%;
+    transition:border-color .25s var(--ease),background .25s var(--ease),box-shadow .25s var(--ease);-webkit-appearance:none;appearance:none;
   }
-  .cform textarea{resize:vertical;min-height:84px;line-height:1.55;}
-  .cform select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c2a36b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer;}
+  .cform textarea{resize:vertical;min-height:96px;line-height:1.55;border-radius:var(--r-md);}
+  .cform select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c2a36b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;padding-right:42px;cursor:pointer;}
   .cform select option{background:var(--dark-deep);color:#fff;}
-  .cform input::placeholder,.cform textarea::placeholder{color:rgba(255,255,255,.35);}
-  .cform input:focus,.cform select:focus,.cform textarea:focus{outline:none;border-color:var(--gold);background:rgba(0,0,0,.34);}
-  .cform input.err,.cform .field.err input,.cform .field.err select{border-color:#d98a6b;}
-
-  .fpref{margin:4px 0 28px;}
-  .fpref .fl{font-family:var(--font-label);font-weight:600;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px;}
-  .prefs{display:flex;gap:10px;flex-wrap:wrap;}
+  .cform input::placeholder,.cform textarea::placeholder{color:rgba(255,255,255,.36);}
+  .cform input:focus,.cform select:focus,.cform textarea:focus{outline:none;border-color:var(--gold);background:rgba(0,0,0,.34);box-shadow:0 0 0 4px rgba(194,163,107,.14);}
+  .cform input.err{border-color:#d98a6b;}
+  .fpref{margin:4px 0 26px;}
+  .fpref .fl{font-family:var(--font-label);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:13px;}
+  .prefs{display:flex;gap:9px;flex-wrap:wrap;}
   .pref{position:relative;cursor:pointer;}
   .pref input{position:absolute;opacity:0;width:0;height:0;}
-  .pref span{display:block;font-family:var(--font-label);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);border:1px solid var(--line-navy);padding:11px 20px;transition:.25s var(--ease);}
-  .pref input:checked + span{background:var(--gold);color:var(--dark-deep);border-color:var(--gold);}
+  .pref span{display:block;font-family:var(--font-label);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);border:1px solid var(--line-navy);border-radius:var(--r-pill);padding:11px 20px;transition:.28s var(--ease);}
+  .pref input:checked + span{background:var(--gold);color:var(--dark-deep);border-color:var(--gold);transform:translateY(-1px);}
   .pref:hover span{border-color:var(--gold);color:#fff;}
   .pref input:checked:hover + span{color:var(--dark-deep);}
-
-  .cform-submit{width:100%;justify-content:center;padding:19px 36px;}
-  .cform-note{font-family:var(--font-label);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.5);text-align:center;margin:18px 0 0;transition:color .3s;}
+  .cform-submit{width:100%;justify-content:center;padding:19px 34px;}
+  .cform-note{font-family:var(--font-label);font-size:11.5px;letter-spacing:.03em;color:rgba(255,255,255,.5);text-align:center;margin:16px 0 0;transition:color .3s;}
   .cform-note.ok{color:var(--gold);}
 
+  /* ---------- FOOTER ---------- */
+  .footer{background:transparent;color:var(--taupe);padding:52px 0 44px;}
+  .footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;}
+  .footer .brand{display:flex;align-items:center;gap:13px;}
+  .footer .brand [data-logo]{width:40px;}
+  .footer .brand .nm{font-family:var(--font-label);font-weight:600;letter-spacing:.2em;font-size:11px;text-transform:uppercase;color:var(--ink);}
+  .footer .cr{font-family:var(--font-label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1040px){
+    .wrap{padding:0 28px;}
+    .nav .bar{padding:9px 9px 9px 18px;}
+  }
   @media(max-width:940px){
-    .wrap{padding:0 26px;}
-    .contact-grid{grid-template-columns:1fr;gap:48px;}
+    .contact-grid{grid-template-columns:1fr;gap:44px;}
     .cform{padding:32px 24px;}
     .frow{grid-template-columns:1fr;gap:0;}
-    .sys .main .benefit{font-size:18px;}
-    .hero .vmeta,.hero .ringwrap{display:none;}
-    .hero{padding:120px 0 80px;min-height:auto;}
-    .auth-grid,.price-main,.price-main .rr{grid-template-columns:1fr;}
-    .price-main .rr{border-left:0;border-top:1px solid var(--line-navy);}
-    .prob-grid,.eco-grid,.method-grid,.method-meta{grid-template-columns:1fr;}
-    .prob-cell,.eco{border-right:0 !important;padding-left:0 !important;padding-right:0 !important;}
-    .eco:not(:last-child),.phase:first-child{border-right:0;border-bottom:1px solid var(--line);}
-    .eco .plus{display:none;}
-    .method-meta .m:not(:last-child){border-right:0;border-bottom:1px solid var(--line);}
-    .sys{grid-template-columns:1fr;gap:24px;padding:42px 0;}
-    .sys:hover{padding-left:0;}
-    .sys::before{display:none;}
-    .sys .side{border-left:0;border-top:1px solid var(--line-navy);padding-left:0;padding-top:26px;}
-    .sec{padding:96px 0;}
-    .auth-grid{gap:48px;}
+    .hero .ringwrap{display:none;}
+    .hero{padding:130px 0 84px;min-height:auto;}
+    .auth-grid,.price-card,.prob-grid,.method-grid{grid-template-columns:1fr;}
+    .auth-grid{gap:52px;}
+    .price-card .rr{border-left:0;border-top:1px solid var(--line-navy);}
+    .sec,.panel .sec{padding:92px 0;}
+    .acc-body{padding:0 30px 30px 30px;}
+    .prob-foot{padding:34px 32px;}
   }
-
-  /* ---------- TELÉFONOS (≤560px): escala tipografía/espaciado y evita desbordes ---------- */
   @media(max-width:560px){
     .wrap{padding:0 20px;}
-    .label{letter-spacing:.2em;gap:10px;}
-    .label::before{width:16px;}
-    .hero{padding:108px 0 64px;}
-    .hero h1{font-size:clamp(31px,8.6vw,46px);}
+    .hero{padding:118px 0 70px;border-radius:var(--r-lg);margin:8px 8px 0;}
+    .panel{border-radius:var(--r-lg);margin:0 8px;}
+    .hero h1{font-size:clamp(32px,8.6vw,46px);}
     .hero .sub{font-size:16.5px;}
-    .hero .promise .q{font-size:19px;}
-    .sec{padding:64px 0;}
+    .sec,.panel .sec{padding:66px 0;}
     .sec-head h2{font-size:clamp(27px,7.6vw,40px);}
     .sec-head .lead{font-size:16px;}
-    .manifesto{padding:88px 0;}
-    .manifesto .big{font-size:clamp(27px,7.6vw,40px);}
-    .manifesto .small{font-size:16.5px;}
     .auth h2{font-size:clamp(30px,8vw,44px);}
-    .final{padding:108px 0;}
-    .final h2{font-size:clamp(29px,8vw,42px);}
-    .final .frame{inset:16px;}
-    .watermark{font-size:clamp(120px,42vw,210px);}
-    .btn{padding:16px 22px;font-size:11.5px;}
-    .prob-foot{flex-direction:column;align-items:flex-start;gap:20px;}
-    .prob-foot .big{font-size:clamp(22px,6.6vw,30px);}
-    .sys .idx{font-size:48px;}
-    .sys .main h3{font-size:clamp(24px,6.6vw,32px);}
-    .price-main .ll,.price-main .rr{padding:34px 24px;}
-    .price-main .feat{gap:18px;flex-wrap:wrap;}
-    .price-main .feat .v{font-size:30px;}
-    .price-main .rr .amt{font-size:44px;}
-    .continuity{flex-direction:column;align-items:flex-start;padding:30px 24px;}
-    .continuity .cr{text-align:left;}
-    .cform{padding:26px 18px;}
-    .cdmail{font-size:19px;}
-    .nav .wrap{padding-top:14px;padding-bottom:14px;}
-    .nav.scrolled .wrap{padding-top:11px;padding-bottom:11px;}
-    .nav .brand{gap:11px;}
-    .nav .brand [data-logo]{width:38px;}
-    .nav .brand .nm{font-size:9.5px;letter-spacing:.16em;}
+    .btn{padding:15px 24px;font-size:11px;}
+    .card{padding:30px 26px;}
+    .acc-btn{padding:24px 22px;gap:16px;}
+    .acc-idx{width:40px;height:40px;}
+    .acc-body{padding:0 22px 26px 22px;}
+    .prob-foot{padding:30px 24px;}
+    .prob-foot p{font-size:clamp(22px,6.6vw,30px);}
+    .price-card .ll,.price-card .rr{padding:34px 26px;}
+    .price-card .rr .amt{font-size:42px;}
+    .cont{flex-direction:column;align-items:flex-start;padding:28px 26px;}
+    .cont .cr{text-align:left;}
+    .cform{padding:28px 20px;border-radius:var(--r-lg);}
+    .contact-direct{padding:24px 22px;}
+    .nav{top:8px;}
+    .nav .brand [data-logo]{width:36px;}
+    .nav .brand .nm{font-size:9.5px;letter-spacing:.14em;}
     .nav .brand .nm span{font-size:8px;}
-    .nav-links .btn{padding:11px 14px;font-size:10px;letter-spacing:.08em;}
+    .nav-links .btn{padding:11px 16px;font-size:9.5px;letter-spacing:.06em;}
+    .auth .portrait{max-width:280px;}
   }
 </style>
 <script>document.documentElement.classList.add('js');</script>
@@ -402,17 +393,19 @@
 <!-- =============== NAV =============== -->
 <nav class="nav">
   <div class="wrap">
-    <div class="brand">
-      <img data-logo src="assets/logo-white.webp" alt="Lau de la Peña" width="50" height="36" />
-      <div class="nm">Lau de la Peña<span>Human-Core System</span></div>
-    </div>
-    <div class="nav-links">
-      <a href="#problema">El problema</a>
-      <a href="#sistemas">Los 3 sistemas</a>
-      <a href="#metodo">Metodología</a>
-      <a href="#inversion">Inversión</a>
-      <a href="#laura">Laura</a>
-      <a href="#contacto" class="btn btn-gold">Agenda tu diagnóstico</a>
+    <div class="bar">
+      <div class="brand">
+        <img data-logo src="assets/logo-white.webp" alt="Lau de la Peña" width="42" height="30" />
+        <div class="nm">Lau de la Peña<span>Human-Core System</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#problema">El problema</a>
+        <a href="#sistemas">Los 3 sistemas</a>
+        <a href="#metodo">Cómo funciona</a>
+        <a href="#inversion">Inversión</a>
+        <a href="#laura">Laura</a>
+        <a href="#contacto" class="btn btn-gold">Agenda tu diagnóstico</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -420,296 +413,342 @@
 <!-- =============== HERO =============== -->
 <header class="hero" data-screen-label="Hero">
   <div class="glow"></div>
-  <div class="ringwrap"><img data-logo src="assets/logo-gold.webp" alt="" /></div>
-  <div class="vmeta">Estrategia · Liderazgo · Transformación</div>
+  <div class="ringwrap"><div class="ringmark" aria-hidden="true"></div></div>
   <div class="wrap">
     <div class="inner">
-      <div class="label">Strategic Executive Leadership</div>
-      <h1>Tu empresa no tiene un problema de talento.<br /><em>Tiene un problema de sistema.</em></h1>
-      <p class="sub">El talento correcto existe. Falta el sistema para atraerlo, alinearlo y retenerlo. HUMAN-CORE lo construye.</p>
+      <div class="label">Talento · Cultura · Liderazgo</div>
+      <h1>Tu gente no falla.<br />Falla el sistema.</h1>
+      <p class="sub">Se te va el talento que formaste, los equipos jalan cada quien para su lado y tus líderes solo apagan fuegos. HUMAN-CORE ordena eso.</p>
       <div class="cta-row">
         <a href="#contacto" class="btn btn-gold">Agenda tu diagnóstico <span class="arr">→</span></a>
-        <a href="#sistemas" class="btn-line"><span class="u">Conoce los 3 sistemas</span> <span class="arr">→</span></a>
+        <a href="#sistemas" class="btn btn-ghost">Ver cómo funciona <span class="arr">→</span></a>
       </div>
-      <div class="promise">
-        <p class="q">"No vendo sistemas. Vendo <b>resultados</b> a través de mis sistemas."</p>
+      <div class="chips">
+        <span class="chip"><b>8</b> semanas</span>
+        <span class="chip"><b>2</b> reportes por escrito</span>
+        <span class="chip"><b>21</b> intervenciones</span>
       </div>
     </div>
   </div>
   <div class="scrollcue">Desliza</div>
 </header>
 
-<!-- =============== PROBLEM =============== -->
-<section class="sec prob" id="problema" data-screen-label="El problema">
-  <div class="watermark">01</div>
+<!-- =============== PROBLEMA =============== -->
+<section class="sec" id="problema" data-screen-label="El problema">
   <div class="wrap">
     <div class="sec-head">
-      <div class="label" data-reveal>El costo invisible</div>
-      <h2 data-reveal style="--d:.08s">Cada decisión humana sin sistema <em>te cuesta dinero.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">No aparece en tus números, pero lo vives a diario:</p>
+      <div class="label" data-reveal>¿Te suena?</div>
+      <h2 data-reveal style="--d:.08s">Lo que te cuesta y no ves en los números.</h2>
+      <p class="lead" data-reveal style="--d:.16s">No sale en el estado de resultados. Lo vives todos los lunes.</p>
     </div>
     <div class="prob-grid">
-      <div class="prob-cell" data-reveal>
-        <div class="n">01</div>
-        <h4>Talento que se fuga</h4>
-        <p>Inviertes meses en formarlos y se van con tu conocimiento y tu dinero.</p>
+      <div class="card prob-cell" data-reveal>
+        <div class="dot">01</div>
+        <h4>Se va la gente que formaste</h4>
+        <p>Meses invertidos en capacitar a alguien. Renuncia y se lleva lo aprendido a otra empresa.</p>
       </div>
-      <div class="prob-cell" data-reveal style="--d:.12s">
-        <div class="n">02</div>
-        <h4>Equipos desalineados</h4>
-        <p>Gente capaz remando en direcciones distintas: el esfuerzo se diluye y la estrategia no aterriza.</p>
+      <div class="card prob-cell" data-reveal style="--d:.1s">
+        <div class="dot">02</div>
+        <h4>Cada quien jala para su lado</h4>
+        <p>Gente capaz, sin rumbo común. La estrategia se queda en la junta y nunca llega a la operación.</p>
       </div>
-      <div class="prob-cell" data-reveal style="--d:.24s">
-        <div class="n">03</div>
-        <h4>Líderes que no lideran</h4>
-        <p>Buenos técnicos ascendidos sin saber dirigir personas. El cuello de botella ya no es el mercado: eres tú.</p>
+      <div class="card prob-cell" data-reveal style="--d:.2s">
+        <div class="dot">03</div>
+        <h4>Tus líderes apagan fuegos</h4>
+        <p>Buenos técnicos que nunca aprendieron a dirigir personas. Al final, todo termina pasando por ti.</p>
       </div>
     </div>
     <div class="prob-foot" data-reveal>
-      <p class="big">El problema no es tu gente. Es la <b>ausencia de un sistema</b> que la atraiga, la alinee y la transforme.</p>
-      <a href="#sistemas" class="btn-line"><span class="u">Ver la solución</span> <span class="arr">→</span></a>
+      <p>No necesitas más cursos. Necesitas un sistema.</p>
+      <a href="#sistemas" class="btn btn-gold">Ver los 3 sistemas <span class="arr">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- =============== SYSTEMS =============== -->
-<section class="sec systems on-dark" id="sistemas" data-screen-label="Los 3 sistemas">
-  <div class="watermark">02</div>
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label" data-reveal>Las metodologías premium</div>
-      <h2 data-reveal style="--d:.08s">Tres sistemas. <em>Un mismo núcleo.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Metodologías exclusivas, patentadas. Cada sistema resuelve un frente crítico — solo o como un recorrido completo.</p>
-    </div>
-    <div class="sys-list">
-      <div class="sys" data-reveal>
-        <div class="idx">I</div>
-        <div class="main">
-          <div class="en">Talent Alignment System</div>
-          <h3>Atracción, alineación y <em>conservación</em> de talento</h3>
-          <p class="benefit"><span>Lo que ganas —</span> dejas de perder dinero en rotación: contratas con criterio y retienes al mejor talento.</p>
-        </div>
+<!-- =============== SISTEMAS =============== -->
+<div class="panel">
+  <section class="sec on-dark" id="sistemas" data-screen-label="Los 3 sistemas"
+           style="background:radial-gradient(120% 100% at 15% 0%, #0b3179 0%, var(--dark) 50%, var(--dark-deep) 100%)">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label" data-reveal>Los 3 sistemas</div>
+        <h2 data-reveal style="--d:.08s">Tres frentes. Un mismo núcleo.</h2>
+        <p class="lead" data-reveal style="--d:.16s">Metodologías propias y patentadas. Toma el que más te duele hoy, o los tres como un solo recorrido.</p>
       </div>
-      <div class="sys" data-reveal>
-        <div class="idx">II</div>
-        <div class="main">
-          <div class="en">Cultural Evolution System</div>
-          <h3>Evolución de mindset y <em>gestión del cambio</em></h3>
-          <p class="benefit"><span>Lo que ganas —</span> una cultura que abraza el cambio: la estrategia por fin aterriza y avanza.</p>
-        </div>
-      </div>
-      <div class="sys" data-reveal>
-        <div class="idx">III</div>
-        <div class="main">
-          <div class="en">People Transformation System</div>
-          <h3>Liderazgo estratégico y <em>colaborativo 360</em></h3>
-          <p class="benefit"><span>Lo que ganas —</span> líderes que multiplican en vez de apagar fuegos: equipos que rinden solos.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- =============== AUTHORITY =============== -->
+      <div class="acc-list">
+        <div class="acc" data-reveal>
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="sys-1">
+            <span class="acc-idx">01</span>
+            <span class="acc-txt">
+              <span class="t">Atraer y retener al talento correcto</span>
+              <span class="s">Talent Alignment System</span>
+            </span>
+            <span class="acc-ico" aria-hidden="true"></span>
+          </button>
+          <div class="acc-panel" id="sys-1"><div class="inner"><div class="acc-body">
+            <div class="acc-tags">
+              <span class="tag">Rotación alta</span>
+              <span class="tag">Contrataciones fallidas</span>
+              <span class="tag">Vacantes eternas</span>
+            </div>
+            <p>Contratas por urgencia, no por criterio. Cada salida te cuesta reclutamiento, curva de aprendizaje y clientes molestos. Aquí definimos a quién necesitas, cómo lo eliges y qué lo hace quedarse.</p>
+            <p class="win"><span>Lo que ganas: <b>dejas de sangrar dinero en rotación.</b> Contratas con criterio y el buen talento se queda.</span></p>
+          </div></div></div>
+        </div>
+
+        <div class="acc" data-reveal style="--d:.08s">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="sys-2">
+            <span class="acc-idx">02</span>
+            <span class="acc-txt">
+              <span class="t">Cambiar la cultura, no el discurso</span>
+              <span class="s">Cultural Evolution System</span>
+            </span>
+            <span class="acc-ico" aria-hidden="true"></span>
+          </button>
+          <div class="acc-panel" id="sys-2"><div class="inner"><div class="acc-body">
+            <div class="acc-tags">
+              <span class="tag">Resistencia al cambio</span>
+              <span class="tag">Estrategia que no aterriza</span>
+              <span class="tag">Silos</span>
+            </div>
+            <p>Anuncias un cambio y la organización lo absorbe sin moverse. No es mala voluntad: es que nadie cambió los hábitos ni las reglas del día a día. Eso es lo que intervenimos.</p>
+            <p class="win"><span>Lo que ganas: <b>una cultura que se mueve contigo.</b> Lo que decides en la junta sí llega a la operación.</span></p>
+          </div></div></div>
+        </div>
+
+        <div class="acc" data-reveal style="--d:.16s">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="sys-3">
+            <span class="acc-idx">03</span>
+            <span class="acc-txt">
+              <span class="t">Formar líderes que sí dirigen</span>
+              <span class="s">People Transformation System</span>
+            </span>
+            <span class="acc-ico" aria-hidden="true"></span>
+          </button>
+          <div class="acc-panel" id="sys-3"><div class="inner"><div class="acc-body">
+            <div class="acc-tags">
+              <span class="tag">Todo pasa por ti</span>
+              <span class="tag">Jefes sin oficio</span>
+              <span class="tag">Equipos apagados</span>
+            </div>
+            <p>Ascendiste al mejor técnico y perdiste a un buen técnico para ganar un mal jefe. Dirigir personas se aprende, y se aprende con método: conversaciones difíciles, delegación, seguimiento.</p>
+            <p class="win"><span>Lo que ganas: <b>líderes que multiplican.</b> Equipos que rinden sin que tú estés encima.</span></p>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =============== LAURA =============== -->
 <section class="sec auth" id="laura" data-screen-label="Laura de la Peña">
   <div class="wrap">
     <div class="auth-grid">
       <div class="portrait" data-reveal>
-        <div class="fr"></div>
+        <div class="ring2"></div>
+        <div class="ring"></div>
         <img src="assets/laura-portrait-360.webp"
              srcset="assets/laura-portrait-360.webp 360w, assets/laura-portrait.webp 720w"
-             sizes="(max-width:940px) 88vw, 460px"
+             sizes="(max-width:940px) 70vw, 400px"
              alt="Laura de la Peña" width="360" height="359" />
       </div>
       <div>
-        <div class="label" data-reveal>Detrás del sistema</div>
-        <h2 data-reveal style="--d:.08s">Laura <em>de la Peña</em></h2>
-        <div class="role" data-reveal style="--d:.12s">Strategic Executive Leadership · Human &amp; Organizational Transformation</div>
-        <p data-reveal style="--d:.16s">Laura no llega con teoría, sino con un sistema probado para el frente más complejo de tu empresa: el humano. Diagnóstico, liderazgo y transformación cultural en una metodología, con resultados medibles y sostenibles.</p>
-        <div class="badges" data-reveal style="--d:.26s">
+        <div class="label" data-reveal>Quién está detrás</div>
+        <h2 data-reveal style="--d:.08s">Laura de la Peña</h2>
+        <div class="role" data-reveal style="--d:.12s">Liderazgo estratégico · Transformación humana y organizacional</div>
+        <p data-reveal style="--d:.16s">Laura no llega con teoría. Llega con un método probado para el frente más difícil de tu empresa: el humano. Diagnóstico, liderazgo y cultura en un solo sistema, con resultados que puedes medir.</p>
+        <div class="badges" data-reveal style="--d:.24s">
           <span class="badge">Metodologías patentadas</span>
           <span class="badge">Propiedad intelectual</span>
-          <span class="badge">Enfoque premium a la medida</span>
+          <span class="badge">Programas a la medida</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============== METHOD =============== -->
-<section class="sec" id="metodo" data-screen-label="Metodología">
-  <div class="watermark">03</div>
+<!-- =============== MÉTODO =============== -->
+<section class="sec" id="metodo" data-screen-label="Cómo funciona">
   <div class="wrap">
     <div class="sec-head">
-      <div class="label" data-reveal>La metodología</div>
-      <h2 data-reveal style="--d:.08s">8 semanas. Dos fases. <em>Entregables en cada una.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Un recorrido claro: sabes qué recibes, cuándo y qué resultado respalda tu inversión.</p>
+      <div class="label" data-reveal>Cómo funciona</div>
+      <h2 data-reveal style="--d:.08s">8 semanas. Dos fases. Todo por escrito.</h2>
+      <p class="lead" data-reveal style="--d:.16s">Sabes qué recibes y cuándo. Cada fase cierra con un reporte en la mano.</p>
     </div>
     <div class="method-grid">
-      <div class="phase" data-reveal>
-        <div class="pnum">1</div>
-        <div class="ph">Fase 1 · Semanas 1 – 4</div>
-        <h4>Evaluación, diagnóstico real y reestructura</h4>
+      <div class="card phase" data-reveal>
+        <span class="pill">Fase 1 · Semanas 1 – 4</span>
+        <h4>Encontrar la causa real</h4>
+        <div class="wk">Diagnóstico y reestructura</div>
         <ul>
-          <li>Diagnóstico etiológico: la causa raíz, no el síntoma</li>
-          <li>Reestructura inicial con base en hallazgos</li>
-          <li><b>Entregable:</b> Reporte de Diagnóstico Profundo</li>
+          <li>Vamos a la causa raíz, no al síntoma que se ve</li>
+          <li>Reestructura inicial con base en lo que encontramos</li>
+          <li class="deliv"><b>Te llevas:</b> Reporte de diagnóstico profundo</li>
         </ul>
       </div>
-      <div class="phase" data-reveal style="--d:.12s">
-        <div class="pnum">2</div>
-        <div class="ph">Fase 2 · Semanas 4 – 8</div>
-        <h4>Estrategia humana, capacitación y ejecución</h4>
+      <div class="card phase" data-reveal style="--d:.1s">
+        <span class="pill">Fase 2 · Semanas 4 – 8</span>
+        <h4>Bajarlo a la operación</h4>
+        <div class="wk">Estrategia, capacitación y ejecución</div>
         <ul>
-          <li>Estrategia humana a la medida + capacitación de equipos y líderes</li>
-          <li>Aplicación del sistema en la operación real</li>
-          <li><b>Entregable:</b> Reporte de Resultados</li>
+          <li>Estrategia a la medida y capacitación a equipos y líderes</li>
+          <li>El sistema se aplica en tu operación real, no en un taller</li>
+          <li class="deliv"><b>Te llevas:</b> Reporte de resultados</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =============== PRICING =============== -->
-<section class="sec pricing on-dark" id="inversion" data-screen-label="Inversión">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label" data-reveal>La inversión</div>
-      <h2 data-reveal style="--d:.08s">Una inversión clara, <em>en dos pagos.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Sin letras chicas: un valor por sistema, en dos pagos. Empiezas con uno o vas por la transformación completa.</p>
-    </div>
-    <div class="price-main" data-reveal>
-      <div class="ll">
-        <div class="k">Por sistema · Metodología patentada</div>
-        <h3>Talent Alignment · Cultural Evolution · People Transformation</h3>
-        <p>8 semanas: diagnóstico, estrategia a la medida, capacitación, ejecución y reportes en ambas fases.</p>
-        <div class="feat">
-          <div><div class="v">8</div><div class="l">Semanas</div></div>
-          <div><div class="v">~21</div><div class="l">Intervenciones</div></div>
-          <div><div class="v">2</div><div class="l">Entregables</div></div>
-        </div>
+<!-- =============== INVERSIÓN =============== -->
+<div class="panel">
+  <section class="sec on-dark contact" id="inversion" data-screen-label="Inversión"
+           style="background:radial-gradient(120% 100% at 85% 0%, #0b3179 0%, var(--dark) 50%, var(--dark-deep) 100%)">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label" data-reveal>La inversión</div>
+        <h2 data-reveal style="--d:.08s">Un precio. Dos pagos. Sin letras chicas.</h2>
+        <p class="lead" data-reveal style="--d:.16s">Empiezas con un sistema o vas por los tres. El costo es el mismo por sistema.</p>
       </div>
-      <div class="rr">
-        <div class="amt">$126,900 <span>MXN + IVA</span></div>
-        <div class="iva">Valor por sistema · Implementación en 2 fases</div>
-        <div class="split">
-          <div class="row"><span>Fase 1 — al inicio del 1er mes</span><b>$63,900</b></div>
-          <div class="row"><span>Fase 2 — al inicio del 2º mes</span><b>$63,900</b></div>
-        </div>
-      </div>
-    </div>
-    <div class="continuity" data-reveal>
-      <div class="cl">
-        <div class="k">Opcional · Después de tu sistema</div>
-        <h4>Fase de Continuidad de Transformación Cultural</h4>
-        <p>3 meses de acompañamiento, 1 a 2 sesiones semanales para sostener y profundizar el cambio.</p>
-      </div>
-      <div class="cr">
-        <div class="amt">$57,690</div>
-        <div class="l">MXN · Programa de 3 meses</div>
-      </div>
-    </div>
-    <p class="price-note" data-reveal>Metodologías patentadas como propiedad intelectual · Programas premium a la medida · Cupo limitado por trimestre</p>
-    <div data-reveal style="display:flex;justify-content:center;margin-top:42px">
-      <a href="#contacto" class="btn btn-gold">Agenda tu diagnóstico <span class="arr">→</span></a>
-    </div>
-  </div>
-</section>
 
-<!-- =============== CONTACT / CTA =============== -->
-<section class="sec contact on-dark" id="contacto" data-screen-label="Contacto">
-  <div class="watermark">04</div>
-  <div class="cglow"></div>
-  <div class="wrap">
-    <div class="sec-head" style="max-width:680px">
-      <div class="label" data-reveal>Empieza aquí</div>
-      <h2 data-reveal style="--d:.08s">Empieza por entender <em>la raíz.</em></h2>
-      <p class="lead" data-reveal style="--d:.16s">Cuéntanos qué pasa en tu empresa y te decimos el camino para tu caso. Sin compromiso.</p>
-    </div>
-
-    <div class="contact-grid">
-      <!-- LEFT — contacto directo -->
-      <div class="contact-left" data-reveal>
-        <p class="lead" style="color:rgba(255,255,255,.78);margin-top:0">8 semanas, dos fases, un reporte de entrega en cada una. Cuéntanos tu caso y te decimos por dónde empezar.</p>
-        <div class="contact-direct">
-          <span class="cdlab">¿Prefieres hablarlo directo?</span>
-          <a class="cdmail" href="mailto:lauracoaching369@gmail.com?subject=Cotizaci%C3%B3n%20HUMAN-CORE">lauracoaching369@gmail.com</a>
+      <div class="price-card" data-reveal>
+        <div class="ll">
+          <div class="k">Por sistema · Metodología patentada</div>
+          <h3>Talent Alignment · Cultural Evolution · People Transformation</h3>
+          <p>8 semanas de diagnóstico, estrategia a la medida, capacitación, ejecución y un reporte por escrito en cada fase.</p>
+          <div class="feat">
+            <span class="chip"><b>8</b> semanas</span>
+            <span class="chip"><b>21</b> intervenciones</span>
+            <span class="chip"><b>2</b> reportes</span>
+          </div>
+        </div>
+        <div class="rr">
+          <div class="amt">$126,900 <span>MXN + IVA</span></div>
+          <div class="iva">Por sistema · Se paga en 2 fases</div>
+          <div class="split">
+            <div class="row"><span>Fase 1 — al inicio del 1er mes</span><b>$63,900</b></div>
+            <div class="row"><span>Fase 2 — al inicio del 2º mes</span><b>$63,900</b></div>
+          </div>
         </div>
       </div>
 
-      <!-- RIGHT — quotation form -->
-      <div class="contact-right" data-reveal style="--d:.12s">
-        <form id="cotiza" class="cform" novalidate>
-          <div class="cform-head">Solicita tu cotización</div>
-          <!-- honeypot anti-spam: invisible para humanos; si un bot lo llena, se descarta -->
-          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
-          <div class="frow">
-            <label class="field">
-              <span class="fl">Nombre</span>
-              <input type="text" name="nombre" required placeholder="Tu nombre" />
-            </label>
-            <label class="field">
-              <span class="fl">Empresa</span>
-              <input type="text" name="empresa" placeholder="Nombre de tu empresa" />
-            </label>
+      <div class="cont" data-reveal>
+        <div class="cl">
+          <div class="k">Opcional · Después de tu sistema</div>
+          <h4>Continuidad de transformación cultural</h4>
+          <p>3 meses de acompañamiento, 1 o 2 sesiones por semana, para que el cambio no se caiga.</p>
+        </div>
+        <div class="cr">
+          <div class="amt">$57,690</div>
+          <div class="l">MXN · Programa de 3 meses</div>
+        </div>
+      </div>
+
+      <p class="price-note" data-reveal>Metodologías patentadas · Programas a la medida · Cupo limitado por trimestre</p>
+      <div data-reveal style="display:flex;justify-content:center;margin-top:38px">
+        <a href="#contacto" class="btn btn-gold">Agenda tu diagnóstico <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =============== CONTACTO =============== -->
+<div class="panel" style="margin-top:0">
+  <section class="sec on-dark contact" id="contacto" data-screen-label="Contacto"
+           style="background:var(--dark-deep);overflow:hidden">
+    <div class="cglow"></div>
+    <div class="wrap">
+      <div class="sec-head" style="max-width:660px">
+        <div class="label" data-reveal>Empieza aquí</div>
+        <h2 data-reveal style="--d:.08s">Cuéntanos qué está pasando.</h2>
+        <p class="lead" data-reveal style="--d:.16s">Nos dices tu caso, te decimos por dónde empezar. Sin compromiso.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- IZQUIERDA — contacto directo -->
+        <div class="contact-left" data-reveal>
+          <p class="lead" style="color:rgba(255,255,255,.8);margin-top:0">Respondemos en menos de 48 horas hábiles con una lectura inicial de tu situación y el sistema que te corresponde.</p>
+          <div class="contact-direct">
+            <span class="cdlab">¿Prefieres hablarlo directo?</span>
+            <a class="cdmail" href="mailto:lauracoaching369@gmail.com?subject=Cotizaci%C3%B3n%20HUMAN-CORE">lauracoaching369@gmail.com</a>
           </div>
-          <div class="frow">
-            <label class="field">
-              <span class="fl">Correo</span>
-              <input type="email" name="email" required placeholder="tucorreo@empresa.com" />
-            </label>
-            <label class="field">
-              <span class="fl">Teléfono</span>
-              <input type="tel" name="telefono" placeholder="+52 ..." />
-            </label>
-          </div>
-          <div class="frow">
-            <label class="field">
-              <span class="fl">Sistema de interés</span>
-              <select name="sistema">
-                <option value="No estoy seguro / quiero orientación">No estoy seguro — oriéntame</option>
-                <option value="Talent Alignment System">Talent Alignment System</option>
-                <option value="Cultural Evolution System">Cultural Evolution System</option>
-                <option value="People Transformation System">People Transformation System</option>
-                <option value="Los tres / transformación integral">Los tres — transformación integral</option>
-              </select>
-            </label>
-            <label class="field">
-              <span class="fl">Tamaño del equipo</span>
-              <select name="equipo">
-                <option value="1 – 20">1 – 20 personas</option>
-                <option value="21 – 50">21 – 50 personas</option>
-                <option value="51 – 150">51 – 150 personas</option>
-                <option value="151 – 500">151 – 500 personas</option>
-                <option value="500+">Más de 500</option>
-              </select>
-            </label>
-          </div>
-          <label class="field">
-            <span class="fl">¿Qué está pasando en tu empresa?</span>
-            <textarea name="mensaje" rows="3" placeholder="Cuéntanos brevemente tu reto de talento, cultura o liderazgo."></textarea>
-          </label>
-          <div class="fpref">
-            <span class="fl">Prefiero que me contacten por</span>
-            <div class="prefs">
-              <label class="pref"><input type="radio" name="via" value="Correo" checked /><span>Correo</span></label>
-              <label class="pref"><input type="radio" name="via" value="Llamada" /><span>Llamada</span></label>
-              <label class="pref"><input type="radio" name="via" value="WhatsApp" /><span>WhatsApp</span></label>
+        </div>
+
+        <!-- DERECHA — formulario de cotización -->
+        <div class="contact-right" data-reveal style="--d:.1s">
+          <form id="cotiza" class="cform" novalidate>
+            <div class="cform-head">Solicita tu cotización</div>
+            <!-- honeypot anti-spam: invisible para humanos; si un bot lo llena, se descarta -->
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+            <div class="frow">
+              <label class="field">
+                <span class="fl">Nombre</span>
+                <input type="text" name="nombre" required placeholder="Tu nombre" />
+              </label>
+              <label class="field">
+                <span class="fl">Empresa</span>
+                <input type="text" name="empresa" placeholder="Nombre de tu empresa" />
+              </label>
             </div>
-          </div>
-          <button type="submit" class="btn btn-gold cform-submit">Enviar solicitud <span class="arr">→</span></button>
-          <p class="cform-note" id="cform-note">Te respondemos en menos de 48 h hábiles. Sin compromiso.</p>
-        </form>
+            <div class="frow">
+              <label class="field">
+                <span class="fl">Correo</span>
+                <input type="email" name="email" required placeholder="tucorreo@empresa.com" />
+              </label>
+              <label class="field">
+                <span class="fl">Teléfono</span>
+                <input type="tel" name="telefono" placeholder="+52 ..." />
+              </label>
+            </div>
+            <div class="frow">
+              <label class="field">
+                <span class="fl">Sistema de interés</span>
+                <select name="sistema">
+                  <option value="No estoy seguro / quiero orientación">No estoy seguro — oriéntame</option>
+                  <option value="Talent Alignment System">Atraer y retener talento</option>
+                  <option value="Cultural Evolution System">Cambiar la cultura</option>
+                  <option value="People Transformation System">Formar líderes</option>
+                  <option value="Los tres / transformación integral">Los tres</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="fl">Tamaño del equipo</span>
+                <select name="equipo">
+                  <option value="1 – 20">1 – 20 personas</option>
+                  <option value="21 – 50">21 – 50 personas</option>
+                  <option value="51 – 150">51 – 150 personas</option>
+                  <option value="151 – 500">151 – 500 personas</option>
+                  <option value="500+">Más de 500</option>
+                </select>
+              </label>
+            </div>
+            <label class="field">
+              <span class="fl">¿Qué está pasando en tu empresa?</span>
+              <textarea name="mensaje" rows="3" placeholder="Cuéntanos brevemente el problema con tu gente."></textarea>
+            </label>
+            <div class="fpref">
+              <span class="fl">Prefiero que me contacten por</span>
+              <div class="prefs">
+                <label class="pref"><input type="radio" name="via" value="Correo" checked /><span>Correo</span></label>
+                <label class="pref"><input type="radio" name="via" value="Llamada" /><span>Llamada</span></label>
+                <label class="pref"><input type="radio" name="via" value="WhatsApp" /><span>WhatsApp</span></label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-gold cform-submit">Enviar solicitud <span class="arr">→</span></button>
+            <p class="cform-note" id="cform-note">Te respondemos en menos de 48 h hábiles. Sin compromiso.</p>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <!-- =============== FOOTER =============== -->
 <footer class="footer">
   <div class="wrap">
     <div class="brand">
-      <img data-logo src="assets/logo-white.webp" alt="Lau de la Peña" width="44" height="32" />
+      <img data-logo src="assets/logo-navy-sm.webp" alt="Lau de la Peña" width="40" height="29" />
       <div class="nm">Lau de la Peña</div>
     </div>
     <div class="cr">HUMAN-CORE System · © 2026 · Todos los derechos reservados</div>
@@ -717,14 +756,14 @@
 </footer>
 
 <script>
-/* HUMAN-CORE landing — vanilla JS: nav scroll state + counters. */
+/* HUMAN-CORE landing — vanilla JS: nav scroll state, reveals, acordeón y formulario. */
 (function () {
   function init() {
     var nav = document.querySelector('.nav');
     var prog = document.getElementById('progress');
     var de = document.documentElement;
-    /* All geometry reads happen inside a throttled rAF (once per frame, before any
-       write) so they never trigger a synchronous forced reflow. */
+    /* Las lecturas de geometría van dentro de un rAF throttled (una vez por frame,
+       antes de cualquier escritura) para no forzar reflow síncrono. */
     var ticking = false;
     function onScroll() {
       if (ticking) return;
@@ -741,22 +780,33 @@
     window.addEventListener('resize', onScroll, { passive: true });
     onScroll();
 
-    /* reveals + counters via IntersectionObserver — no per-scroll geometry reads */
-    function runCounter(el) {
-      var target = parseFloat(el.getAttribute('data-count'));
-      var prefix = el.getAttribute('data-prefix') || '', suffix = el.getAttribute('data-suffix') || '';
-      var dur = 1400, start = null;
-      function step(ts) {
-        if (!start) start = ts;
-        var p = Math.min((ts - start) / dur, 1);
-        el.textContent = prefix + Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString('es-MX') + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
+    /* ---- acordeón: un panel abierto a la vez ---- */
+    var accs = Array.prototype.slice.call(document.querySelectorAll('.acc'));
+    accs.forEach(function (acc) {
+      var btn = acc.querySelector('.acc-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var willOpen = !acc.classList.contains('open');
+        accs.forEach(function (other) {
+          other.classList.remove('open');
+          var b = other.querySelector('.acc-btn');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (willOpen) {
+          acc.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    /* el primer sistema arranca abierto: da a entender que los demás se despliegan */
+    if (accs[0]) {
+      accs[0].classList.add('open');
+      var firstBtn = accs[0].querySelector('.acc-btn');
+      if (firstBtn) firstBtn.setAttribute('aria-expanded', 'true');
     }
 
+    /* ---- reveals ---- */
     var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
-    var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
     if ('IntersectionObserver' in window) {
       var ro = new IntersectionObserver(function (entries, obs) {
         entries.forEach(function (en) {
@@ -764,21 +814,13 @@
         });
       }, { rootMargin: '0px 0px -10% 0px' });
       reveals.forEach(function (el) { ro.observe(el); });
-
-      var co = new IntersectionObserver(function (entries, obs) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting) { runCounter(en.target); obs.unobserve(en.target); }
-        });
-      }, { rootMargin: '0px 0px -12% 0px' });
-      counters.forEach(function (el) { co.observe(el); });
-      /* safety net: never leave anything stuck hidden */
+      /* red de seguridad: nunca dejar algo atorado invisible */
       setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 4000);
     } else {
       reveals.forEach(function (el) { el.classList.add('in'); });
-      counters.forEach(runCounter);
     }
 
-    /* ---- quotation form → envía al webhook de n8n (Excel + avisos);
+    /* ---- formulario → webhook de n8n (Excel + avisos);
            si el webhook falla, cae al mailto pre-llenado para no perder el lead ---- */
     var LEAD_WEBHOOK = 'https://n8n.satorimkt.com/webhook/lead-humancore';
     var form = document.getElementById('cotiza');

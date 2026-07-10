@@ -171,6 +171,8 @@
       <div class="rule"><span class="no">Nunca</span><p><strong>Dorado decorativo.</strong> Nada de palabras resaltadas en dorado, marcas de agua ni ornamentos. El dorado es funcional: cifras, kickers, viñetas, CTA.</p></div>
       <div class="rule"><span class="no">Nunca</span><p><strong>Rectángulos duros.</strong> Todo contenedor es burbuja: paneles 44px, tarjetas 30px, cajas 22px, etiquetas píldora.</p></div>
       <div class="rule"><span class="si">Siempre</span><p><strong>Un mensaje por diapositiva.</strong> Si necesita dos títulos, son dos diapositivas. El dato o la frase es el héroe; el resto acompaña.</p></div>
+      <div class="rule"><span class="si">Siempre</span><p><strong>Háblale al prospecto de tú.</strong> "Contratas por urgencia", "tu inversión" — nunca en 3ª persona. Copy mínimo: bullets de una línea, lo clave primero (de lo general a lo particular).</p></div>
+      <div class="rule"><span class="no">Nunca</span><p><strong>Diapositivas de puro texto.</strong> Toda diapo lleva al menos un elemento visual: foto, marca de agua del logo, muro de logos o cifra grande.</p></div>
     </div>
   </div>
 </section>
@@ -280,8 +282,9 @@
       </div>
     </div>
 
-    <div class="board"><span class="bt">Nuevos (v1.1) · foto en tarjeta burbuja · muro de logos</span>
-      <p style="font-size:15px;max-width:70ch"><strong>.photo-card</strong>: fotografía real en tarjeta redondeada (radio 30px, <code>object-fit:cover</code>, borde y sombra de tarjeta) — se usa en la diapositiva de Laura con su foto profesional. <strong>.logo-wall</strong>: tarjeta blanca con el collage de logos de clientes (<code>object-fit:contain</code>, máx. 46vh) — diapositiva "Portafolio de clientes". Ambas en <code>presentacion-ventas.html</code>. Las fotos van incrustadas en base64 como todo asset del deck.</p>
+    <div class="board"><span class="bt">Fotografía (v1.2) · componentes y fuentes</span>
+      <p style="font-size:15px;max-width:72ch"><strong>.photo-card</strong>: foto grande en tarjeta (radio 30px); dimensiona por ALTO con <code>--ar</code> (aspect-ratio de la imagen) para no recortar de más. <strong>.photo-chip</strong>: acento fotográfico chico (4:5, radio 22px) junto al dot del sistema. <strong>.bg-photo</strong>: foto de fondo a sangre con velo navy (gradiente ~90%) para slides statement — el texto siempre encima, legible. <strong>.quote</strong>: cita en Cormorant grande (slide "Piénsalo"). <strong>.logo-wall</strong>: muro de logos de clientes en tarjeta blanca.</p>
+      <p style="font-size:15px;max-width:72ch;margin-top:10px;color:var(--taupe)">Fuentes (del PPTX original de Laura, recortadas y optimizadas a WebP, incrustadas en base64): foto profesional de Laura (2 crops), retrato circular del sitio, equipo en silueta azul (1 panorámica + 3 recortes), playa navy, Einstein (cita) y muro de logos. Ninguna diapositiva queda de puro texto.</p>
     </div>
 
     <div class="board dark"><span class="bt">Las mismas piezas en panel oscuro</span>

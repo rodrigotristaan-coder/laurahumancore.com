@@ -123,10 +123,10 @@
   [data-logo]{display:block;height:auto;}
 
   /* ---------- PANEL (bloques oscuros redondeados, estilo Apple) ---------- */
-  .panel{border-radius:var(--r-xl);overflow:hidden;position:relative;margin:0 12px;}
+  .panel{border-radius:var(--r-xl);overflow:hidden;position:relative;margin:12px;}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:calc(100vh - 24px);display:flex;align-items:center;margin:12px 12px 0;border-radius:var(--r-xl);
+  .hero{position:relative;min-height:calc(100vh - 24px);display:flex;align-items:center;margin:12px 12px 0;z-index:1;border-radius:var(--r-xl);
     background:radial-gradient(140% 120% at 82% -10%, #0b3179 0%, var(--dark) 44%, var(--dark-deep) 100%);
     color:#fff;overflow:hidden;padding:170px 0 96px;}
   .hero .ringwrap{position:absolute;top:48%;right:-13%;transform:translateY(-50%);width:860px;pointer-events:none;animation:drift 26s ease-in-out infinite;}
@@ -227,6 +227,37 @@
   .tag{font-family:var(--font-label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--body-solid);background:var(--cream);border:1px solid var(--line);border-radius:var(--r-pill);padding:8px 16px;}
   .on-dark .tag{background:rgba(255,255,255,.06);border-color:var(--line-navy);color:rgba(255,255,255,.75);}
   @media(prefers-reduced-motion:reduce){.acc-panel{transition:none;}}
+
+  /* ---------- FOTOS DE FONDO (v1.3 — mismo lenguaje que el HC Deck) ----------
+     La foto va en un div absoluto bajo el contenido, con velo navy encima.
+     Velos: v-grad (statement), v-soft (foto protagonista), v-heavy (mucho contenido). */
+  .bg-photo{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;}
+  .bg-photo::after{content:"";position:absolute;inset:0;}
+  .ph-team{background-image:url("assets/bg-team.webp");}
+  .ph-playa{background-image:url("assets/bg-playa.webp");}
+  .pos-r{background-position:right center;}
+  .v-grad::after{background:linear-gradient(100deg,rgba(0,18,51,.96) 42%,rgba(0,18,51,.58));}
+  .v-soft::after{background:rgba(0,18,51,.87);}
+  .v-heavy::after{background:rgba(0,18,51,.93);}
+  .sec > .wrap{position:relative;z-index:2;}
+
+  /* variantes on-dark de componentes que antes solo vivían en claro */
+  .on-dark .card{background:rgba(255,255,255,.05);border-color:var(--line-navy);box-shadow:none;backdrop-filter:blur(2px);}
+  .on-dark .card:hover{box-shadow:none;}
+  .on-dark .prob-cell h4{color:#fff;}
+  .on-dark .prob-cell p{color:rgba(255,255,255,.74);}
+  .on-dark .prob-cell .dot{background:rgba(255,255,255,.07);border-color:var(--line-navy);color:var(--gold);}
+  .on-dark .prob-cell:hover .dot{background:var(--gold);color:var(--dark-deep);border-color:var(--gold);}
+  .on-dark .prob-foot{background:rgba(194,163,107,.1);border:1px solid rgba(194,163,107,.28);}
+  .on-dark .phase h4{color:#fff;}
+  .on-dark .phase .wk{color:rgba(255,255,255,.5);}
+  .on-dark .phase .pill{color:var(--gold);}
+  .on-dark .phase li{color:rgba(255,255,255,.78);}
+  .on-dark .phase li.deliv{background:rgba(194,163,107,.1);border-color:rgba(194,163,107,.28);color:#fff;}
+  .on-dark .phase li.deliv::before{background:var(--gold);}
+  .on-dark .auth p{color:rgba(255,255,255,.8);}
+  .on-dark .auth .role{color:var(--gold);}
+  .on-dark .auth .badge{background:rgba(255,255,255,.06);border-color:var(--line-navy);color:rgba(255,255,255,.85);box-shadow:none;}
 
   /* ---------- CLIENTES ---------- */
   .logo-wall{margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(22px,3vw,40px);box-shadow:var(--shadow-card);}
@@ -352,7 +383,7 @@
   @media(max-width:560px){
     .wrap{padding:0 20px;}
     .hero{padding:118px 0 70px;border-radius:var(--r-lg);margin:8px 8px 0;}
-    .panel{border-radius:var(--r-lg);margin:0 8px;}
+    .panel{border-radius:var(--r-lg);margin:8px;}
     .hero h1{font-size:clamp(32px,8.6vw,46px);}
     .hero .sub{font-size:16.5px;}
     .sec,.panel .sec{padding:66px 0;}
@@ -416,6 +447,7 @@
 
 <!-- =============== HERO =============== -->
 <header class="hero" data-screen-label="Hero">
+  <div class="bg-photo ph-playa v-soft"></div>
   <div class="glow"></div>
   <div class="ringwrap"><div class="ringmark" aria-hidden="true"></div></div>
   <div class="wrap">
@@ -438,7 +470,10 @@
 </header>
 
 <!-- =============== PROBLEMA =============== -->
-<section class="sec" id="problema" data-screen-label="El problema">
+<div class="panel">
+<section class="sec on-dark" id="problema" data-screen-label="El problema"
+         style="background:radial-gradient(120% 100% at 80% 0%, #0b3179 0%, var(--dark) 50%, var(--dark-deep) 100%)">
+  <div class="bg-photo ph-team v-heavy"></div>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-reveal>¿Te suena?</div>
@@ -468,11 +503,13 @@
     </div>
   </div>
 </section>
+</div>
 
 <!-- =============== SISTEMAS =============== -->
 <div class="panel">
   <section class="sec on-dark" id="sistemas" data-screen-label="Los 3 sistemas"
            style="background:radial-gradient(120% 100% at 15% 0%, #0b3179 0%, var(--dark) 50%, var(--dark-deep) 100%)">
+    <div class="bg-photo ph-team v-heavy pos-r"></div>
     <div class="wrap">
       <div class="sec-head">
         <div class="label" data-reveal>Los 3 sistemas</div>
@@ -546,7 +583,10 @@
 </div>
 
 <!-- =============== LAURA =============== -->
-<section class="sec auth" id="laura" data-screen-label="Laura de la Peña">
+<div class="panel">
+<section class="sec on-dark auth" id="laura" data-screen-label="Laura de la Peña"
+         style="background:radial-gradient(120% 100% at 20% 0%, #0b3179 0%, var(--dark) 50%, var(--dark-deep) 100%)">
+  <div class="bg-photo ph-team v-soft"></div>
   <div class="wrap">
     <div class="auth-grid">
       <div class="portrait" data-reveal>
@@ -561,7 +601,7 @@
         <div class="label" data-reveal>Quién está detrás</div>
         <h2 data-reveal style="--d:.08s">Laura de la Peña</h2>
         <div class="role" data-reveal style="--d:.12s">Liderazgo estratégico · Transformación humana y organizacional</div>
-        <p data-reveal style="--d:.16s">Laura no llega con teoría. Llega con un método probado para el frente más difícil de tu empresa: el humano. Diagnóstico, liderazgo y cultura en un solo sistema, con resultados que puedes medir.</p>
+        <p data-reveal style="--d:.16s">Laura no llega con teoría. Llega con un método probado para el frente más relevante y desafiante: el humano. Diagnóstico, liderazgo y cultura en un solo sistema, con resultados que puedes medir.</p>
         <div class="badges" data-reveal style="--d:.24s">
           <span class="badge">Metodologías patentadas</span>
           <span class="badge">Propiedad intelectual</span>
@@ -571,9 +611,13 @@
     </div>
   </div>
 </section>
+</div>
 
 <!-- =============== CLIENTES =============== -->
-<section class="sec" id="clientes" data-screen-label="Clientes">
+<div class="panel">
+<section class="sec on-dark" id="clientes" data-screen-label="Clientes"
+         style="background:radial-gradient(120% 100% at 85% 0%, #0b3179 0%, var(--dark) 50%, var(--dark-deep) 100%)">
+  <div class="bg-photo ph-playa v-heavy"></div>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-reveal>Portafolio de clientes</div>
@@ -585,9 +629,13 @@
     </div>
   </div>
 </section>
+</div>
 
 <!-- =============== MÉTODO =============== -->
-<section class="sec" id="metodo" data-screen-label="Cómo funciona">
+<div class="panel">
+<section class="sec on-dark" id="metodo" data-screen-label="Cómo funciona"
+         style="background:radial-gradient(120% 100% at 15% 0%, #0b3179 0%, var(--dark) 50%, var(--dark-deep) 100%)">
+  <div class="bg-photo ph-playa v-heavy"></div>
   <div class="wrap">
     <div class="sec-head">
       <div class="label" data-reveal>Cómo funciona</div>
@@ -618,11 +666,13 @@
     </div>
   </div>
 </section>
+</div>
 
 <!-- =============== INVERSIÓN =============== -->
 <div class="panel">
   <section class="sec on-dark contact" id="inversion" data-screen-label="Inversión"
            style="background:radial-gradient(120% 100% at 85% 0%, #0b3179 0%, var(--dark) 50%, var(--dark-deep) 100%)">
+    <div class="bg-photo ph-team v-heavy"></div>
     <div class="wrap">
       <div class="sec-head">
         <div class="label" data-reveal>La inversión</div>
@@ -672,9 +722,10 @@
 </div>
 
 <!-- =============== CONTACTO =============== -->
-<div class="panel" style="margin-top:0">
+<div class="panel">
   <section class="sec on-dark contact" id="contacto" data-screen-label="Contacto"
            style="background:var(--dark-deep);overflow:hidden">
+    <div class="bg-photo ph-playa v-soft"></div>
     <div class="cglow"></div>
     <div class="wrap">
       <div class="sec-head" style="max-width:660px">
@@ -689,7 +740,7 @@
           <p class="lead" style="color:rgba(255,255,255,.8);margin-top:0">Respondemos en menos de 48 horas hábiles con una lectura inicial de tu situación y el sistema que te corresponde.</p>
           <div class="contact-direct">
             <span class="cdlab">¿Prefieres hablarlo directo?</span>
-            <a class="cdmail" href="mailto:lauracoaching369@gmail.com?subject=Cotizaci%C3%B3n%20HUMAN-CORE">lauracoaching369@gmail.com</a>
+            <a class="cdmail" href="mailto:contacto@laurahumancore.com?subject=Cotizaci%C3%B3n%20HUMAN-CORE">contacto@laurahumancore.com</a>
           </div>
         </div>
 
@@ -857,7 +908,7 @@
           'Tamaño del equipo: ' + (p.equipo || '—') + '\n' +
           'Contacto preferido: ' + (p.via || '—') + '\n\n' +
           'Contexto:\n' + (p.mensaje || '—');
-        return 'mailto:lauracoaching369@gmail.com' +
+        return 'mailto:contacto@laurahumancore.com' +
           '?subject=' + encodeURIComponent('Cotización HUMAN-CORE — ' + p.nombre) +
           '&body=' + encodeURIComponent(body);
       }

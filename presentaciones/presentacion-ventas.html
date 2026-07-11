@@ -195,9 +195,8 @@
 
   /* ---------- ANIMACIÓN E INTERACTIVIDAD (solo pantalla; el PDF no se entera) ---------- */
   @media screen and (prefers-reduced-motion:no-preference){
-    /* ken burns sutil: la foto del slide activo respira */
-    .slide.in .bg-photo{animation:kb 26s ease-in-out infinite alternate;}
-    @keyframes kb{from{transform:scale(1);}to{transform:scale(1.06);}}
+    /* el movimiento del fondo (deriva + zoom + parallax + mouse) lo lleva JS */
+    .bg-photo{will-change:transform;}
     .glow{animation:breathe 12s ease-in-out infinite;}
     @keyframes breathe{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
     .portrait .ring{animation:spin 34s linear infinite;}
@@ -757,6 +756,38 @@
       });
     }, { threshold: 0.6 });
     bigs.forEach(function (b) { bio.observe(b); });
+  }
+
+  /* fondos vivos: deriva + zoom continuo, parallax al hacer scroll y respuesta al mouse.
+     Solo pantalla (reduce lo apaga); beforeprint resetea para no ensuciar el PDF. */
+  var bgEls = slides.map(function (s) { return s.querySelector('.bg-photo'); });
+  var mx = 0, my = 0, printing = false;
+  if (!reduce) {
+    document.addEventListener('mousemove', function (e) {
+      mx = (e.clientX / window.innerWidth - .5) * 2;
+      my = (e.clientY / window.innerHeight - .5) * 2;
+    }, { passive: true });
+    window.addEventListener('beforeprint', function () {
+      printing = true;
+      bgEls.forEach(function (b) { if (b) b.style.transform = ''; });
+    });
+    window.addEventListener('afterprint', function () { printing = false; });
+    (function liveBg() {
+      requestAnimationFrame(liveBg);
+      if (printing || document.hidden) return;
+      var t = performance.now(), vh = window.innerHeight || 1;
+      for (var i = 0; i < slides.length; i++) {
+        var b = bgEls[i];
+        if (!b) continue;
+        var r = slides[i].getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) continue;
+        var par = r.top / vh;                                /* parallax al navegar */
+        var dx = Math.sin(t / 9000 + i) * 1.6 + mx * 1.2;    /* deriva + mouse */
+        var dy = Math.cos(t / 12000 + i) * 1.1 + my * .8 - par * 3.5;
+        var sc = 1.14 + Math.sin(t / 15000 + i * 2) * .025;  /* zoom que respira */
+        b.style.transform = 'scale(' + sc.toFixed(4) + ') translate3d(' + dx.toFixed(2) + '%,' + dy.toFixed(2) + '%,0)';
+      }
+    })();
   }
 
   var ticking = false;

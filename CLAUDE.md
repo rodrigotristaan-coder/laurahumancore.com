@@ -1,121 +1,138 @@
 # HUMAN-CORE System — Landing (contexto para Claude Code)
 
 Landing **estática** (HTML + CSS inline, sin build, sin dependencias) de
-**Laura de la Peña — HUMAN-CORE System**. Lista para deploy en Vercel.
+**Laura de la Peña — HUMAN-CORE System**. EN VIVO en `laurahumancore.com`
+(Vercel, push a `main` = deploy en ~15 s).
 
-> Todo el sitio vive en un solo archivo: `index.html` (~815 líneas, CSS en un
-> `<style>` dentro del `<head>` y un pequeño `<script>` al final para reveal /
-> progress bar / validación del formulario). No hay framework. Edítalo directo.
+> Todo el sitio vive en un solo archivo: `index.html` (~950 líneas, CSS en un
+> `<style>` dentro del `<head>` y un `<script>` al final para nav / reveals /
+> acordeón / formulario). No hay framework. Edítalo directo.
 
 ---
 
 ## Estructura de archivos
 
 ```
-human-core-site/
+laurahumancore.com/
 ├── index.html        ← TODO el sitio (HTML + CSS + JS inline)
-├── assets/   (imágenes optimizadas: WebP redimensionado a su tamaño de uso)
-│   ├── logo-white.webp     logo blanco (nav/footer, ~220px)
-│   ├── logo-gold.webp      logo dorado — anillo decorativo del hero (~700px, opacity .14)
-│   ├── logo-gold-sm.webp   logo dorado chico (~200px) para el manifiesto (se muestra a 84px)
-│   ├── logo-navy.png       logo azul marino — SOLO para OG image (PNG por compat. WhatsApp/FB)
-│   ├── laura-portrait.webp retrato de Laura (sección Authority, ~760px retina)
-│   └── favicon.png         favicon 96px (recorte de logo-gold)
-├── vercel.json       ← static, cache de assets + headers de seguridad
-├── README.md         ← instrucciones de deploy (Vercel / GitHub)
-└── CLAUDE.md         ← este archivo
+├── presentaciones/   ← decks HTML autocontenidos (noindex, sin enlaces desde el sitio)
+│   ├── presentacion-ventas.html   HC Deck v1.3 — 16 slides de venta (imágenes en base64)
+│   └── design-system.html         design system de los decks (documenta v1.2; pendiente alinear a v1.3)
+├── assets/           (imágenes optimizadas WebP al tamaño de uso)
+│   ├── logo-white.webp       logo blanco (nav)
+│   ├── logo-gold-mask.webp   SILUETA del logo en canal alfa — se pinta con CSS mask + --gold (hero)
+│   ├── logo-navy-sm.webp     logo navy chico (footer)
+│   ├── logo-navy.png         logo navy grande — SOLO para og:image (no borrar)
+│   ├── laura-portrait{,-360}.webp  retrato circular de Laura (sección #laura)
+│   ├── clientes.webp         muro de logos de clientes (sección #clientes)
+│   ├── bg-team.webp          FONDO: siluetas de equipo (1600px, velo navy encima)
+│   ├── bg-playa.webp         FONDO: playa nocturna (1600px, velo navy encima)
+│   ├── logo-gold.webp        (ya sin uso en el sitio; se re-usó en decks)
+│   ├── logo-gold-sm.webp     (sin uso — candidato a limpieza)
+│   └── favicon.png
+├── vercel.json       ← static, cache de assets + headers de seguridad (CSP en Report-Only)
+├── robots.txt · sitemap.xml
+└── README.md         ← deploy (Vercel / GitHub)
 ```
 
 ---
 
-## Design tokens (definidos en `:root` dentro de `index.html`)
+## Design tokens (`:root` de `index.html`)
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--navy` | `#002060` | Azul marino principal (marca) |
-| `--navy-deep` | `#001233` | Fondos oscuros profundos |
-| `--navy-soft` | `#1b3a78` | Azul intermedio |
-| `--gold` | `#c2a36b` | Dorado de marca (acentos, hairline, CTA) |
-| `--gold-deep` | `#a8854c` | Dorado oscuro (degradados, hover) |
-| `--cream` | `#f7f3ec` | Fondo crema (body) |
-| `--cream-card` | `#fcfaf5` | Fondo de tarjetas claras |
-| `--ink` | `#111a30` | Texto de títulos |
-| `--body-solid` | `#414961` | Texto de cuerpo |
-| `--taupe` | `#857c6c` | Texto secundario / labels |
-| `--line` | `#e6dfd1` | Bordes en fondo claro |
+| `--navy` / `--dark` | `#002060` | Azul marino de marca |
+| `--navy-deep` / `--dark-deep` | `#001233` | Navy profundo |
+| `--gold` | `#c2a36b` | Dorado — SOLO funcional (CTA, cifras, acentos) |
+| `--gold-deep` | `#a8854c` | Dorado oscuro |
+| `--cream` | `#f7f3ec` | Fondo del body (canal entre paneles) |
+| `--line-navy` | `rgba(255,255,255,.14)` | Bordes sobre navy |
+| `--r-xl/lg/md/sm/pill` | 44/30/22/14/999px | Radios — todo burbuja |
 
-**Tipografías** (Google Fonts):
-- `--font-display`: **Cormorant Garamond** (serif) → títulos H1–H4
-- `--font-body`: **Mulish** (sans) → cuerpo, 18px base, line-height 1.7
-- `--font-label`: **Archivo** (sans) → labels, kickers, botones (uppercase + letter-spacing)
-
-Acento de marca: hairline dorado fijo de 3px en el borde superior de la página
-(`body::after`).
+**Tipografías**: Cormorant Garamond (títulos, SIN itálicas) · Mulish (cuerpo) ·
+Archivo (labels uppercase). **Reglas duras de marca:** sin itálicas, dorado solo
+funcional, todo burbuja/píldora, nada rectángulo.
 
 ---
+
+## Lenguaje visual v1.3 (2026-07-10, homologado con el HC Deck)
+
+- **Todas las secciones son paneles navy redondeados** flotando sobre el crema
+  (gaps de 12px, 8px en móvil). Ya no hay secciones claras.
+- **Cada sección lleva foto de fondo**: `<div class="bg-photo ph-team|ph-playa v-grad|v-soft|v-heavy [pos-r]">`
+  — la foto va como background y el velo navy como `::after`. Velos: `v-grad`
+  (statement, foto visible a la derecha), `v-soft` (.87), `v-heavy` (.93, para
+  secciones con mucho contenido).
+- Componentes con variante `.on-dark`: cards, dots, badges, fases, tags, win.
+- El muro de `#clientes` queda en tarjeta BLANCA sobre panel navy (contraste máximo).
+- Hero: la marca-anillo usa `mask:url(assets/logo-gold-mask.webp)` pintada con
+  `--gold` (la máscara lee el CANAL ALFA, no luminancia). ⚠️ En los decks el
+  logo va como bitmap: las máscaras CSS se rasterizan como rectángulo al
+  imprimir a PDF.
 
 ## Secciones (en orden, con `data-screen-label`)
 
-1. **Nav** — barra superior fija, logo + anclas + CTA.
-2. **Hero** — logo dorado en anillo, titular, subtítulo, CTA. `data-screen-label="Hero"`
-3. **Strip** — banda con 3 claims (metodologías patentadas, etc.).
-4. **El problema** (`#problema`, watermark `01`) — planteamiento del dolor.
-5. **Manifiesto** (`.on-dark`) — bloque oscuro con declaración de marca.
-6. **Ecosistema** (`#ecosistema`, watermark `02`) — qué es HUMAN-CORE.
-7. **Los 3 sistemas** (`#sistemas`, `.on-dark`, watermark `03`) — los 3 pilares/sistemas.
-8. **Laura de la Peña** (`#laura`) — autoridad/bio, usa `laura-portrait.png`.
-9. **Contacto** (`#contacto`, `.on-dark`, watermark `05`) — copy + formulario
-   `#cotiza` "Solicita tu cotización".
-
-> Las secciones `.on-dark` invierten la paleta (fondo navy, texto claro, acentos
-> dorados). Las marcas de agua (`.watermark`) son números grandes decorativos.
+1. **Nav** — píldora flotante con blur.
+2. **Hero** — `#` (header), fondo playa. H1 "Tu gente no falla…", chips de datos.
+3. **El problema** (`#problema`) — 3 cards + caja dorada "No necesitas más cursos".
+4. **Los 3 sistemas** (`#sistemas`) — ACORDEÓN (uno abierto a la vez, el 01 por defecto).
+5. **Laura** (`#laura`) — retrato circular con anillos + badges.
+6. **Clientes** (`#clientes`) — muro de logos blanco.
+7. **Cómo funciona** (`#metodo`) — 2 fases con entregables.
+8. **Inversión** (`#inversion`) — price-card $126,900 + continuidad $57,690.
+9. **Contacto** (`#contacto`) — formulario `#cotiza`.
+10. **Footer** — sobre crema.
 
 ---
 
-## Comportamiento (JS inline al final del `index.html`)
+## Comportamiento (JS inline al final)
 
-- **Progress bar** (`#progress`) — barra de progreso de scroll arriba.
-- **Reveal on scroll** — elementos con `data-reveal` aparecen con
-  `IntersectionObserver`; soportan delay via `style="--d:.12s"`.
-- **Formulario** (`#cotiza`) — validación básica + honeypot (`website`). **Envía a
-  un webhook de n8n** (`https://n8n.satorimkt.com/webhook/lead-humancore`) que escribe
-  en Excel y avisa por Telegram (grupo `@LauraDlp_Bot`) + Outlook. Si el webhook falla,
-  cae a un `mailto:lauracoaching369@gmail.com` pre-llenado. En éxito dispara el evento
-  GA4 `generate_lead`. Nota de respuesta en `#cform-note`.
+- Progress bar, nav "scrolled", reveals con IntersectionObserver (red de
+  seguridad a 4 s), acordeón con truco `grid-template-rows: 0fr→1fr`.
+- **Formulario** (`#cotiza`): honeypot (`website`) → POST a
+  `https://n8n.satorimkt.com/webhook/lead-humancore` (n8n → Excel + Telegram +
+  Outlook). Si falla, cae a `mailto:contacto@laurahumancore.com` pre-llenado.
+  En éxito dispara GA4 `generate_lead`. ⚠️ NO cambiar los `name` de los campos.
 - Respeta `prefers-reduced-motion`.
 
+## Correo público
+
+**contacto@laurahumancore.com** (reenvío Namecheap → Gmail de Laura, $0;
+MX + SPF verificados). Es el correo visible en la web y en el deck.
+
 ---
 
-## Estado (al 2026-06-15)
+## Presentaciones (`presentaciones/`)
 
-- **EN VIVO** en `laurahumancore.com` (+ `www` redirige al apex) con SSL. Canonical/OG ya apuntan al dominio real.
-- **Formulario conectado** a n8n (Excel + Telegram + Outlook); ver "Comportamiento".
-- **Analytics:** GA4 `G-LKP371EQ8Q` en vivo (pageviews + evento `generate_lead` en el submit). `robots.txt` + `sitemap.xml` presentes. Headers de seguridad en `vercel.json` (HSTS + CSP en Report-Only).
+Servidas en `laurahumancore.com/presentaciones/presentacion-ventas` y
+`/design-system` (Vercel sirve sin `.html`, con `noindex`). Autocontenidas:
+fotos en base64, las de fondo UNA sola vez como custom properties en `:root`.
+Imprimir → PDF 16:9 una por página (los media queries móviles son
+`@media screen and` para no colarse al PDF; `print-color-adjust:exact` para
+que los fondos sobrevivan).
+
+---
+
+## Estado (al 2026-07-10)
+
+- **GA4** `G-LKP371EQ8Q` en vivo (+ evento `generate_lead`).
+- **SEO**: robots.txt + sitemap.xml; canonical/OG al dominio real.
+- **Headers** en `vercel.json`: HSTS, Permissions-Policy, etc. **CSP en Report-Only.**
 
 ## Pendientes
 
-1. **Meta Pixel:** BLOQUEADO — Rodrigo sin acceso a Meta de momento. Al desbloquear: agregar el snippet del Pixel antes de `</head>`.
-2. **Google Search Console:** dar de alta el dominio y enviar el `sitemap.xml`.
-3. **CSP:** está en `Content-Security-Policy-Report-Only`; validar en consola del navegador (sin violaciones) y promover a `Content-Security-Policy` (enforced).
-4. **Favicon / OG:** revisar si se quiere una OG image dedicada (1200×630).
-
----
-
-## Deploy
-
-Sitio estático, sin build. En Vercel: Framework Preset = **Other**, Build Command
-y Output Directory **vacíos**. O por CLI: `vercel` (preview) / `vercel --prod`.
-Ver `README.md` para los pasos completos (incluye subir a GitHub).
+1. **Meta Pixel**: BLOQUEADO (sin acceso a Meta). Al desbloquear: snippet antes de `</head>`.
+2. **Google Search Console**: alta del dominio + enviar sitemap.
+3. **CSP**: validar en consola y promover a enforced — ojo: la máscara del hero
+   Y los `background-image` de `.bg-photo` caen bajo `img-src`.
+4. **design-system.html**: documenta la v1.2 (paneles claros); alinear a la
+   regla v1.3 (todo navy + foto de fondo).
 
 ---
 
 ## Convenciones para editar
 
-- Un solo archivo: edita `index.html` directo. CSS en el `<style>` del `<head>`,
-  ordenado por sección con comentarios `<!-- =============== X =============== -->`.
+- Un solo archivo: edita `index.html` directo. CSS ordenado por sección.
 - Usa SIEMPRE los tokens de `:root` (no hardcodees hex nuevos).
-- Mantén los `data-screen-label`, `data-reveal` y `data-logo` al reestructurar.
-- Tipografía mínima legible; respeta la jerarquía Cormorant (display) / Mulish
-  (cuerpo) / Archivo (labels).
-- Las imágenes con `data-logo` se intercambian por JS según el fondo — no quitar
-  ese atributo.
+- Mantén `data-screen-label`, `data-reveal`, `data-logo` y los `name` del formulario.
+- Nada de itálicas ni dorado decorativo ("AI slop"). Todo burbuja.

@@ -193,6 +193,34 @@
   .foot-note{font-family:var(--font-label);font-size:clamp(10px,.9vw,12px);letter-spacing:.06em;text-transform:uppercase;color:var(--taupe);}
   .panel.dark .foot-note,.panel.deep .foot-note{color:rgba(255,255,255,.5);}
 
+  /* ---------- ANIMACIÓN E INTERACTIVIDAD (solo pantalla; el PDF no se entera) ---------- */
+  @media screen and (prefers-reduced-motion:no-preference){
+    /* ken burns sutil: la foto del slide activo respira */
+    .slide.in .bg-photo{animation:kb 26s ease-in-out infinite alternate;}
+    @keyframes kb{from{transform:scale(1);}to{transform:scale(1.06);}}
+    .glow{animation:breathe 12s ease-in-out infinite;}
+    @keyframes breathe{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
+    .portrait .ring{animation:spin 34s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .card{transition:transform .45s var(--ease),border-color .3s var(--ease),background .3s var(--ease);}
+    .card:hover{transform:translateY(-6px);border-color:rgba(194,163,107,.4);}
+    .chip{transition:transform .35s var(--ease),background .3s var(--ease);}
+    .chip:hover{transform:translateY(-3px);background:rgba(255,255,255,.12);}
+    .photo-card img,.photo-chip img{transition:transform .9s var(--ease);}
+    .photo-card:hover img,.photo-chip:hover img{transform:scale(1.04);}
+    .badge{transition:transform .35s var(--ease);}
+    .badge:hover{transform:translateY(-3px);}
+  }
+  /* tarjetas que navegan (los 3 sistemas de "La solución") */
+  [data-goto]{cursor:pointer;}
+  [data-goto]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  /* dots laterales: un punto por diapositiva, clicable */
+  .dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:9100;display:flex;flex-direction:column;gap:10px;}
+  .dots button{width:9px;height:9px;padding:0;border-radius:var(--r-pill);border:1px solid rgba(194,163,107,.55);background:transparent;cursor:pointer;transition:background .3s var(--ease),height .3s var(--ease),border-color .3s var(--ease);}
+  .dots button:hover{background:rgba(194,163,107,.45);}
+  .dots button.on{background:var(--gold);border-color:var(--gold);height:22px;}
+  @media screen and (max-width:860px){.dots{display:none;}}
+
   /* ---------- CROMO DEL DECK (progreso, contador, hint) ---------- */
   .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:9200;background:linear-gradient(90deg,var(--gold-deep),var(--gold));border-radius:0 var(--r-pill) var(--r-pill) 0;transition:width .2s linear;pointer-events:none;}
   .counter{position:fixed;bottom:22px;right:26px;z-index:9100;font-family:var(--font-label);font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--taupe);background:rgba(252,250,245,.82);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:var(--r-pill);padding:8px 16px;}
@@ -224,7 +252,7 @@
     body{background:#fff;}
     .slide{min-height:0;height:720px;width:1280px;padding:12px;page-break-after:always;break-after:page;}
     .panel{padding:64px 84px;}
-    .grain,.progress,.counter,.keyhint{display:none !important;}
+    .grain,.progress,.counter,.keyhint,.dots{display:none !important;}
     .js [data-reveal]{opacity:1 !important;transform:none !important;}
   }
 </style>
@@ -235,6 +263,7 @@
 <div class="progress" id="progress"></div>
 <div class="counter" id="counter">01 / 16</div>
 <div class="keyhint" id="keyhint">← → para navegar</div>
+<nav class="dots" id="dots" aria-label="Ir a diapositiva"></nav>
 
 <!-- =============== 01 · PORTADA =============== -->
 <section class="slide" data-title="Portada">
@@ -371,17 +400,17 @@
       <h2 class="h-slide mt-k" data-reveal style="--d:.08s">Tres sistemas.<br />Un mismo núcleo.</h2>
       <p class="lead mt-k" data-reveal style="--d:.16s">HUMAN-CORE ordena los tres frentes donde se decide tu desempeño. Empieza por el que <b class="gd">más te duele</b>.</p>
       <div class="cards c3 mt-l">
-        <div class="card" data-reveal style="--d:.22s">
+        <div class="card" data-reveal style="--d:.22s" data-goto="7" role="button" tabindex="0" title="Ver Talent Alignment">
           <div class="dot">01</div>
           <h4 class="mt-s">Talento</h4>
           <p class="mt-s">Atrae y retén al talento correcto.</p>
         </div>
-        <div class="card" data-reveal style="--d:.3s">
+        <div class="card" data-reveal style="--d:.3s" data-goto="8" role="button" tabindex="0" title="Ver Cultural Evolution">
           <div class="dot">02</div>
           <h4 class="mt-s">Cultura</h4>
           <p class="mt-s">Cambia la cultura, no el discurso.</p>
         </div>
-        <div class="card" data-reveal style="--d:.38s">
+        <div class="card" data-reveal style="--d:.38s" data-goto="9" role="button" tabindex="0" title="Ver People Transformation">
           <div class="dot">03</div>
           <h4 class="mt-s">Liderazgo</h4>
           <p class="mt-s">Forma líderes que sí dirigen.</p>
@@ -677,6 +706,59 @@
     else if (k === 'End') { e.preventDefault(); goTo(total - 1); }
   });
 
+  /* dots laterales */
+  var dotsWrap = document.getElementById('dots');
+  var dotBtns = [];
+  if (dotsWrap) {
+    slides.forEach(function (s, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.title = (s.getAttribute('data-title') || ('Diapositiva ' + (i + 1)));
+      b.addEventListener('click', function () { goTo(i); });
+      dotsWrap.appendChild(b);
+      dotBtns.push(b);
+    });
+  }
+
+  /* tarjetas que navegan (La solución → su sistema) */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-goto]'), function (el) {
+    var i = parseInt(el.getAttribute('data-goto'), 10);
+    el.addEventListener('click', function () { goTo(i); });
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(i); }
+    });
+  });
+
+  /* count-up del precio al entrar a Inversión (termina EXACTO en el valor real) */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countUp(el) {
+    var node = el.firstChild;
+    if (!node || node.nodeType !== 3) return;
+    var final = node.nodeValue;
+    var m = final.match(/([\d,]+)/);
+    if (!m || reduce) return;
+    var target = parseInt(m[1].replace(/,/g, ''), 10);
+    var t0 = null, DUR = 1200;
+    function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+    function tick(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / DUR);
+      var e = 1 - Math.pow(1 - p, 3);
+      node.nodeValue = final.replace(m[1], fmt(Math.round(target * e)));
+      if (p < 1) requestAnimationFrame(tick); else node.nodeValue = final;
+    }
+    requestAnimationFrame(tick);
+  }
+  var bigs = Array.prototype.slice.call(document.querySelectorAll('.big'));
+  if ('IntersectionObserver' in window && bigs.length) {
+    var bio = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { countUp(en.target); obs.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    bigs.forEach(function (b) { bio.observe(b); });
+  }
+
   var ticking = false;
   function onScroll() {
     if (ticking) return;
@@ -685,7 +767,9 @@
       var de = document.documentElement;
       var max = de.scrollHeight - de.clientHeight;
       if (progress) progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
-      if (counter) counter.textContent = pad(currentIndex() + 1) + ' / ' + pad(total);
+      var ci = currentIndex();
+      if (counter) counter.textContent = pad(ci + 1) + ' / ' + pad(total);
+      for (var i = 0; i < dotBtns.length; i++) dotBtns[i].classList.toggle('on', i === ci);
       ticking = false;
     });
   }

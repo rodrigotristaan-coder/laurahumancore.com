@@ -15,9 +15,12 @@ Landing **estática** (HTML + CSS inline, sin build, sin dependencias) de
 ```
 laurahumancore.com/
 ├── index.html        ← TODO el sitio (HTML + CSS + JS inline)
-├── presentaciones/   ← decks HTML autocontenidos (noindex, sin enlaces desde el sitio)
-│   ├── presentacion-ventas.html   HC Deck v1.3 — 16 slides de venta (imágenes en base64)
-│   └── design-system.html         design system de los decks (documenta v1.2; pendiente alinear a v1.3)
+├── presentaciones/   ← decks HTML (noindex, sin enlaces desde el sitio)
+│   ├── presentacion-ventas.html          HC Deck v1 — 16 slides, fotos estáticas, énfasis de venta (autocontenida)
+│   ├── presentacion-ventas-v2.html       HC Deck v2 (v2.3) — video-loop emocional por slide; los mp4 van en media/ por URL relativa
+│   ├── presentacion-ventas-v2-fotos.html HC Deck v2-fotos (v2.3) — mismo look sin video, fotogramas WebP en base64 (autocontenida ~2.8 MB)
+│   ├── media/                            16 clips mp4 (Mixkit Free License) del deck v2
+│   └── design-system.html                design system de los decks (documenta v1.2; pendiente alinear a v1.3/v2)
 ├── assets/           (imágenes optimizadas WebP al tamaño de uso)
 │   ├── logo-white.webp       logo blanco (nav)
 │   ├── logo-gold-mask.webp   SILUETA del logo en canal alfa — se pinta con CSS mask + --gold (hero)
@@ -79,7 +82,7 @@ funcional, todo burbuja/píldora, nada rectángulo.
 5. **Laura** (`#laura`) — retrato circular con anillos + badges.
 6. **Clientes** (`#clientes`) — muro de logos blanco.
 7. **Cómo funciona** (`#metodo`) — 2 fases con entregables.
-8. **Inversión** (`#inversion`) — price-card $126,900 + continuidad $57,690.
+8. **Inversión** (`#inversion`) — price-card **2 pagos de $46,500** (SIN mostrar total, decisión 12-jul) + continuidad $57,690. Duración: "aprox. 2 meses".
 9. **Contacto** (`#contacto`) — formulario `#cotiza`.
 10. **Footer** — sobre crema.
 
@@ -104,16 +107,20 @@ MX + SPF verificados). Es el correo visible en la web y en el deck.
 
 ## Presentaciones (`presentaciones/`)
 
-Servidas en `laurahumancore.com/presentaciones/presentacion-ventas` y
-`/design-system` (Vercel sirve sin `.html`, con `noindex`). Autocontenidas:
-fotos en base64, las de fondo UNA sola vez como custom properties en `:root`.
+Servidas sin `.html` y con `noindex`: `…/presentaciones/presentacion-ventas`
+(v1), `…/presentacion-ventas-v2` (v2 con video), `…/presentacion-ventas-v2-fotos`
+(v2 sin video, autocontenida) y `/design-system`. v1 y v2-fotos son
+autocontenidas (imágenes en base64, las de fondo UNA sola vez como custom
+properties en `:root`); la v2 carga sus mp4 de `presentaciones/media/` por URL
+relativa (la experiencia completa es el link del dominio). Copy al día = v2.3
+(2 pagos de $46,500 sin total, "Entregable" en fases, "2 meses aprox.").
 Imprimir → PDF 16:9 una por página (los media queries móviles son
 `@media screen and` para no colarse al PDF; `print-color-adjust:exact` para
-que los fondos sobrevivan).
+que los fondos sobrevivan; la v2 oculta los videos e imprime la foto).
 
 ---
 
-## Estado (al 2026-07-10)
+## Estado (al 2026-07-12)
 
 - **GA4** `G-LKP371EQ8Q` en vivo (+ evento `generate_lead`).
 - **SEO**: robots.txt + sitemap.xml; canonical/OG al dominio real.

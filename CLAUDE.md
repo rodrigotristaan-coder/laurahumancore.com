@@ -98,6 +98,14 @@ funcional, todo burbuja/píldora, nada rectángulo.
   En éxito dispara GA4 `generate_lead`. ⚠️ NO cambiar los `name` de los campos.
 - Respeta `prefers-reduced-motion`.
 
+## Discovery (repo aparte)
+
+`discovery.laurahumancore.com` — formulario tipo cotizador que recomienda cuál de los
+3 sistemas le toca al prospecto. **Vive en `~/discovery-laurahumancore`** (proyecto
+Vercel propio `discovery-laurahumancore`), no en este repo. Manda el lead al **mismo
+webhook n8n** (`lead-humancore`) con `origen: discovery.laurahumancore.com`. Si cambian
+los precios aquí, cambian allá. Ver su `README.md`.
+
 ## Correo público
 
 **contacto@laurahumancore.com** (reenvío Namecheap → Gmail de Laura, $0;

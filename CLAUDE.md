@@ -103,8 +103,13 @@ funcional, todo burbuja/píldora, nada rectángulo.
 `discovery.laurahumancore.com` — formulario tipo cotizador que recomienda cuál de los
 3 sistemas le toca al prospecto. **Vive en `~/discovery-laurahumancore`** (proyecto
 Vercel propio `discovery-laurahumancore`), no en este repo. Manda el lead al **mismo
-webhook n8n** (`lead-humancore`) con `origen: discovery.laurahumancore.com`. Si cambian
-los precios aquí, cambian allá. Ver su `README.md`.
+webhook n8n** (`lead-humancore`) con `origen: discovery.laurahumancore.com`.
+
+⚠️ **El discovery NO muestra precio** (decisión 28-jul): el prospecto ve alcance y
+duración, y el estimado viaja solo dentro del lead que le llega a Laura, que es quien
+cierra la venta. La landing SÍ sigue mostrando los 2 pagos de $46,500. Si cambia la
+tarifa, hay que tocar los dos: aquí el bloque `.price-card`, allá las constantes
+`PAGO`/`CONTINUIDAD`. Ver su `README.md`.
 
 ## Correo público
 

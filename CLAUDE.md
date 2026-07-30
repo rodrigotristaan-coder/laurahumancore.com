@@ -115,7 +115,9 @@ del campo `sistemas`. Si sube el precio, se cambia ahí y en ningún otro lado.
 ## Comportamiento (JS inline al final)
 
 - Progress bar, nav "scrolled", reveals con IntersectionObserver (red de
-  seguridad a 4 s), acordeón con truco `grid-template-rows: 0fr→1fr`.
+  seguridad a 4 s), typewriter del hero y cinta de logos armada por JS desde el
+  array `LOGOS` (se duplica el set para que el loop no tenga costura).
+  El acordeón de los 3 sistemas desapareció con la v2: ahora son tarjetas.
 - **Formulario** (`#cotiza`): honeypot (`website`) → POST a
   `https://n8n.satorimkt.com/webhook/lead-humancore` (n8n → Excel + Telegram +
   Outlook). Si falla, cae a `mailto:contacto@laurahumancore.com` pre-llenado.

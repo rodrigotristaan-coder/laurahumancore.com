@@ -264,6 +264,25 @@
     border-radius:var(--r-md);padding:14px 16px;font-size:15px;color:#fff;}
   .fase .deliv b{color:var(--gold);}
 
+  /* ---------- RECONOCIMIENTOS Y MEDIOS ---------- */
+  .awards{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media screen and (min-width:820px){ .awards{grid-template-columns:1fr 1fr;} }
+  .award{background:#fff;border-radius:var(--r-lg);padding:34px 32px;box-shadow:var(--shadow-card);
+    display:flex;gap:22px;align-items:flex-start;}
+  .award .medal{flex:none;width:58px;height:58px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-label);
+    font-weight:800;font-size:13px;color:var(--navy-deep);letter-spacing:.02em;}
+  .award h3{font-size:25px;line-height:1.12;color:var(--ink);}
+  .award p{font-size:15.5px;margin:8px 0 0;color:var(--taupe);}
+  .media{margin-top:26px;background:rgba(255,255,255,.08);border:1px solid var(--line-navy);
+    border-radius:var(--r-lg);padding:26px 30px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+  .media .cap{font-family:var(--font-label);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);margin:0 0 16px;font-weight:600;}
+  .media ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 14px;}
+  .media li{font-family:var(--font-display);font-size:21px;color:#fff;
+    border:1px solid var(--line-navy);border-radius:var(--r-pill);padding:9px 22px;background:rgba(255,255,255,.06);}
+  @media screen and (max-width:760px){ .media li{font-size:18px;padding:8px 16px;} .award{padding:26px 22px;gap:16px;} }
+
   /* ---------- TESTIMONIOS ---------- */
   .quotes{display:grid;grid-template-columns:1fr;gap:20px;}
   @media screen and (min-width:860px){ .quotes{grid-template-columns:repeat(3,1fr);} }
@@ -423,19 +442,14 @@
             <div class="ms" data-reveal style="--d:.06s">
               <div class="yr">Trayectoria</div>
               <h4>Líderes Mexicanos</h4>
-              <p>Conferencista y escritora de la revista. Presencia en Radio Fórmula, TV Azteca y el Foro Líderes Mexicanos.</p>
+              <p>Conferencista y escritora de la revista.</p>
             </div>
             <div class="ms" data-reveal style="--d:.12s">
-              <div class="yr">2012</div>
-              <h4>Premio Nacional de la Mujer</h4>
-              <p>Reconocimiento a su trabajo en desarrollo humano y liderazgo.</p>
+              <div class="yr">Socia fundadora</div>
+              <h4>Gnosis Awareness</h4>
+              <p>Directora de transformación de líderes: potencial humano y empresarial con equilibrio entre productividad y bienestar.</p>
             </div>
             <div class="ms" data-reveal style="--d:.18s">
-              <div class="yr">2014</div>
-              <h4>Premio Excelencia Profesional</h4>
-              <p>Segundo reconocimiento nacional a su método de formación de líderes.</p>
-            </div>
-            <div class="ms" data-reveal style="--d:.24s">
               <div class="yr">Hoy</div>
               <h4>HUMAN-CORE System</h4>
               <p>Tres sistemas propios para ordenar talento, cultura y liderazgo dentro de la empresa.</p>
@@ -571,6 +585,45 @@
           </ul>
           <div class="deliv"><b>Entregable:</b> reporte de resultados.</div>
         </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =============== RECONOCIMIENTOS Y MEDIOS =============== -->
+<div class="panel">
+  <section class="sec on-blue" id="reconocimientos">
+    <div class="bg-photo ph-team v-blue"></div>
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <span class="label">Reconocimientos</span>
+        <h2>No lo decimos <span class="hl">solo nosotros.</span></h2>
+      </div>
+      <div class="awards">
+        <div class="award" data-reveal>
+          <span class="medal">2012</span>
+          <div>
+            <h3>Premio Nacional de la Mujer</h3>
+            <p>Reconocimiento nacional a su trabajo en desarrollo humano y liderazgo.</p>
+          </div>
+        </div>
+        <div class="award" data-reveal style="--d:.08s">
+          <span class="medal">2014</span>
+          <div>
+            <h3>Premio Excelencia Profesional</h3>
+            <p>Segundo reconocimiento nacional a su método de formación de líderes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="media" data-reveal style="--d:.16s">
+        <p class="cap">Dónde la han visto</p>
+        <ul>
+          <li>Radio Fórmula</li>
+          <li>TV Azteca</li>
+          <li>Foro Líderes Mexicanos</li>
+          <li>Revista Líderes Mexicanos</li>
+          <li>Podcast «Ama y Transforma»</li>
+        </ul>
       </div>
     </div>
   </section>

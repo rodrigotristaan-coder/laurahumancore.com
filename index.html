@@ -126,7 +126,13 @@
   /* ---------- reveals + typewriter ---------- */
   .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s);}
   .js [data-reveal].in{opacity:1;transform:none;}
-  .type{border-right:2px solid var(--gold);padding-right:4px;animation:caret .9s step-end infinite;}
+  /* la palabra que rota reserva por JS el ancho de la más larga, así la línea
+     nunca se re-acomoda mientras escribe o borra */
+  .type{display:inline-block;text-align:left;white-space:nowrap;max-width:100%;}
+  .type > span{border-right:2px solid var(--gold);padding-right:4px;animation:caret .9s step-end infinite;}
+  /* en pantallas donde no cabe junto a "Falla", va siempre en su propio renglón:
+     así tampoco brinca entre una palabra corta y una larga */
+  @media screen and (max-width:900px){ .type{display:block;} }
   @keyframes caret{50%{border-color:transparent;}}
   .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:9200;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width .12s linear;}
   @media(prefers-reduced-motion:reduce){
@@ -165,6 +171,10 @@
 
   /* ---------- HERO ---------- */
   .hero{min-height:92vh;display:flex;align-items:center;padding:150px 0 96px;}
+  /* .wrap es ítem flex aquí: sin width:100% su ancho lo fija el contenido y el
+     margin:0 auto lo recentra cada vez que cambia la palabra del typewriter,
+     arrastrando todo el bloque de lado. Con width:100% queda anclado. */
+  .hero > .wrap{width:100%;}
   .hero h1{font-size:clamp(42px,7vw,86px);line-height:1.02;margin:22px 0 22px;}
   .hero .sub{font-size:clamp(17px,2.1vw,21px);color:rgba(255,255,255,.82);max-width:620px;}
   .hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;}
@@ -387,7 +397,7 @@
     <div class="bg-photo ph-playa v-soft"></div>
     <div class="wrap">
       <span class="label" data-reveal>Talento · Cultura · Liderazgo</span>
-      <h1 data-reveal style="--d:.08s">Tu gente no falla.<br />Falla <span class="hl type" id="tw">el sistema</span></h1>
+      <h1 data-reveal style="--d:.08s">Tu gente no falla.<br />Falla <span class="hl type" id="tw-box"><span id="tw">el sistema</span></span></h1>
       <p class="sub" data-reveal style="--d:.16s">Se te va el talento que formaste y tus líderes solo apagan fuegos. HUMAN-CORE ordena lo que sostiene a tu empresa: su gente.</p>
       <div class="cta" data-reveal style="--d:.24s">
         <a class="btn btn-gold" href="https://discovery.laurahumancore.com/">Diagnóstico sin costo <span class="arr">→</span></a>
@@ -813,6 +823,32 @@
     if (tw && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       var PALABRAS = ['el sistema', 'el seguimiento', 'la comunicación',
                       'el liderazgo', 'la estrategia', 'la mentoría'];
+
+      /* reserva el ancho de la palabra más larga para que la línea no se mueva.
+         Se recalcula al redimensionar y cuando terminan de cargar las fuentes,
+         porque con la fuente de sistema las medidas salen distintas. */
+      var twBox = document.getElementById('tw-box');
+      function reservarAncho() {
+        var h1 = twBox.parentNode;
+        var probe = document.createElement('span');
+        probe.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;font:' +
+                              window.getComputedStyle(tw).font;
+        document.body.appendChild(probe);
+        var max = 0;
+        for (var i = 0; i < PALABRAS.length; i++) {
+          probe.textContent = PALABRAS[i];
+          max = Math.max(max, probe.getBoundingClientRect().width);
+        }
+        probe.remove();
+        /* si no cabe en el ancho del h1 no reservamos: ahí ya va en su propio
+           renglón por el media query y reservar solo provocaría desbordamiento */
+        var cabe = max <= h1.getBoundingClientRect().width;
+        twBox.style.minWidth = cabe ? Math.ceil(max) + 'px' : '';
+      }
+      reservarAncho();
+      window.addEventListener('resize', reservarAncho);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(reservarAncho);
+
       var w = 0, c = 0, borrando = false;
       tw.textContent = '';
       (function tick() {

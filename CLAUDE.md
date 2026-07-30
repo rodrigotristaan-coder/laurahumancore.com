@@ -32,6 +32,8 @@ laurahumancore.com/
 │   ├── bg-playa.webp         FONDO: playa nocturna (1600px, velo navy encima)
 │   ├── logo-gold.webp        (ya sin uso en el sitio; se re-usó en decks)
 │   ├── logo-gold-sm.webp     (sin uso — candidato a limpieza)
+│   ├── logos/                21 logos de clientes recortados del muro (cinta)
+│   ├── sistemas/             fotos de los 3 sistemas + fondos (del deck v2-fotos)
 │   └── favicon.png
 ├── vercel.json       ← static, cache de assets + headers de seguridad (CSP en Report-Only)
 ├── robots.txt · sitemap.xml
@@ -58,35 +60,57 @@ funcional, todo burbuja/píldora, nada rectángulo.
 
 ---
 
-## Lenguaje visual v1.3 (2026-07-10, homologado con el HC Deck)
+## Lenguaje visual v2 (2026-07-30, notas de Laura) — SUSTITUYE a la v1.3
 
-- **Todas las secciones son paneles navy redondeados** flotando sobre el crema
-  (gaps de 12px, 8px en móvil). Ya no hay secciones claras.
-- **Cada sección lleva foto de fondo**: `<div class="bg-photo ph-team|ph-playa v-grad|v-soft|v-heavy [pos-r]">`
-  — la foto va como background y el velo navy como `::after`. Velos: `v-grad`
-  (statement, foto visible a la derecha), `v-soft` (.87), `v-heavy` (.93, para
-  secciones con mucho contenido).
-- Componentes con variante `.on-dark`: cards, dots, badges, fases, tags, win.
-- El muro de `#clientes` queda en tarjeta BLANCA sobre panel navy (contraste máximo).
-- Hero: la marca-anillo usa `mask:url(assets/logo-gold-mask.webp)` pintada con
-  `--gold` (la máscara lee el CANAL ALFA, no luminancia). ⚠️ En los decks el
-  logo va como bitmap: las máscaras CSS se rasterizan como rectángulo al
-  imprimir a PDF.
+La v1.3 (todo panel navy translúcido) quedó archivada. Ahora:
 
-## Secciones (en orden, con `data-screen-label`)
+- **Los paneles ALTERNAN**: blanco / azul vivo / navy. Clases `.sec.on-white`,
+  `.sec.on-blue`, `.sec.on-dark`. Siguen siendo burbujas redondeadas sobre el
+  crema (gaps de 12px, 8px en móvil).
+- **Azul como bloque, no solo como velo**: `--blue:#1552c9`, `--blue-bright`,
+  `--blue-pale`. El dorado sigue siendo funcional (CTA, medallas, acentos).
+- **Énfasis por titular**: la palabra que carga el mensaje va en `.hl` (azul
+  sobre claro, dorado sobre oscuro). Nunca itálicas.
+- **Fotos de fondo** en problema, método, reconocimientos y contacto:
+  `<div class="bg-photo ph-team|ph-playa|ph-problema v-soft|v-heavy|v-blue">`.
+  `v-blue` es el velo azul (no navy) para las secciones `on-blue`.
+- **Assets nuevos**: `assets/logos/*.webp` (21 marcas recortadas del muro,
+  132px de alto) y `assets/sistemas/*.webp` (fotos 1600×900 sacadas del base64
+  del deck v2-fotos).
 
-1. **Nav** — píldora flotante con blur.
-2. **Hero** — `#` (header), fondo playa. H1 "Tu gente no falla…", chips de datos.
-3. **El problema** (`#problema`) — 3 cards + caja dorada "No necesitas más cursos".
-4. **Los 3 sistemas** (`#sistemas`) — ACORDEÓN (uno abierto a la vez, el 01 por defecto).
-5. **Laura** (`#laura`) — retrato circular con anillos + badges.
-6. **Clientes** (`#clientes`) — muro de logos blanco.
-7. **Cómo funciona** (`#metodo`) — 2 fases con entregables.
-8. **Inversión** (`#inversion`) — price-card **2 pagos de $46,500** (SIN mostrar total, decisión 12-jul) + continuidad $57,690. Duración: "aprox. 2 meses".
-9. **Contacto** (`#contacto`) — formulario `#cotiza`.
-10. **Footer** — sobre crema.
+## Secciones (en orden)
 
----
+1. **Nav** — píldora flotante. Debajo de 600px queda solo el logo + el CTA.
+2. **Hero** — centrado, fondo playa, typewriter en el H1. **Siempre 2 renglones**.
+3. **Cinta de logos** — marquee infinito a color; en móvil son DOS, la de abajo en reversa.
+4. **Fundadora** (`#fundadora`) — retrato, bio y línea de tiempo.
+5. **El problema** (`#problema`) — azul vivo + foto, 3 cards.
+6. **Los 3 sistemas** (`#sistemas`) — BLANCO, una tarjeta con foto por sistema (ya no es acordeón).
+7. **Cómo funciona** (`#metodo`) — 2 fases con temario y habilidades.
+8. **Reconocimientos** (`#reconocimientos`) — premios + medios.
+9. **Qué incluye** (`#incluye`) — lo que se entrega. **SIN precio.**
+10. **CTA diagnóstico** (`#diagnostico`) — banda azul al cotizador.
+11. **Contacto** (`#contacto`) — formulario `#cotiza`.
+12. **Footer**.
+
+⚠️ **Testimonios**: la sección existe pero está **comentada** en el HTML, esperando
+citas reales. No se publican reseñas inventadas. Las instrucciones para reactivarla
+están dentro del propio comentario.
+
+⚠️ **NINGUNA página muestra precio** (30-jul). Ni la landing ni el cotizador, ni en
+pantalla ni en el código fuente. La tarifa vive **solo** en el nodo `Mapear campos`
+del workflow n8n `9bNX3HWo7B4mMi0d`, que arma el bloque ESTIMADO para Laura a partir
+del campo `sistemas`. Si sube el precio, se cambia ahí y en ningún otro lado.
+
+## Trampas de layout ya resueltas — no las reintroduzcas
+
+- `.hero` es `display:flex`; su `.wrap` necesita `width:100%`. Sin eso, el
+  `margin:0 auto` del wrap lo re-centra al cambiar la palabra del typewriter y
+  arrastra todo el bloque de lado.
+- El H1 del hero usa `clamp(34px,6.6vw,86px)`: con 42px de mínimo, "Falla la
+  comunicación" se parte y el hero se va a 3 renglones en móvil.
+- No reserves por JS el ancho de la palabra del typewriter: con el hero centrado
+  deja un hueco visible junto a las palabras cortas.
 
 ## Comportamiento (JS inline al final)
 

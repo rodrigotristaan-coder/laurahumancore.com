@@ -20,22 +20,22 @@ laurahumancore.com/
 │   ├── presentacion-ventas-v2.html       HC Deck v2 (v2.3) — video-loop emocional por slide; los mp4 van en media/ por URL relativa
 │   ├── presentacion-ventas-v2-fotos.html HC Deck v2-fotos (v2.3) — mismo look sin video, fotogramas WebP en base64 (autocontenida ~2.8 MB)
 │   ├── media/                            16 clips mp4 (Mixkit Free License) del deck v2
-│   └── design-system.html                design system de los decks (documenta v1.2; pendiente alinear a v1.3/v2)
+│   └── design-system.html                design system de decks v2.3 + web v2 (al día 5-ago)
 ├── assets/           (imágenes optimizadas WebP al tamaño de uso)
 │   ├── logo-white.webp       logo blanco (nav)
-│   ├── logo-gold-mask.webp   SILUETA del logo en canal alfa — se pinta con CSS mask + --gold (hero)
 │   ├── logo-navy-sm.webp     logo navy chico (footer)
 │   ├── logo-navy.png         logo navy grande — SOLO para og:image (no borrar)
 │   ├── laura-portrait{,-360}.webp  retrato circular de Laura (sección #laura)
-│   ├── clientes.webp         muro de logos de clientes (sección #clientes)
 │   ├── bg-team.webp          FONDO: siluetas de equipo (1600px, velo navy encima)
 │   ├── bg-playa.webp         FONDO: playa nocturna (1600px, velo navy encima)
-│   ├── logo-gold.webp        (ya sin uso en el sitio; se re-usó en decks)
-│   ├── logo-gold-sm.webp     (sin uso — candidato a limpieza)
 │   ├── logos/                21 logos de clientes recortados del muro (cinta)
-│   ├── sistemas/             fotos de los 3 sistemas + fondos (del deck v2-fotos)
-│   └── favicon.png
-├── vercel.json       ← static, cache de assets + headers de seguridad (CSP en Report-Only)
+│   ├── sistemas/             fotos de los 3 sistemas + fondo del problema
+│   ├── favicon.png
+│   └── ⚠️ SIN USO (ningún HTML los referencia; pendiente borrarlos):
+│       logo-gold-mask.webp (el hero v2 ya no lleva máscara), logo-gold.webp,
+│       logo-gold-sm.webp, clientes.webp (solo fue la fuente de los 21 recortes),
+│       sistemas/bg-impacto.webp y sistemas/sys-cultura.webp (la foto vieja)
+├── vercel.json       ← static, cache de assets + headers de seguridad (CSP ENFORCED)
 ├── robots.txt · sitemap.xml
 └── README.md         ← deploy (Vercel / GitHub)
 ```
@@ -122,6 +122,11 @@ del campo `sistemas`. Si sube el precio, se cambia ahí y en ningún otro lado.
   `https://n8n.satorimkt.com/webhook/lead-humancore` (n8n → Excel + Telegram +
   Outlook). Si falla, cae a `mailto:contacto@laurahumancore.com` pre-llenado.
   En éxito dispara GA4 `generate_lead`. ⚠️ NO cambiar los `name` de los campos.
+  **Selector de lada** (5-ago, array `LADAS`, 21 países, `+52` por defecto): el
+  campo Teléfono es un `.telrow` con el `<select name="lada">` pegado al input.
+  Va en un `<div class="field">` y no en un `<label>`: con dos controles dentro,
+  el label se asocia al primero y hacer clic en "Teléfono" enfocaba la lada.
+  Si no escriben teléfono, la lada viaja vacía para no dejar un "+52" suelto en Excel.
 - Respeta `prefers-reduced-motion`.
 
 ## Discovery (repo aparte)
@@ -131,11 +136,11 @@ del campo `sistemas`. Si sube el precio, se cambia ahí y en ningún otro lado.
 Vercel propio `discovery-laurahumancore`), no en este repo. Manda el lead al **mismo
 webhook n8n** (`lead-humancore`) con `origen: discovery.laurahumancore.com`.
 
-⚠️ **El discovery NO muestra precio** (decisión 28-jul): el prospecto ve alcance y
-duración, y el estimado viaja solo dentro del lead que le llega a Laura, que es quien
-cierra la venta. La landing SÍ sigue mostrando los 2 pagos de $46,500. Si cambia la
-tarifa, hay que tocar los dos: aquí el bloque `.price-card`, allá las constantes
-`PAGO`/`CONTINUIDAD`. Ver su `README.md`.
+⚠️ **Ni el discovery ni la landing muestran precio** (28-jul el discovery, 30-jul la
+landing): el prospecto ve alcance y duración, y el estimado viaja solo dentro del lead
+que le llega a Laura, que es quien cierra la venta. La tarifa vive en **un solo lugar**,
+el nodo `Mapear campos` de n8n; no hay `.price-card` ni constantes `PAGO`/`CONTINUIDAD`
+que actualizar. Ver su `README.md`.
 
 ## Correo público
 
@@ -159,20 +164,24 @@ que los fondos sobrevivan; la v2 oculta los videos e imprime la foto).
 
 ---
 
-## Estado (al 2026-07-12)
+## Estado (al 2026-08-05)
 
 - **GA4** `G-LKP371EQ8Q` en vivo (+ evento `generate_lead`).
 - **SEO**: robots.txt + sitemap.xml; canonical/OG al dominio real.
-- **Headers** en `vercel.json`: HSTS, Permissions-Policy, etc. **CSP en Report-Only.**
+- **Headers** en `vercel.json`: HSTS, Permissions-Policy, etc. **CSP ENFORCED**
+  desde el 5-ago. Se auditó por red lo que carga el sitio: solo
+  `googletagmanager`, `google-analytics`, `fonts.googleapis`, `fonts.gstatic`
+  y propio. Todo lo demás (imágenes, base64, mp4 de los decks) es `'self'`/`data:`.
+  Si algún día se suma un tercero (Meta Pixel, Calendly, un iframe), **hay que
+  agregarlo al header o la página lo bloquea de verdad, ya no solo lo reporta.**
 
 ## Pendientes
 
-1. **Meta Pixel**: BLOQUEADO (sin acceso a Meta). Al desbloquear: snippet antes de `</head>`.
+1. **Meta Pixel**: BLOQUEADO (sin acceso a Meta). Al desbloquear: snippet antes de
+   `</head>` **y** sumar `connect.facebook.net` a `script-src` y `www.facebook.com`
+   a `img-src` en la CSP, que ya está enforced.
 2. **Google Search Console**: alta del dominio + enviar sitemap.
-3. **CSP**: validar en consola y promover a enforced — ojo: la máscara del hero
-   Y los `background-image` de `.bg-photo` caen bajo `img-src`.
-4. **design-system.html**: documenta la v1.2 (paneles claros); alinear a la
-   regla v1.3 (todo navy + foto de fondo).
+3. **Borrar los assets sin uso** listados arriba en el árbol de archivos.
 
 ---
 

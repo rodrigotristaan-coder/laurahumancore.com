@@ -351,6 +351,9 @@
   .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);
     box-shadow:0 0 0 3px rgba(21,82,201,.14);background:#fff;}
   .field input.err{border-color:#c25b5b;background:#fff6f6;}
+  /* lada + teléfono en un solo renglón: el select se encoge a su contenido */
+  .telrow{display:grid;grid-template-columns:auto 1fr;gap:10px;}
+  .telrow select{width:auto;padding-left:14px;padding-right:12px;}
   .prefs{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;}
   .pref{cursor:pointer;}
   .pref input{position:absolute;opacity:0;pointer-events:none;}
@@ -520,7 +523,7 @@
           </div>
         </article>
         <article class="sys" data-reveal style="--d:.08s">
-          <div class="ph" style="background-image:url('assets/sistemas/sys-cultura.webp')"><span class="num">02</span></div>
+          <div class="ph" style="background-image:url('assets/sistemas/sys-cultura-junta.webp')"><span class="num">02</span></div>
           <div class="bd">
             <h3>Cambiar la cultura, no el discurso</h3>
             <div class="en">Cultural Evolution System</div>
@@ -746,8 +749,14 @@
                 <input type="email" name="email" required placeholder="tu@empresa.com" autocomplete="email" /></label>
             </div>
             <div class="frow3">
-              <label class="field"><span class="fl">Teléfono</span>
-                <input type="tel" name="telefono" placeholder="Con lada" autocomplete="tel" /></label>
+              <!-- div y no label: con dos controles dentro, el <label> se asocia al primero
+                   (el select) y hacer clic en "Teléfono" enfocaba la lada. -->
+              <div class="field"><span class="fl">Teléfono</span>
+                <div class="telrow">
+                  <select name="lada" id="lada" aria-label="Lada del país"></select>
+                  <input type="tel" name="telefono" placeholder="10 dígitos" autocomplete="tel" aria-label="Teléfono" />
+                </div>
+              </div>
               <label class="field"><span class="fl">Sistema de interés</span>
                 <select name="sistema">
                   <option value="">Aún no lo sé</option>
@@ -799,6 +808,19 @@
   var LOGOS = ['ge','technipfmc','pepsico','axa','essity','quakerstate','talos','corev','tasvaluo',
                'nmats','bluepixel','ait','piarde','axentit','industrialbloquera','exhibipop',
                'waspert','amasfac','in','ga','banku'];
+  /* lada del país — México por defecto. Al lead solo viaja el código ("+52").
+     La etiqueta va con la sigla y no con el nombre del país: el ancho del <select>
+     lo fija la opción más larga y "Rep. Dominicana" se comía el campo del teléfono. */
+  var LADAS = [
+    { c: '+52',  p: 'MX' },    { c: '+1',   p: 'US/CA' }, { c: '+34',  p: 'ES' },
+    { c: '+57',  p: 'CO' },    { c: '+51',  p: 'PE' },    { c: '+56',  p: 'CL' },
+    { c: '+54',  p: 'AR' },    { c: '+55',  p: 'BR' },    { c: '+593', p: 'EC' },
+    { c: '+502', p: 'GT' },    { c: '+503', p: 'SV' },    { c: '+504', p: 'HN' },
+    { c: '+506', p: 'CR' },    { c: '+507', p: 'PA' },    { c: '+58',  p: 'VE' },
+    { c: '+809', p: 'DO' },    { c: '+44',  p: 'UK' },    { c: '+49',  p: 'DE' },
+    { c: '+33',  p: 'FR' },    { c: '+39',  p: 'IT' },    { c: '',     p: 'Otro' }
+  ];
+
   var track = document.getElementById('track');
   if (track) {
     var html = LOGOS.map(function (n) {
@@ -870,13 +892,25 @@
     var note = document.getElementById('cform-note');
     var submitBtn = form.querySelector('.cform-submit');
 
+    var selLada = document.getElementById('lada');
+    if (selLada) {
+      selLada.innerHTML = '';
+      LADAS.forEach(function (l) {
+        var o = document.createElement('option');
+        o.value = l.c;
+        o.textContent = l.c ? l.c + ' ' + l.p : l.p;
+        selLada.appendChild(o);
+      });
+      selLada.value = '+52';
+    }
+
     function buildMailto(p) {
       var body =
         'Hola Laura, me interesa una cotización del sistema HUMAN-CORE.\n\n' +
         'Nombre: ' + p.nombre + '\n' +
         'Empresa: ' + (p.empresa || '—') + '\n' +
         'Correo: ' + p.email + '\n' +
-        'Teléfono: ' + (p.telefono || '—') + '\n' +
+        'Teléfono: ' + (p.telefono ? ((p.lada ? p.lada + ' ' : '') + p.telefono) : '—') + '\n' +
         'Sistema de interés: ' + (p.sistema || '—') + '\n' +
         'Colaboradores que necesitan coaching: ' + (p.equipo || '—') + '\n' +
         'Contacto preferido: ' + (p.via || '—') + '\n\n' +
@@ -897,12 +931,15 @@
         nombre: (d.get('nombre') || '').trim(),
         empresa: (d.get('empresa') || '').trim(),
         email: (d.get('email') || '').trim(),
+        lada: (d.get('lada') || '').trim(),
         telefono: (d.get('telefono') || '').trim(),
         sistema: d.get('sistema') || '',
         equipo: d.get('equipo') || '',
         via: d.get('via') || '',
         mensaje: (d.get('mensaje') || '').trim()
       };
+      /* sin teléfono no viaja la lada: si no, Excel guarda un "+52" suelto */
+      if (!p.telefono) p.lada = '';
       var bad = false;
       ['nombre', 'email'].forEach(function (n) {
         var f = form.querySelector('[name="' + n + '"]');

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cotización — Programa de Liderazgo | HUMAN-CORE System</title>
+<meta name="robots" content="noindex" />
+<meta name="description" content="Cotización del Programa de Liderazgo para gerentes — HUMAN-CORE System, Laura de la Peña." />
+<meta name="theme-color" content="#002060" />
+
+<link rel="icon" type="image/png" href="/assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Mulish:wght@300;400;500;600;700;800&family=Archivo:wght@500;600;700;800&display=swap" />
+
+<style>
+  :root{
+    --navy:#002060;
+    --navy-deep:#001233;
+    --blue:#1552c9;
+    --blue-bright:#2f7ae5;
+    --blue-pale:#eaf1fd;
+    --gold:#c2a36b;
+    --gold-deep:#a8854c;
+    --cream:#f7f3ec;
+    --ink:#111a30;
+    --body-solid:#414961;
+    --taupe:#857c6c;
+    --line:#e6dfd1;
+    --line-blue:#d7e3f7;
+    --line-navy:rgba(255,255,255,.16);
+    --font-display:'Cormorant Garamond', Georgia, serif;
+    --font-body:'Mulish', system-ui, sans-serif;
+    --font-label:'Archivo', system-ui, sans-serif;
+    --maxw:1080px;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --r-xl:44px; --r-lg:30px; --r-md:22px; --r-sm:14px; --r-pill:999px;
+    --shadow-card:0 2px 4px rgba(17,26,48,.04), 0 14px 34px -16px rgba(17,26,48,.18);
+  }
+  *{box-sizing:border-box;min-width:0;}
+  body{margin:0;background:var(--cream);color:var(--body-solid);font-family:var(--font-body);
+    font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-wrap:break-word;
+    print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+  img{max-width:100%;height:auto;}
+  ::selection{background:var(--blue);color:#fff;}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--ink);margin:0;line-height:1.06;letter-spacing:-.015em;font-style:normal;}
+  em,i{font-style:normal;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 44px;}
+  @media screen and (max-width:760px){ .wrap{padding:0 20px;} body{font-size:17px;} }
+
+  .panel{padding:12px;}
+  .panel + .panel{padding-top:0;}
+  @media screen and (max-width:760px){ .panel{padding:8px;} .panel + .panel{padding-top:0;} }
+  .sec{border-radius:var(--r-xl);padding:88px 0;position:relative;overflow:hidden;}
+  @media screen and (max-width:760px){ .sec{border-radius:var(--r-lg);padding:60px 0;} }
+  .sec.on-white{background:#fff;}
+  .sec.on-blue{background:linear-gradient(150deg,var(--blue) 0%, #0d3ea3 60%, var(--navy) 100%);}
+  .sec.on-dark{background:radial-gradient(120% 100% at 15% 0%, #0b3179 0%, var(--navy) 50%, var(--navy-deep) 100%);}
+  .on-blue,.on-dark{color:rgba(255,255,255,.84);}
+  .on-blue h1,.on-blue h2,.on-blue h3,
+  .on-dark h1,.on-dark h2,.on-dark h3{color:#fff;}
+  .bg-photo{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;}
+  .ph-playa{background-image:url('/assets/bg-playa.webp');}
+  .ph-team{background-image:url('/assets/bg-team.webp');}
+  .bg-photo::after{content:"";position:absolute;inset:0;}
+  .v-heavy::after{background:linear-gradient(120deg,rgba(0,32,96,.95),rgba(0,18,51,.93));}
+  .v-blue::after{background:linear-gradient(150deg,rgba(21,82,201,.9) 0%,rgba(13,62,163,.93) 55%,rgba(0,32,96,.95) 100%);}
+  .sec > .wrap{position:relative;z-index:1;}
+
+  .label{font-family:var(--font-label);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--blue);display:inline-block;background:var(--blue-pale);border:1px solid var(--line-blue);
+    padding:9px 18px;border-radius:var(--r-pill);}
+  .on-blue .label,.on-dark .label{color:#fff;background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);}
+  .hl{color:var(--blue);}
+  .on-blue .hl,.on-dark .hl{color:var(--gold);}
+
+  /* ---------- portada ---------- */
+  .cover{text-align:center;padding:96px 0 84px;}
+  .cover img.logo{width:88px;display:block;margin:0 auto 30px;}
+  .cover h1{font-size:clamp(38px,6vw,72px);margin:22px auto 18px;max-width:15ch;}
+  .cover .sub{font-size:clamp(17px,2vw,20px);color:rgba(255,255,255,.82);max-width:520px;margin:0 auto;}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;justify-content:center;}
+  .chips span{font-family:var(--font-label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.82);border:1px solid var(--line-navy);border-radius:var(--r-pill);padding:10px 18px;
+    background:rgba(255,255,255,.07);}
+
+  /* ---------- resumen de inversión ---------- */
+  .sec-head{max-width:720px;margin:0 auto 46px;text-align:center;}
+  .sec-head h2{font-size:clamp(32px,4.8vw,52px);margin:20px 0 14px;}
+  .sec-head .lead{font-size:clamp(16.5px,2vw,19px);color:var(--taupe);margin:0;}
+  .on-blue .sec-head .lead,.on-dark .sec-head .lead{color:rgba(255,255,255,.78);}
+
+  .deal{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:46px 40px;box-shadow:var(--shadow-card);text-align:center;}
+  @media screen and (max-width:760px){ .deal{padding:36px 22px;} }
+  .deal .lista{font-size:16px;color:var(--taupe);margin:0 0 6px;}
+  .deal .lista b{color:var(--body-solid);font-weight:700;}
+  .deal .lista .tach{text-decoration:line-through;text-decoration-color:rgba(133,124,108,.7);}
+  .deal .desc-pill{display:inline-block;font-family:var(--font-label);font-weight:700;font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);background:var(--gold);
+    border-radius:var(--r-pill);padding:10px 20px;margin:18px 0 8px;}
+  .deal .total{font-family:var(--font-display);font-weight:700;color:var(--ink);
+    font-size:clamp(52px,9vw,84px);line-height:1;margin:10px 0 4px;letter-spacing:-.02em;}
+  .deal .total sup{font-size:.38em;font-weight:600;top:-1.25em;letter-spacing:0;}
+  .deal .periodo{font-family:var(--font-label);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--taupe);font-weight:600;margin:0 0 26px;}
+  .deal .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .deal .row span{font-size:14.5px;font-weight:600;color:var(--blue);background:var(--blue-pale);
+    border:1px solid var(--line-blue);border-radius:var(--r-pill);padding:10px 18px;}
+  .deal .ahorro{margin:26px 0 0;font-size:17px;color:var(--body-solid);}
+  .deal .ahorro b{color:var(--gold-deep);font-weight:800;}
+
+  /* ---------- tabla por volumen ---------- */
+  .tiers{max-width:720px;margin:0 auto;display:grid;gap:14px;}
+  .tier{display:grid;grid-template-columns:1fr auto auto;gap:6px 22px;align-items:center;
+    background:rgba(255,255,255,.08);border:1px solid var(--line-navy);border-radius:var(--r-md);
+    padding:22px 28px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+  .tier .who{font-family:var(--font-label);font-weight:700;font-size:12.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:#fff;}
+  .tier .who small{display:block;font-family:var(--font-body);font-weight:500;font-size:13px;
+    letter-spacing:0;text-transform:none;color:rgba(255,255,255,.62);margin-top:3px;}
+  .tier .cada,.tier .sem{text-align:right;}
+  .tier .cada .v,.tier .sem .v{font-family:var(--font-display);font-weight:700;font-size:26px;color:#fff;line-height:1.1;}
+  .tier .cada .k,.tier .sem .k{font-family:var(--font-label);font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(255,255,255,.58);font-weight:600;}
+  .tier.pick{background:rgba(255,255,255,.16);border-color:rgba(194,163,107,.65);position:relative;}
+  .tier.pick .sem .v{color:var(--gold);}
+  .tier .tag{grid-column:1 / -1;justify-self:start;font-family:var(--font-label);font-weight:700;font-size:10px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);background:var(--gold);
+    border-radius:var(--r-pill);padding:6px 14px;margin-bottom:4px;}
+  @media screen and (max-width:600px){
+    .tier{grid-template-columns:1fr 1fr;padding:18px 20px;}
+    .tier .who{grid-column:1 / -1;}
+    .tier .cada{text-align:left;}
+    .tier .cada .v,.tier .sem .v{font-size:22px;}
+  }
+
+  /* ---------- cierre ---------- */
+  .cierre{text-align:center;}
+  .cierre h2{font-size:clamp(30px,4.6vw,48px);margin:18px 0 14px;}
+  .cierre p{max-width:520px;margin:0 auto;color:rgba(255,255,255,.78);}
+  .btn{font-family:var(--font-label);font-weight:700;font-size:12.5px;line-height:1.2;letter-spacing:.14em;
+    text-transform:uppercase;padding:18px 34px;border:1px solid transparent;border-radius:var(--r-pill);cursor:pointer;
+    display:inline-flex;align-items:center;gap:11px;text-decoration:none;white-space:nowrap;
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s var(--ease);}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 12px 30px -12px rgba(194,163,107,.8);}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 20px 40px -14px rgba(194,163,107,.9);}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.34);}
+  .btn-ghost:hover{background:rgba(255,255,255,.16);transform:translateY(-2px);}
+  .cierre .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;justify-content:center;}
+  .fine{margin:46px auto 0;max-width:560px;font-size:13.5px;color:rgba(255,255,255,.55);}
+
+  @media print{
+    body{background:#fff;}
+    .panel{padding:0 0 10px;}
+    .sec{border-radius:0;padding:52px 0;}
+    .btn{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Portada -->
+<div class="panel">
+  <section class="sec on-dark cover">
+    <div class="bg-photo ph-playa v-heavy"></div>
+    <div class="wrap">
+      <img class="logo" src="/assets/logo-white.webp" alt="HUMAN-CORE System" width="88" height="88" />
+      <span class="label">Cotización exclusiva · Roberto</span>
+      <h1>Programa de Liderazgo para <span class="hl">gerentes</span></h1>
+      <p class="sub">HUMAN-CORE System · Laura de la Peña</p>
+      <div class="chips">
+        <span>5 líderes</span>
+        <span>6 meses · 1 semestre</span>
+        <span>Precios en MXN</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Inversión -->
+<div class="panel">
+  <section class="sec on-white">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Tu inversión</span>
+        <h2>5 líderes con <span class="hl">15% de descuento</span></h2>
+        <p class="lead">Al inscribir a los 5 gerentes en el mismo semestre, la inversión por líder baja de $62,871 a $53,280.</p>
+      </div>
+      <div class="deal">
+        <p class="lista">Precio de lista: $62,871 por líder · <b class="tach">$314,355 el semestre</b></p>
+        <span class="desc-pill">15% de descuento</span>
+        <p class="total"><sup>$</sup>266,400</p>
+        <p class="periodo">MXN el semestre · 5 gerentes · 6 meses</p>
+        <div class="row">
+          <span>$53,280 por líder</span>
+          <span>Equivale a $8,880 al mes por líder</span>
+        </div>
+        <p class="ahorro">Ahorro total frente al precio de lista: <b>$47,955</b></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Tabla por volumen -->
+<div class="panel">
+  <section class="sec on-blue">
+    <div class="bg-photo ph-team v-blue"></div>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Precio por volumen</span>
+        <h2>La inversión por líder <span class="hl">baja</span> con el grupo</h2>
+        <p class="lead">Si cambia el número de gerentes, esta es la escala por semestre.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <div class="who">1 a 2 gerentes</div>
+          <div class="cada"><div class="v">$59,760</div><div class="k">por líder</div></div>
+          <div class="sem"><div class="v">$119,520</div><div class="k">semestre · 2 líderes</div></div>
+        </div>
+        <div class="tier">
+          <div class="who">3 gerentes</div>
+          <div class="cada"><div class="v">$57,600</div><div class="k">por líder</div></div>
+          <div class="sem"><div class="v">$172,800</div><div class="k">semestre</div></div>
+        </div>
+        <div class="tier">
+          <div class="who">4 gerentes</div>
+          <div class="cada"><div class="v">$55,440</div><div class="k">por líder</div></div>
+          <div class="sem"><div class="v">$221,760</div><div class="k">semestre</div></div>
+        </div>
+        <div class="tier pick">
+          <span class="tag">Tu cotización · 15% de descuento</span>
+          <div class="who">5 gerentes</div>
+          <div class="cada"><div class="v">$53,280</div><div class="k">por líder</div></div>
+          <div class="sem"><div class="v">$266,400</div><div class="k">semestre</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Cierre -->
+<div class="panel">
+  <section class="sec on-dark cierre">
+    <div class="wrap">
+      <span class="label">Siguiente paso</span>
+      <h2>¿Arrancamos este <span class="hl">semestre</span>?</h2>
+      <p>Escríbenos y agendamos el arranque del programa para tu equipo.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="mailto:contacto@laurahumancore.com?subject=Programa%20de%20Liderazgo%20%E2%80%94%20Cotizaci%C3%B3n%205%20gerentes">Escribir a Laura <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="https://laurahumancore.com">Conocer HUMAN-CORE <span class="arr">→</span></a>
+      </div>
+      <p class="fine">Precios en pesos mexicanos (MXN). Cotización preparada el 13 de agosto de 2026, exclusiva para Roberto. contacto@laurahumancore.com · laurahumancore.com</p>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

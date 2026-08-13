@@ -148,7 +148,8 @@
   .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.34);}
   .btn-ghost:hover{background:rgba(255,255,255,.16);transform:translateY(-2px);}
   .cierre .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;justify-content:center;}
-  .fine{margin:46px auto 0;max-width:560px;font-size:13.5px;color:rgba(255,255,255,.55);}
+  /* .cierre p (clase+tipo) le gana a una clase sola: la regla va anclada a .cierre */
+  .cierre .fine{margin:46px auto 0;max-width:560px;font-size:13.5px;color:rgba(255,255,255,.55);}
 
   @media print{
     body{background:#fff;}

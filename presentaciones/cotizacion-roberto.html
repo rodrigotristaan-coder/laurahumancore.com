@@ -49,7 +49,9 @@
   /* ---------- riel de diapositivas ---------- */
   .deck{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth;}
   .slide{min-height:100%;scroll-snap-align:start;padding:12px;display:flex;}
-  .slab{flex:1;border-radius:var(--r-xl);padding:64px 72px;display:flex;flex-direction:column;
+  /* 76px arriba para librar la marca fija; 48 abajo para que las diapos densas
+     (comparación y escala) quepan completas en una pantalla de laptop */
+  .slab{flex:1;border-radius:var(--r-xl);padding:76px 72px 48px;display:flex;flex-direction:column;
     justify-content:center;position:relative;overflow:hidden;}
   .on-white .slab{background:#fff;}
   .on-cream .slab{background:var(--cream);border:1px solid var(--line);}
@@ -154,7 +156,7 @@
 
   /* ---------- 06 · comparación ---------- */
   .versus{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px;align-items:stretch;}
-  .lado{border-radius:var(--r-lg);padding:42px 40px;}
+  .lado{border-radius:var(--r-lg);padding:36px 36px;}
   .lado.aula{background:var(--cream);border:1px solid var(--line);}
   .lado.hc{background:var(--navy);color:rgba(255,255,255,.87);}
   .lado h3{font-size:31px;margin:0 0 5px;}
@@ -168,7 +170,7 @@
   .lado.hc li::before{content:"●";position:absolute;left:0;top:2px;font-size:9px;color:var(--gold);}
   .lado.hc li b{color:#fff;}
   /* el "pero" honesto de cada camino */
-  .pero{margin:24px 0 0;padding:18px 22px;border-radius:var(--r-sm);font-size:16.5px;line-height:1.55;}
+  .pero{margin:18px 0 0;padding:16px 20px;border-radius:var(--r-sm);font-size:16.5px;line-height:1.55;}
   .lado.aula .pero{background:#fff;border:1px solid var(--line);color:var(--body-solid);}
   .lado.hc .pero{background:rgba(255,255,255,.1);color:rgba(255,255,255,.88);}
   .pero .et{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
@@ -208,16 +210,16 @@
     font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);
     background:var(--gold);border-radius:var(--r-pill);padding:6px 14px;}
   .pago.mejor .total{color:var(--navy);}
-  .nota-mxn{margin:24px 0 0;font-size:15px;color:rgba(255,255,255,.55);}
+  .nota-mxn{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.55);}
 
   /* ---------- 09 · escala por número de líderes ---------- */
-  .escala{display:grid;gap:16px;max-width:940px;margin-top:10px;}
+  .escala{display:grid;gap:12px;max-width:940px;margin-top:10px;}
   .fila{display:grid;grid-template-columns:1fr auto auto;gap:8px 36px;align-items:center;
-    background:#fff;border-radius:var(--r-md);padding:26px 36px;color:var(--body-solid);position:relative;}
+    background:#fff;border-radius:var(--r-md);padding:19px 36px;color:var(--body-solid);position:relative;}
   .fila .q{font-family:var(--font-label);font-weight:700;font-size:14px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--navy);}
   .fila .c,.fila .s{text-align:right;}
-  .fila .v{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,2.6vw,34px);color:var(--ink);line-height:1.1;}
+  .fila .v{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.4vw,31px);color:var(--ink);line-height:1.1;}
   .fila .k{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--taupe);font-weight:600;}
   .fila.pick{outline:3px solid var(--gold);outline-offset:-3px;}

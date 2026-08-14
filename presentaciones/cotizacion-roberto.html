@@ -24,6 +24,7 @@
     --blue-pale:#eaf1fd;
     --gold:#c2a36b;
     --gold-deep:#a8854c;
+    --rojo:#b3372e;
     --cream:#f7f3ec;
     --ink:#111a30;
     --body-solid:#414961;
@@ -62,7 +63,9 @@
   .on-navy h1,.on-navy h2,.on-navy h3,.on-navy h4,
   .on-deep h1,.on-deep h2,.on-deep h3,.on-deep h4,
   .on-blue h1,.on-blue h2,.on-blue h3,.on-blue h4{color:#fff;}
-  .hl{color:var(--blue);}
+  /* el acento de los titulares va en dorado (14-ago); sobre claro usa el dorado
+     oscuro para que no se lave */
+  .hl{color:var(--gold-deep);}
   .on-navy .hl,.on-deep .hl,.on-blue .hl{color:var(--gold);}
 
   /* fondos fotográficos con velo mate (casi sólido, el texto manda) */
@@ -114,7 +117,7 @@
   .cv .role{font-family:var(--font-label);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
     color:var(--blue);font-weight:700;margin:0 0 16px;}
   .cv .bio{font-size:clamp(19px,2vw,23px);margin:0 0 26px;max-width:58ch;}
-  .cv .bio b{color:var(--ink);font-weight:700;}
+  .cv .bio b{color:var(--gold-deep);font-weight:700;}
   .hitos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 26px;margin:0 0 26px;}
   .hito{border-left:3px solid rgba(0,32,96,.25);padding-left:16px;}
   .hito .k{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
@@ -151,7 +154,7 @@
   .cardm{background:#fff;border-radius:var(--r-md);padding:36px 32px;color:var(--body-solid);}
   .cardm h3{font-size:27px;margin:0 0 10px;color:var(--ink);}
   .cardm p{font-size:17.5px;margin:0;line-height:1.55;}
-  .win{margin-top:30px;font-size:clamp(20px,2.2vw,27px);color:#fff;}
+  .win{margin:4px 0 34px;font-size:clamp(20px,2.2vw,27px);color:#fff;}
   .win b{color:var(--gold);font-weight:800;}
 
   /* ---------- 06 · comparación ---------- */
@@ -175,18 +178,18 @@
   .lado.hc .pero{background:rgba(255,255,255,.1);color:rgba(255,255,255,.88);}
   .pero .et{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
     font-weight:700;display:block;margin-bottom:6px;}
-  .lado.aula .pero .et{color:var(--gold-deep);}
+  .lado.aula .pero .et{color:var(--rojo);}
   .lado.hc .pero .et{color:var(--gold);}
   .lado.hc .pero b{color:#fff;}
 
-  /* ---------- 07 · método: 5 fases en navy ---------- */
+  /* ---------- 07 · método: 5 fases en crema ---------- */
   .ruta{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:10px;}
-  .paso{background:var(--navy);border-radius:var(--r-md);padding:28px 24px;color:rgba(255,255,255,.82);}
+  .paso{background:var(--cream);border:1px solid var(--line);border-radius:var(--r-md);padding:28px 24px;color:var(--body-solid);}
   .paso .cuando{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--gold);margin:0 0 12px;}
-  .paso h3{font-size:22px;margin:0 0 10px;color:#fff;}
+    font-weight:700;color:var(--gold-deep);margin:0 0 12px;}
+  .paso h3{font-size:22px;margin:0 0 10px;color:var(--ink);}
   .paso p{font-size:15px;margin:0;line-height:1.55;}
-  .paso.corte{background:var(--navy-deep);outline:3px solid var(--gold);outline-offset:-3px;}
+  .paso.corte{outline:3px solid var(--gold);outline-offset:-3px;}
   .triangulo{margin-top:24px;background:var(--navy-deep);border-radius:var(--r-md);padding:28px 34px;
     color:rgba(255,255,255,.87);font-size:clamp(18px,1.9vw,21.5px);}
   .triangulo b{color:var(--gold);}
@@ -375,7 +378,7 @@
         <img src="/assets/logos/banku.webp" alt="Banku" />
       </div>
       <p class="muro-cap" data-reveal style="--d:.2s"><b><span id="nEmp">+21</span> empresas</b> — de GE, PepsiCo y AXA a firmas
-        industriales mexicanas. Gente de operación, no de escritorio.</p>
+        industriales mexicanas.</p>
     </div>
   </section>
 
@@ -407,6 +410,7 @@
       <div class="num">05 / 10</div>
       <p class="eyebrow" data-reveal>El reto de Integra</p>
       <h2 data-reveal style="--d:.06s">5 líderes técnicos van a ser <span class="hl">gerentes</span></h2>
+      <p class="win" data-reveal style="--d:.1s">Lo que esperas es claro: <b>que sean buenos gerentes.</b></p>
       <div class="cards3">
         <div class="cardm" data-reveal style="--d:.12s">
           <h3>Son los mejores en su oficio</h3>
@@ -421,7 +425,6 @@
           <p>Su desarrollo tiene que convivir con el día a día, sin frenar la obra.</p>
         </div>
       </div>
-      <p class="win" data-reveal style="--d:.3s">Lo que esperas es claro: <b>que sean buenos gerentes.</b></p>
     </div>
   </section>
 

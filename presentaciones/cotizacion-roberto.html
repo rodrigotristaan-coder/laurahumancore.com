@@ -38,7 +38,7 @@
   *{box-sizing:border-box;min-width:0;}
   html,body{margin:0;height:100%;}
   body{background:var(--cream);color:var(--body-solid);font-family:var(--font-body);
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word;
+    font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word;
     print-color-adjust:exact;-webkit-print-color-adjust:exact;}
   img{max-width:100%;height:auto;}
   ::selection{background:var(--blue);color:#fff;}
@@ -62,12 +62,23 @@
   .hl{color:var(--blue);}
   .on-navy .hl,.on-deep .hl,.on-blue .hl{color:var(--gold);}
 
-  .eyebrow{font-family:var(--font-label);font-weight:700;font-size:11px;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--blue);margin:0 0 18px;}
+  /* fondos fotográficos con velo mate (casi sólido, el texto manda) */
+  .slab > *{position:relative;z-index:1;}
+  .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;}
+  .bg::after{content:"";position:absolute;inset:0;}
+  .bg-playa{background-image:url('/assets/bg-playa.webp');}
+  .bg-team{background-image:url('/assets/bg-team.webp');}
+  .bg-problema{background-image:url('/assets/sistemas/bg-problema.webp');}
+  .v-navy::after{background:linear-gradient(120deg,rgba(0,32,96,.93),rgba(0,18,51,.91));}
+  .v-deep::after{background:linear-gradient(120deg,rgba(0,18,51,.94),rgba(0,18,51,.9));}
+  .v-blue::after{background:linear-gradient(150deg,rgba(21,82,201,.92) 0%,rgba(13,62,163,.94) 55%,rgba(0,32,96,.95) 100%);}
+
+  .eyebrow{font-family:var(--font-label);font-weight:700;font-size:12.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--blue);margin:0 0 20px;}
   .on-navy .eyebrow,.on-deep .eyebrow{color:var(--gold);}
   .on-blue .eyebrow{color:#fff;}
-  .slab h2{font-size:clamp(34px,4.6vw,60px);margin:0 0 18px;max-width:20ch;}
-  .lead{font-size:clamp(16px,1.6vw,19px);max-width:62ch;margin:0;}
+  .slab h2{font-size:clamp(40px,5.4vw,74px);margin:0 0 22px;max-width:20ch;}
+  .lead{font-size:clamp(18px,1.9vw,22px);max-width:62ch;margin:0;}
   .on-white .lead,.on-cream .lead{color:var(--taupe);}
 
   /* marca fija por diapositiva */
@@ -80,114 +91,114 @@
     font-size:10px;letter-spacing:.2em;color:var(--taupe);}
   .on-navy .num,.on-deep .num,.on-blue .num{color:rgba(255,255,255,.45);}
 
-  /* ---------- 01 · portada ---------- */
-  .cover .slab{align-items:flex-start;}
-  .tag-oro{display:inline-block;font-family:var(--font-label);font-weight:700;font-size:11px;
+  /* ---------- 01 · portada (centrada) ---------- */
+  .cover .slab{align-items:center;text-align:center;}
+  .tag-oro{display:inline-block;font-family:var(--font-label);font-weight:700;font-size:12px;
     letter-spacing:.18em;text-transform:uppercase;color:var(--navy-deep);background:var(--gold);
-    border-radius:var(--r-pill);padding:10px 22px;margin-bottom:26px;}
-  .cover h1{font-size:clamp(44px,6.4vw,92px);max-width:14ch;margin:0 0 24px;}
-  .cover .quien{font-size:clamp(16.5px,1.7vw,20px);color:rgba(255,255,255,.82);max-width:56ch;margin:0;}
+    border-radius:var(--r-pill);padding:11px 24px;margin-bottom:30px;}
+  .cover h1{font-size:clamp(48px,7vw,104px);max-width:14ch;margin:0 auto 26px;}
+  .cover .quien{font-size:clamp(18px,2vw,23px);color:rgba(255,255,255,.85);max-width:52ch;margin:0 auto;}
   .cover .quien b{color:#fff;font-weight:700;}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;}
-  .chips span{font-family:var(--font-label);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-    color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:var(--r-pill);padding:9px 16px;}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;justify-content:center;}
+  .chips span{font-family:var(--font-label);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:var(--r-pill);padding:10px 18px;}
 
   /* ---------- 02 · CV ---------- */
   .cv{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center;}
   .cv .foto{position:relative;justify-self:center;}
   .cv .foto img{width:100%;max-width:280px;border-radius:50%;display:block;}
   .cv .foto::after{content:"";position:absolute;inset:-14px;border:1px solid var(--line-blue);border-radius:50%;}
-  .cv .role{font-family:var(--font-label);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--blue);font-weight:700;margin:0 0 14px;}
-  .cv .bio{font-size:clamp(16px,1.6vw,19px);margin:0 0 22px;max-width:58ch;}
+  .cv .role{font-family:var(--font-label);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--blue);font-weight:700;margin:0 0 16px;}
+  .cv .bio{font-size:clamp(18px,1.9vw,22px);margin:0 0 26px;max-width:58ch;}
   .cv .bio b{color:var(--ink);font-weight:700;}
-  .hitos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;margin:0 0 22px;}
-  .hito{border-left:2px solid var(--line-blue);padding-left:14px;}
-  .hito .k{font-family:var(--font-label);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  .hitos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 26px;margin:0 0 26px;}
+  .hito{border-left:3px solid var(--line-blue);padding-left:16px;}
+  .hito .k{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--gold-deep);font-weight:700;}
-  .hito .v{font-weight:700;color:var(--ink);font-size:15.5px;line-height:1.3;}
-  .hito .d{font-size:13.5px;color:var(--taupe);line-height:1.45;}
+  .hito .v{font-weight:700;color:var(--ink);font-size:18px;line-height:1.3;}
+  .hito .d{font-size:15.5px;color:var(--taupe);line-height:1.5;}
   .premios{display:flex;flex-wrap:wrap;gap:10px;}
-  .premios span{font-size:13.5px;font-weight:700;color:var(--navy);background:var(--blue-pale);
-    border:1px solid var(--line-blue);border-radius:var(--r-pill);padding:9px 18px;}
+  .premios span{font-size:15px;font-weight:700;color:var(--navy);background:var(--blue-pale);
+    border:1px solid var(--line-blue);border-radius:var(--r-pill);padding:10px 20px;}
   .premios span b{color:var(--gold-deep);}
 
-  /* ---------- 03 · clientes ---------- */
-  .muro{display:grid;grid-template-columns:repeat(7,1fr);gap:18px 30px;align-items:center;
-    justify-items:center;margin-top:40px;}
-  .muro img{max-height:44px;width:auto;max-width:120px;}
-  .muro-cap{margin-top:36px;font-size:15px;color:var(--taupe);}
+  /* ---------- 03 · clientes (todo blanco, logos grandes) ---------- */
+  .muro{display:grid;grid-template-columns:repeat(7,1fr);gap:34px 36px;align-items:center;
+    justify-items:center;margin-top:48px;}
+  .muro img{max-height:66px;width:auto;max-width:165px;}
+  .muro-cap{margin-top:44px;font-size:17.5px;color:var(--taupe);}
   .muro-cap b{color:var(--ink);}
 
   /* ---------- 04 · frase ---------- */
   .quote-slide .slab{align-items:flex-start;}
   .frase{font-family:var(--font-display);font-weight:600;color:#fff;
-    font-size:clamp(38px,5.6vw,80px);line-height:1.08;letter-spacing:-.015em;max-width:18ch;margin:0 0 30px;}
+    font-size:clamp(44px,6.4vw,94px);line-height:1.08;letter-spacing:-.015em;max-width:18ch;margin:0 0 32px;}
   .frase .hl{color:var(--gold);}
-  .autor{font-family:var(--font-label);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-    color:rgba(255,255,255,.55);margin:0 0 40px;}
-  .remate{font-size:clamp(16.5px,1.7vw,20px);color:rgba(255,255,255,.85);max-width:52ch;margin:0;
-    border-left:3px solid var(--gold);padding-left:20px;}
+  .autor{font-family:var(--font-label);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(255,255,255,.6);margin:0 0 44px;}
+  .remate{font-size:clamp(18.5px,2vw,23px);color:rgba(255,255,255,.88);max-width:52ch;margin:0;
+    border-left:3px solid var(--gold);padding-left:22px;}
   .remate b{color:#fff;}
 
   /* ---------- 05 · reto ---------- */
-  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
-  .cardm{background:#fff;border-radius:var(--r-md);padding:26px 24px;color:var(--body-solid);}
-  .cardm h3{font-size:21px;margin:0 0 8px;color:var(--ink);}
-  .cardm p{font-size:14.5px;margin:0;line-height:1.55;}
-  .win{margin-top:26px;font-size:clamp(17px,1.8vw,21px);color:#fff;}
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px;}
+  .cardm{background:#fff;border-radius:var(--r-md);padding:34px 30px;color:var(--body-solid);}
+  .cardm h3{font-size:25px;margin:0 0 10px;color:var(--ink);}
+  .cardm p{font-size:16.5px;margin:0;line-height:1.55;}
+  .win{margin-top:30px;font-size:clamp(19px,2.1vw,25px);color:#fff;}
   .win b{color:var(--gold);font-weight:800;}
 
   /* ---------- 06 · comparación ---------- */
-  .versus{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;align-items:stretch;}
-  .lado{border-radius:var(--r-lg);padding:34px 32px;}
+  .versus{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px;align-items:stretch;}
+  .lado{border-radius:var(--r-lg);padding:42px 40px;}
   .lado.aula{background:var(--cream);border:1px solid var(--line);}
-  .lado.hc{background:var(--navy);color:rgba(255,255,255,.85);}
-  .lado h3{font-size:24px;margin:0 0 4px;}
+  .lado.hc{background:var(--navy);color:rgba(255,255,255,.87);}
+  .lado h3{font-size:29px;margin:0 0 5px;}
   .lado.hc h3{color:#fff;}
-  .lado .sub{font-family:var(--font-label);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--taupe);margin:0 0 18px;}
+  .lado .sub{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--taupe);margin:0 0 20px;}
   .lado.hc .sub{color:var(--gold);}
-  .lado ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
-  .lado li{font-size:15px;line-height:1.5;padding-left:24px;position:relative;}
+  .lado ul{list-style:none;margin:0;padding:0;display:grid;gap:14px;}
+  .lado li{font-size:17px;line-height:1.55;padding-left:26px;position:relative;}
   .lado.aula li::before{content:"—";position:absolute;left:0;color:var(--taupe);}
   .lado.hc li::before{content:"●";position:absolute;left:0;top:2px;font-size:9px;color:var(--gold);}
   .lado.hc li b{color:#fff;}
 
   /* ---------- 07 · método ---------- */
-  .ruta{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px;}
-  .paso{background:var(--blue-pale);border:1px solid var(--line-blue);border-radius:var(--r-md);padding:24px 22px;}
-  .paso .cuando{font-family:var(--font-label);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--blue);margin:0 0 10px;}
-  .paso h3{font-size:19.5px;margin:0 0 8px;}
-  .paso p{font-size:13.5px;margin:0;line-height:1.55;}
+  .ruta{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:10px;}
+  .paso{background:var(--blue-pale);border:1px solid var(--line-blue);border-radius:var(--r-md);padding:30px 28px;}
+  .paso .cuando{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--blue);margin:0 0 12px;}
+  .paso h3{font-size:23px;margin:0 0 10px;}
+  .paso p{font-size:15.5px;margin:0;line-height:1.55;}
   .paso.corte{background:var(--navy);border-color:var(--navy);color:rgba(255,255,255,.82);}
   .paso.corte .cuando{color:var(--gold);}
   .paso.corte h3{color:#fff;}
-  .triangulo{margin-top:22px;background:var(--navy-deep);border-radius:var(--r-md);padding:22px 28px;
-    color:rgba(255,255,255,.85);font-size:clamp(15px,1.5vw,17.5px);}
+  .triangulo{margin-top:24px;background:var(--navy-deep);border-radius:var(--r-md);padding:28px 34px;
+    color:rgba(255,255,255,.87);font-size:clamp(17px,1.8vw,20.5px);}
   .triangulo b{color:var(--gold);}
 
   /* ---------- 08 · inversión ---------- */
-  .lista-precio{font-size:15.5px;color:rgba(255,255,255,.65);margin:0 0 26px;}
-  .lista-precio b{color:rgba(255,255,255,.85);font-weight:700;text-decoration:line-through;
+  .lista-precio{font-size:17.5px;color:rgba(255,255,255,.7);margin:0 0 30px;}
+  .lista-precio b{color:rgba(255,255,255,.88);font-weight:700;text-decoration:line-through;
     text-decoration-color:rgba(194,163,107,.8);}
-  .pagos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;}
-  .pago{background:#fff;border-radius:var(--r-lg);padding:30px 26px;color:var(--body-solid);
+  .pagos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;}
+  .pago{background:#fff;border-radius:var(--r-lg);padding:38px 32px;color:var(--body-solid);
     display:flex;flex-direction:column;position:relative;}
-  .pago .forma{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--blue);margin:0 0 4px;}
-  .pago .desc{font-family:var(--font-display);font-weight:700;font-size:24px;color:var(--ink);margin:0 0 14px;}
-  .pago .total{font-family:var(--font-display);font-weight:700;font-size:clamp(30px,3vw,40px);
+  .pago .forma{font-family:var(--font-label);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--blue);margin:0 0 5px;}
+  .pago .desc{font-family:var(--font-display);font-weight:700;font-size:28px;color:var(--ink);margin:0 0 16px;}
+  .pago .total{font-family:var(--font-display);font-weight:700;font-size:clamp(38px,3.8vw,52px);
     color:var(--ink);line-height:1;margin:0;}
-  .pago .como{font-size:13.5px;color:var(--taupe);margin:8px 0 14px;}
-  .pago .ahorro{margin-top:auto;font-size:13.5px;font-weight:700;color:var(--gold-deep);}
+  .pago .como{font-size:15.5px;color:var(--taupe);margin:10px 0 16px;}
+  .pago .ahorro{margin-top:auto;font-size:15.5px;font-weight:700;color:var(--gold-deep);}
   .pago.mejor{outline:3px solid var(--gold);outline-offset:-3px;}
   .pago.mejor .badge{position:absolute;top:-13px;left:26px;font-family:var(--font-label);font-weight:700;
     font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);
     background:var(--gold);border-radius:var(--r-pill);padding:6px 14px;}
   .pago.mejor .total{color:var(--navy);}
-  .nota-mxn{margin:22px 0 0;font-size:12.5px;color:rgba(255,255,255,.5);}
+  .nota-mxn{margin:24px 0 0;font-size:14px;color:rgba(255,255,255,.55);}
 
   /* ---------- 09 · cierre ---------- */
   .cierre .slab{align-items:flex-start;}
@@ -201,7 +212,7 @@
   .btn-gold:hover{transform:translateY(-2px);}
   .btn-borde{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
   .btn-borde:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
-  .pie{margin-top:42px;font-size:13px;color:rgba(255,255,255,.5);}
+  .pie{margin-top:44px;font-size:14.5px;color:rgba(255,255,255,.55);}
 
   /* ---------- navegación fija ---------- */
   .dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);display:grid;gap:10px;z-index:50;}
@@ -233,8 +244,8 @@
     .cv{grid-template-columns:1fr;gap:30px;}
     .cv .foto img{max-width:200px;}
     .hitos{grid-template-columns:1fr;}
-    .muro{grid-template-columns:repeat(3,1fr);gap:16px 20px;}
-    .muro img{max-height:34px;}
+    .muro{grid-template-columns:repeat(3,1fr);gap:20px 22px;}
+    .muro img{max-height:46px;}
     .cards3,.versus,.ruta,.pagos{grid-template-columns:1fr;}
     .pago.mejor{order:-1;}
     .dots{display:none;}
@@ -261,6 +272,7 @@
   <!-- 01 · PORTADA -->
   <section class="slide cover on-navy" data-t="Portada">
     <div class="slab">
+      <div class="bg bg-playa v-navy"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">01 / 09</div>
       <span class="tag-oro" data-reveal>Propuesta especial · Agosto 2026</span>
@@ -310,7 +322,7 @@
   </section>
 
   <!-- 03 · CLIENTES -->
-  <section class="slide on-cream" data-t="Empresas">
+  <section class="slide on-white" data-t="Empresas">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">03 / 09</div>
@@ -337,6 +349,7 @@
   <!-- 04 · FRASE -->
   <section class="slide quote-slide on-deep" data-t="Piénsalo">
     <div class="slab">
+      <div class="bg bg-playa v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">04 / 09</div>
       <p class="frase" data-reveal>«Locura es hacer <span class="hl">lo mismo</span> esperando resultados distintos.»</p>
@@ -349,6 +362,7 @@
   <!-- 05 · EL RETO -->
   <section class="slide on-blue" data-t="El reto">
     <div class="slab">
+      <div class="bg bg-problema v-blue"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">05 / 09</div>
       <p class="eyebrow" data-reveal>El reto de Integra</p>
@@ -443,6 +457,7 @@
   <!-- 08 · INVERSIÓN -->
   <section class="slide on-navy" data-t="Inversión">
     <div class="slab">
+      <div class="bg bg-team v-navy"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">08 / 09</div>
       <p class="eyebrow" data-reveal>Inversión · 5 gerentes · 6 meses</p>
@@ -479,6 +494,7 @@
   <!-- 09 · CIERRE -->
   <section class="slide cierre on-deep" data-t="Siguiente paso">
     <div class="slab">
+      <div class="bg bg-playa v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">09 / 09</div>
       <p class="eyebrow" data-reveal>Siguiente paso</p>

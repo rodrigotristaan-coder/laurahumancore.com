@@ -64,12 +64,14 @@ funcional, todo burbuja/píldora, nada rectángulo.
 
 La v1.3 (todo panel navy translúcido) quedó archivada. Ahora:
 
-- **Los paneles ALTERNAN**: blanco / azul vivo / navy. Clases `.sec.on-white`,
+- **Los paneles ALTERNAN**: blanco / navy iluminado / navy. Clases `.sec.on-white`,
   `.sec.on-blue`, `.sec.on-dark`. Siguen siendo burbujas redondeadas sobre el
   crema (gaps de 12px, 8px en móvil).
-- **Azul como bloque, no solo como velo**: `--blue:#1552c9`, `--blue-bright`,
-  `--blue-pale`. El dorado sigue siendo funcional (CTA, medallas, acentos).
-- **Énfasis por titular**: la palabra que carga el mensaje va en `.hl` (azul
+- **⚠️ El azul vivo se RETIRÓ (14-ago, nota de Rodrigo)**: `--blue` ahora es el
+  navy `#002060` y `--blue-bright` un navy iluminado `#0b3179`. `.on-blue` y
+  `v-blue` quedaron como gradientes/velos navy (las clases conservan su nombre).
+  No reintroduzcas `#1552c9`. El dorado sigue siendo funcional (CTA, medallas, acentos).
+- **Énfasis por titular**: la palabra que carga el mensaje va en `.hl` (navy
   sobre claro, dorado sobre oscuro). Nunca itálicas.
 - **Fotos de fondo** en problema, método, reconocimientos y contacto:
   `<div class="bg-photo ph-team|ph-playa|ph-problema v-soft|v-heavy|v-blue">`.
@@ -84,7 +86,7 @@ La v1.3 (todo panel navy translúcido) quedó archivada. Ahora:
 2. **Hero** — centrado, fondo playa, typewriter en el H1. **Siempre 2 renglones**.
 3. **Cinta de logos** — marquee infinito a color; en móvil son DOS, la de abajo en reversa.
 4. **Fundadora** (`#fundadora`) — retrato, bio y línea de tiempo.
-5. **El problema** (`#problema`) — azul vivo + foto, 3 cards.
+5. **El problema** (`#problema`) — navy + foto, 3 cards.
 6. **Los 3 sistemas** (`#sistemas`) — BLANCO, una tarjeta con foto por sistema (ya no es acordeón).
 7. **Cómo funciona** (`#metodo`) — 2 fases con temario y habilidades.
 8. **Reconocimientos** (`#reconocimientos`) — premios + medios.

@@ -3,6 +3,7 @@
 // revela quién tiene acceso.
 'use strict';
 const { creaToken, emailsPermitidos } = require('./_auth');
+const { permite, ip } = require('./_ratelimit');
 
 const VIDA_ENLACE_MS = 15 * 60 * 1000; // 15 minutos
 
@@ -16,8 +17,19 @@ module.exports = async function (req, res) {
 
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
 
+  // 10 intentos por IP cada 10 min
+  if (!permite('login:' + ip(req), 10, 10 * 60 * 1000)) {
+    res.statusCode = 429; return res.end(JSON.stringify({ ok: false, error: 'calma' }));
+  }
+
   const valido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!valido) { res.statusCode = 400; return res.end(JSON.stringify({ ok: false })); }
+
+  // 3 correos por dirección cada 15 min: si se pasa, respondemos ok sin mandar
+  // (no se spamea el buzón de Laura y no se revela nada)
+  if (!permite('mail:' + email, 3, 15 * 60 * 1000)) {
+    res.statusCode = 200; return res.end(JSON.stringify({ ok: true }));
+  }
 
   if (emailsPermitidos().indexOf(email) !== -1) {
     const link = 'https://laurahumancore.com/api/verify?t=' + creaToken(email, VIDA_ENLACE_MS);

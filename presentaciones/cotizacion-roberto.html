@@ -527,6 +527,9 @@ document.documentElement.classList.add('js');
     i = Math.max(0, Math.min(slides.length - 1, i));
     slides[i].scrollIntoView({behavior:'smooth'});
   }
+  /* el índice para teclado sale del scroll, no del observer: el cache puede
+     quedar un slide atrás si la tecla llega antes de que el observer dispare */
+  function idx(){ return Math.round(deck.scrollTop / deck.clientHeight); }
 
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -544,8 +547,8 @@ document.documentElement.classList.add('js');
   }, 3000);
 
   document.addEventListener('keydown', function(ev){
-    if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown' || ev.key === 'PageDown'){ ev.preventDefault(); ir(actual+1); }
-    if (ev.key === 'ArrowLeft'  || ev.key === 'ArrowUp'   || ev.key === 'PageUp'){ ev.preventDefault(); ir(actual-1); }
+    if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown' || ev.key === 'PageDown'){ ev.preventDefault(); ir(idx()+1); }
+    if (ev.key === 'ArrowLeft'  || ev.key === 'ArrowUp'   || ev.key === 'PageUp'){ ev.preventDefault(); ir(idx()-1); }
     if (ev.key === 'Home'){ ev.preventDefault(); ir(0); }
     if (ev.key === 'End'){ ev.preventDefault(); ir(slides.length-1); }
   });

@@ -83,7 +83,8 @@
     text-transform:uppercase;color:var(--blue);margin:0 0 20px;}
   .on-navy .eyebrow,.on-deep .eyebrow{color:var(--gold);}
   .on-blue .eyebrow{color:#fff;}
-  .slab h2{font-size:clamp(44px,5.8vw,80px);margin:0 0 24px;max-width:20ch;}
+  /* en compu el titular va a UNA línea (máximo dos): tamaño contenido y sin tope de ancho */
+  .slab h2{font-size:clamp(34px,4.1vw,58px);margin:0 0 22px;}
   .lead{font-size:clamp(19px,2vw,23px);max-width:62ch;margin:0;}
   .on-white .lead,.on-cream .lead{color:var(--taupe);}
 
@@ -136,17 +137,16 @@
   .muro-cap{margin-top:44px;font-size:18.5px;color:var(--taupe);}
   .muro-cap b{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--navy);letter-spacing:-.01em;}
 
-  /* ---------- 04 · frase (con la foto de Einstein) ---------- */
-  .quote-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;}
-  .frase{font-family:var(--font-display);font-weight:600;color:#fff;
-    font-size:clamp(40px,5.2vw,82px);line-height:1.08;letter-spacing:-.015em;max-width:18ch;margin:0 0 32px;}
-  .frase .hl{color:var(--gold);}
-  .autor{font-family:var(--font-label);font-size:13px;letter-spacing:.2em;text-transform:uppercase;
-    color:rgba(255,255,255,.65);margin:0 0 44px;}
-  .remate{font-size:clamp(19.5px,2.1vw,24px);color:rgba(255,255,255,.88);max-width:52ch;margin:0;
-    border-left:3px solid var(--gold);padding-left:22px;}
-  .remate b{color:#fff;}
-  .einstein{margin:0;justify-self:end;max-width:400px;}
+  /* ---------- 04 · frase: el remate va arriba como título, la cita de subtítulo ---------- */
+  .quote-slide .slab{align-items:center;text-align:center;}
+  .frase-t{font-family:var(--font-display);font-weight:600;color:#fff;
+    font-size:clamp(30px,3.7vw,52px);line-height:1.14;letter-spacing:-.015em;max-width:40ch;margin:0 auto 26px;}
+  .frase-t b{color:var(--gold);font-weight:700;}
+  .quote-sub{font-family:var(--font-display);font-weight:600;color:rgba(255,255,255,.85);
+    font-size:clamp(20px,2.3vw,28px);margin:0 auto;max-width:52ch;}
+  .autor{font-family:var(--font-label);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(255,255,255,.6);margin:12px 0 0;}
+  .einstein{margin:34px auto 0;max-width:270px;}
   .einstein img{display:block;width:100%;border-radius:var(--r-lg);border:1px solid rgba(255,255,255,.22);}
 
   /* ---------- 05 · reto ---------- */
@@ -182,14 +182,14 @@
   .lado.hc .pero .et{color:var(--gold);}
   .lado.hc .pero b{color:#fff;}
 
-  /* ---------- 07 · método: 5 fases en crema ---------- */
-  .ruta{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:10px;}
-  .paso{background:var(--cream);border:1px solid var(--line);border-radius:var(--r-md);padding:28px 24px;color:var(--body-solid);}
-  .paso .cuando{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--gold-deep);margin:0 0 12px;}
-  .paso h3{font-size:22px;margin:0 0 10px;color:var(--ink);}
-  .paso p{font-size:15px;margin:0;line-height:1.55;}
-  .paso.corte{outline:3px solid var(--gold);outline-offset:-3px;}
+  /* ---------- 07 · método: 5 fases en crema, TODAS con marco dorado y 1.5x ---------- */
+  .ruta{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:10px;}
+  .paso{background:var(--cream);border-radius:var(--r-md);padding:36px 28px;color:var(--body-solid);
+    outline:3px solid var(--gold);outline-offset:-3px;}
+  .paso .cuando{font-family:var(--font-label);font-size:13.5px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--gold-deep);margin:0 0 14px;}
+  .paso h3{font-size:32px;margin:0 0 12px;color:var(--ink);line-height:1.08;}
+  .paso p{font-size:20px;margin:0;line-height:1.45;}
   .triangulo{margin-top:24px;background:var(--navy-deep);border-radius:var(--r-md);padding:28px 34px;
     color:rgba(255,255,255,.87);font-size:clamp(18px,1.9vw,21.5px);}
   .triangulo b{color:var(--gold);}
@@ -216,9 +216,12 @@
   .nota-mxn{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.55);}
 
   /* ---------- 09 · escala por número de líderes ---------- */
-  .escala{display:grid;gap:12px;max-width:940px;margin-top:10px;}
-  .fila{display:grid;grid-template-columns:1fr auto auto;gap:8px 36px;align-items:center;
-    background:#fff;border-radius:var(--r-md);padding:19px 36px;color:var(--body-solid);position:relative;}
+  .escala{display:grid;gap:14px;max-width:980px;margin-top:10px;}
+  .fila{display:grid;grid-template-columns:1fr auto auto auto;gap:8px 34px;align-items:center;
+    background:#fff;border-radius:var(--r-md);padding:26px 36px;color:var(--body-solid);position:relative;}
+  .fila .ah{font-family:var(--font-label);font-weight:700;font-size:12px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--navy-deep);background:var(--gold);border-radius:var(--r-pill);
+    padding:8px 16px;justify-self:start;}
   .fila .q{font-family:var(--font-label);font-weight:700;font-size:14px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--navy);}
   .fila .c,.fila .s{text-align:right;}
@@ -233,7 +236,7 @@
 
   /* ---------- 09 · cierre ---------- */
   .cierre .slab{align-items:flex-start;}
-  .cierre h2{max-width:16ch;}
+  .cierre h2{max-width:none;}
   .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
   .btn{font-family:var(--font-label);font-weight:700;font-size:12px;line-height:1.2;letter-spacing:.14em;
     text-transform:uppercase;padding:17px 32px;border:1px solid transparent;border-radius:var(--r-pill);
@@ -283,6 +286,7 @@
     .einstein{justify-self:center;max-width:240px;}
     .fila{grid-template-columns:1fr 1fr;padding:22px 24px;}
     .fila .q{grid-column:1 / -1;}
+    .fila .ah{grid-column:1 / -1;}
     .fila .c{text-align:left;}
     .dots{display:none;}
     .ayuda{display:none;}
@@ -312,10 +316,9 @@
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">01 / 10</div>
       <span class="tag-oro" data-reveal>Propuesta especial · Agosto 2026</span>
-      <h1 data-reveal style="--d:.08s">Propuesta especial para <span class="hl">Roberto</span></h1>
-      <p class="quien" data-reveal style="--d:.16s"><b>Dueño y Director General de Integra Engineering.</b>
-        22 años rentando mano de obra especializada —carpinteros, eléctricos y más oficios—
-        a empresas de construcción.</p>
+      <h1 data-reveal style="--d:.08s">Propuesta especial para <span class="hl">Roberto Alarcón</span></h1>
+      <p class="quien" data-reveal style="--d:.16s"><b>Socio fundador y Director General de Integra Engineering.</b>
+        Más de 20 años rentando mano de obra especializada: carpinteros, eléctricos y más oficios.</p>
       <div class="chips" data-reveal style="--d:.24s">
         <span>5 líderes técnicos</span><span>Rumbo a gerencia</span><span>Programa 1 a 1 · 6 meses</span>
       </div>
@@ -363,7 +366,7 @@
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">03 / 10</div>
       <p class="eyebrow" data-reveal>Trayectoria</p>
-      <h2 data-reveal style="--d:.06s">Las empresas donde ha formado <span class="hl">líderes</span></h2>
+      <h2 data-reveal style="--d:.06s">Empresas donde hemos formado <span class="hl">líderes</span></h2>
       <div class="muro" data-reveal style="--d:.14s">
         <img src="/assets/logos/ge.webp" alt="GE" /><img src="/assets/logos/technipfmc.webp" alt="TechnipFMC" />
         <img src="/assets/logos/pepsico.webp" alt="PepsiCo" /><img src="/assets/logos/axa.webp" alt="AXA" />
@@ -388,17 +391,13 @@
       <div class="bg bg-playa v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">04 / 10</div>
-      <div class="quote-grid">
-        <div>
-          <p class="frase" data-reveal>“Locura es hacer <span class="hl">lo mismo</span> esperando resultados distintos.”</p>
-          <p class="autor" data-reveal style="--d:.1s">— Albert Einstein</p>
-          <p class="remate" data-reveal style="--d:.18s">Ascender a un gran técnico sin prepararlo no produce un gerente:
-            produce <b>un gran técnico saturado</b>.</p>
-        </div>
-        <figure class="einstein" data-reveal style="--d:.14s">
-          <img src="/assets/einstein.webp" alt="Albert Einstein" width="740" height="762" />
-        </figure>
-      </div>
+      <p class="frase-t" data-reveal>Ascender a un gran técnico sin prepararlo no produce un gerente:
+        produce <b>un gran técnico saturado</b>.</p>
+      <p class="quote-sub" data-reveal style="--d:.1s">“Locura es hacer lo mismo esperando resultados distintos.”</p>
+      <p class="autor" data-reveal style="--d:.14s">— Albert Einstein</p>
+      <figure class="einstein" data-reveal style="--d:.2s">
+        <img src="/assets/einstein.webp" alt="Albert Einstein" width="740" height="762" />
+      </figure>
     </div>
   </section>
 
@@ -409,12 +408,12 @@
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">05 / 10</div>
       <p class="eyebrow" data-reveal>El reto de Integra</p>
-      <h2 data-reveal style="--d:.06s">5 líderes técnicos van a ser <span class="hl">gerentes</span></h2>
-      <p class="win" data-reveal style="--d:.1s">Lo que esperas es claro: <b>que sean buenos gerentes.</b></p>
+      <h2 data-reveal style="--d:.06s">5 líderes técnicos convertidos en <span class="hl">gerentes</span></h2>
+      <p class="win" data-reveal style="--d:.1s">Lo que esperas es claro: <b>que desarrollen sus habilidades gerenciales.</b></p>
       <div class="cards3">
         <div class="cardm" data-reveal style="--d:.12s">
           <h3>Son los mejores en su oficio</h3>
-          <p>Dominan la operación. Por eso los vas a ascender.</p>
+          <p>Dominan la operación.</p>
         </div>
         <div class="cardm" data-reveal style="--d:.18s">
           <h3>Nadie les ha enseñado a gerenciar</h3>
@@ -447,7 +446,7 @@
             <li>El reporte llega al final, si llega.</li>
           </ul>
           <p class="pero"><span class="et">El riesgo</span>Otro diplomado en el CV sube el ego académico —
-            y hay gerentes que con el papel en la mano salen a buscarse otra empresa.</p>
+            hay gerentes que con un certificado en mano salen a buscarse otra empresa.</p>
         </div>
         <div class="lado hc" data-reveal style="--d:.18s">
           <h3>HUMAN-CORE 1 a 1</h3>
@@ -456,11 +455,11 @@
             <li><b>Diagnóstico personal</b> de cada uno de tus 5 gerentes.</li>
             <li><b>Plan de crecimiento a la medida</b> de cada líder.</li>
             <li>Avanza al ritmo de cada gerente: <b>más rápido</b>.</li>
-            <li><b>Feedback directo a ti</b> durante todo el programa.</li>
-            <li>Reportes de fortalezas, debilidades y áreas de oportunidad.</li>
+            <li><b>Feedback bidireccional con el DG</b> durante todo el programa.</li>
+            <li><b>Entrega de reportes</b> de fortalezas, debilidades y áreas de oportunidad.</li>
           </ul>
-          <p class="pero"><span class="et">Lo que no es</span>No da valor curricular: no es un papel que abra
-            puertas afuera. Es desarrollo a la medida que <b>se queda en tu empresa</b>.</p>
+          <p class="pero"><span class="et">Lo que no es</span>No es un papel que abra puertas afuera:
+            es desarrollo a la medida que <b>se queda en tu empresa</b>.</p>
         </div>
       </div>
     </div>
@@ -471,7 +470,7 @@
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">07 / 10</div>
-      <p class="eyebrow" data-reveal>Cómo trabaja Laura</p>
+      <p class="eyebrow" data-reveal>Cómo trabajamos</p>
       <h2 data-reveal style="--d:.06s">Seis meses, cinco <span class="hl">fases</span></h2>
       <div class="ruta">
         <div class="paso" data-reveal style="--d:.12s">
@@ -484,7 +483,7 @@
           <h3>Coaching 1 a 1</h3>
           <p>Sesiones individuales con objetivos propios por líder, sin sacarlos de la operación.</p>
         </div>
-        <div class="paso corte" data-reveal style="--d:.22s">
+        <div class="paso" data-reveal style="--d:.22s">
           <p class="cuando">Fase 3 · Mes 3</p>
           <h3>Reporte trimestral</h3>
           <p>Corte de caja contigo: avances de cada gerente y ajuste de objetivos para el resto del semestre.</p>
@@ -500,9 +499,8 @@
           <p>Dictamen de cada líder: potencial a largo plazo, mente de aprendiz y madera de gerente.</p>
         </div>
       </div>
-      <div class="triangulo" data-reveal style="--d:.36s">Además, Laura <b>triangula contigo como Director
-        General</b>: lo que ve en tus gerentes frente a la operación del día a día se convierte en feedback
-        periódico para ti, y coadyuva —de forma indirecta— al logro de tus objetivos de negocio.</div>
+      <div class="triangulo" data-reveal style="--d:.36s"><b>Feedback periódico y oportuno con el DG</b> para
+        el logro de los objetivos de la empresa.</div>
     </div>
   </section>
 
@@ -512,34 +510,34 @@
       <div class="bg bg-team v-navy"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">08 / 10</div>
-      <p class="eyebrow" data-reveal>Inversión · 5 gerentes · 6 meses</p>
-      <h2 data-reveal style="--d:.06s">15% de descuento <span class="hl">por grupo</span></h2>
-      <p class="lista-precio" data-reveal style="--d:.1s">Precio de lista: $62,871 por líder · <b>$314,355 el semestre</b></p>
+      <p class="eyebrow" data-reveal>Inversión · 5 líderes · 6 meses</p>
+      <h2 data-reveal style="--d:.06s">Precio especial para <span class="hl">Roberto</span></h2>
+      <p class="lista-precio" data-reveal style="--d:.1s">Precio normal: $69,000 por líder · <b>$345,000 por 5 líderes el semestre</b></p>
       <div class="pagos">
         <div class="pago mejor" data-reveal style="--d:.16s">
           <span class="badge">Mejor precio</span>
           <p class="forma">Un pago al inicio</p>
-          <p class="desc">15% de descuento</p>
+          <p class="como">$53,280 por líder</p>
           <p class="total">$266,400</p>
-          <p class="como">Una sola exhibición · $53,280 por líder</p>
-          <p class="ahorro">Ahorras $47,955</p>
+          <p class="como">Total por 5 líderes · en 1 solo pago</p>
+          <p class="ahorro">Ahorras $78,600 (23%)</p>
         </div>
         <div class="pago" data-reveal style="--d:.22s">
           <p class="forma">Dos pagos</p>
-          <p class="desc">12% de descuento</p>
+          <p class="como">$55,320 por líder</p>
           <p class="total">$276,600</p>
-          <p class="como">2 pagos de $138,300 (inicio y mes 3) · $55,320 por líder</p>
-          <p class="ahorro">Ahorras $37,755</p>
+          <p class="como">Total por 5 líderes · en 2 pagos de $138,300</p>
+          <p class="ahorro">Ahorras $68,400 (20%)</p>
         </div>
         <div class="pago" data-reveal style="--d:.28s">
           <p class="forma">Pago mensual</p>
-          <p class="desc">9% de descuento</p>
+          <p class="como">$57,204 por líder</p>
           <p class="total">$286,020</p>
-          <p class="como">6 pagos de $47,670 · $57,204 por líder</p>
-          <p class="ahorro">Ahorras $28,335</p>
+          <p class="como">Total por 5 líderes · en 6 pagos de $47,670</p>
+          <p class="ahorro">Ahorras $58,980 (17%)</p>
         </div>
       </div>
-      <p class="nota-mxn" data-reveal style="--d:.34s">Precios en pesos mexicanos (MXN). Descuento de grupo aplicable a los 5 gerentes en el mismo semestre.</p>
+      <p class="nota-mxn" data-reveal style="--d:.34s">Precios en pesos mexicanos (MXN). Programa de 6 meses (un semestre) para 5 líderes. Ahorros contra el precio normal de $69,000 por líder.</p>
     </div>
   </section>
 
@@ -551,32 +549,29 @@
       <div class="num">09 / 10</div>
       <p class="eyebrow" data-reveal>Si empiezan menos de 5</p>
       <h2 data-reveal style="--d:.06s">La escala por número de <span class="hl">líderes</span></h2>
-      <p class="lead" data-reveal style="--d:.1s">El programa funciona desde 1 líder — y la inversión
-        por líder baja conforme crece el grupo.</p>
+      <p class="lead" data-reveal style="--d:.1s">El mismo programa de 6 meses funciona desde 1 líder —
+        y la inversión por líder baja conforme crece el grupo.</p>
       <div class="escala">
         <div class="fila" data-reveal style="--d:.14s">
-          <div class="q">1 a 2 gerentes</div>
+          <div class="q">1 a 2 líderes</div>
+          <div class="ah">Ahorra 13%</div>
           <div class="c"><div class="v">$59,760</div><div class="k">por líder</div></div>
           <div class="s"><div class="v">$119,520</div><div class="k">semestre · 2 líderes</div></div>
         </div>
         <div class="fila" data-reveal style="--d:.19s">
-          <div class="q">3 gerentes</div>
+          <div class="q">3 líderes</div>
+          <div class="ah">Ahorra 17%</div>
           <div class="c"><div class="v">$57,600</div><div class="k">por líder</div></div>
           <div class="s"><div class="v">$172,800</div><div class="k">semestre</div></div>
         </div>
         <div class="fila" data-reveal style="--d:.24s">
-          <div class="q">4 gerentes</div>
+          <div class="q">4 líderes</div>
+          <div class="ah">Ahorra 20%</div>
           <div class="c"><div class="v">$55,440</div><div class="k">por líder</div></div>
           <div class="s"><div class="v">$221,760</div><div class="k">semestre</div></div>
         </div>
-        <div class="fila pick" data-reveal style="--d:.29s">
-          <span class="tagp">Tu propuesta · la mejor tarifa por líder</span>
-          <div class="q">5 gerentes</div>
-          <div class="c"><div class="v">$53,280</div><div class="k">por líder</div></div>
-          <div class="s"><div class="v">$266,400</div><div class="k">semestre</div></div>
-        </div>
       </div>
-      <p class="nota-mxn" data-reveal style="--d:.34s">Precios del semestre en MXN, en un pago al inicio.</p>
+      <p class="nota-mxn" data-reveal style="--d:.34s">Precios del semestre (6 meses) en MXN, en un pago al inicio. Ahorros contra el precio normal de $69,000 por líder.</p>
     </div>
   </section>
 
@@ -587,7 +582,7 @@
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">10 / 10</div>
       <p class="eyebrow" data-reveal>Siguiente paso</p>
-      <h2 data-reveal style="--d:.06s">¿Empezamos con tus 5 <span class="hl">gerentes</span>?</h2>
+      <h2 data-reveal style="--d:.06s">5 líderes en camino a convertirse en <span class="hl">Gerentes</span></h2>
       <p class="lead" style="color:rgba(255,255,255,.78);" data-reveal>
         En 6 meses tienes gerentes en desarrollo, reportes por líder y un dictamen claro de quién
         tiene madera para el largo plazo.</p>

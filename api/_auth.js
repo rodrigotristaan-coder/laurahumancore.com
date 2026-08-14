@@ -38,6 +38,33 @@ function leeToken(token) {
   return email;
 }
 
+// ---- flujo por CÓDIGO (el usuario no sale de /acceso) ----
+// reto = base64url(email) . expira . hmac(email|expira|codigo)
+// El código NUNCA viaja al navegador: solo va por correo. El navegador guarda
+// el reto y lo canjea junto con el código tecleado.
+function creaReto(email, codigo, vidaMs) {
+  const exp = Date.now() + vidaMs;
+  return b64url(email) + '.' + exp + '.' + firma(email + '|' + exp + '|' + codigo);
+}
+function verificaReto(reto, codigo) {
+  if (!SECRET || typeof reto !== 'string') return null;
+  const partes = reto.split('.');
+  if (partes.length !== 3) return null;
+  const email = fromB64url(partes[0]);
+  const exp = parseInt(partes[1], 10);
+  if (!email || !exp || Date.now() > exp) return null;
+  if (!igual(partes[2], firma(email + '|' + exp + '|' + codigo))) return null;
+  return email;
+}
+// Para correos fuera de la lista se devuelve un reto de utilería con la misma
+// pinta: la respuesta no revela quién tiene acceso.
+function retoFalso(vidaMs) {
+  return b64url(crypto.randomBytes(12)) + '.' + (Date.now() + vidaMs) + '.' + crypto.randomBytes(32).toString('hex');
+}
+function codigoNuevo() {
+  return String(crypto.randomInt(0, 1000000)).padStart(6, '0');
+}
+
 function emailsPermitidos() {
   return (process.env.ALLOWED_EMAILS || '')
     .split(',').map(function (s) { return s.trim().toLowerCase(); }).filter(Boolean);
@@ -57,4 +84,4 @@ function cookieSesion(email) {
 }
 const COOKIE_FUERA = 'hc_sesion=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0';
 
-module.exports = { creaToken, leeToken, emailsPermitidos, leeCookieSesion, cookieSesion, COOKIE_FUERA };
+module.exports = { creaToken, leeToken, creaReto, verificaReto, retoFalso, codigoNuevo, emailsPermitidos, leeCookieSesion, cookieSesion, COOKIE_FUERA };

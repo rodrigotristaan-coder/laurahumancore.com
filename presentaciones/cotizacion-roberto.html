@@ -131,7 +131,7 @@
     justify-items:center;margin-top:48px;}
   .muro img{max-height:66px;width:auto;max-width:165px;}
   .muro-cap{margin-top:44px;font-size:18.5px;color:var(--taupe);}
-  .muro-cap b{color:var(--ink);}
+  .muro-cap b{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--navy);letter-spacing:-.01em;}
 
   /* ---------- 04 · frase (con la foto de Einstein) ---------- */
   .quote-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;}
@@ -374,7 +374,7 @@
         <img src="/assets/logos/in.webp" alt="IN" /><img src="/assets/logos/ga.webp" alt="GA" />
         <img src="/assets/logos/banku.webp" alt="Banku" />
       </div>
-      <p class="muro-cap" data-reveal style="--d:.2s"><b>21 empresas</b> — de GE, PepsiCo y AXA a firmas
+      <p class="muro-cap" data-reveal style="--d:.2s"><b><span id="nEmp">+21</span> empresas</b> — de GE, PepsiCo y AXA a firmas
         industriales mexicanas. Gente de operación, no de escritorio.</p>
     </div>
   </section>
@@ -633,20 +633,42 @@ document.documentElement.classList.add('js');
      quedar un slide atrás si la tecla llega antes de que el observer dispare */
   function idx(){ return Math.round(deck.scrollTop / deck.clientHeight); }
 
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){
-        pinta(slides.indexOf(e.target));
-        e.target.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });
-      }
-    });
-  }, {root:null, threshold:.55});
-  slides.forEach(function(s){ obs.observe(s); });
+  /* counter de "+21 empresas": corre una sola vez, cuando su diapo entra a cuadro */
+  var nEmp = document.getElementById('nEmp');
+  var empListo = false;
+  function cuentaEmpresas(){
+    if (empListo || !nEmp) return;
+    empListo = true;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){ nEmp.textContent = '+21'; return; }
+    var t0 = null, dur = 1100;
+    function paso(t){
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      nEmp.textContent = '+' + Math.round((1 - Math.pow(1 - p, 3)) * 21);
+      if (p < 1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  window.addEventListener('beforeprint', function(){ empListo = true; if (nEmp) nEmp.textContent = '+21'; });
 
-  /* red de seguridad: si el observer no corre, todo visible a los 3 s */
-  setTimeout(function(){
+  if ('IntersectionObserver' in window){
+    if (nEmp) nEmp.textContent = '+0';
+    /* los reveals se disparan cuando CADA diapo entra a cuadro — sin timeout global,
+       que marcaba todo como visto a los 3 s y mataba la animación al hacer scroll */
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          pinta(slides.indexOf(e.target));
+          e.target.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });
+          if (e.target.querySelector('#nEmp')) cuentaEmpresas();
+        }
+      });
+    }, {root:null, threshold:.45});
+    slides.forEach(function(s){ obs.observe(s); });
+  } else {
     document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });
-  }, 3000);
+    empListo = true;
+  }
 
   document.addEventListener('keydown', function(ev){
     if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown' || ev.key === 'PageDown'){ ev.preventDefault(); ir(idx()+1); }

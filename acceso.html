@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Acceso — HUMAN-CORE System</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#002060" />
+<link rel="icon" type="image/png" href="/assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Mulish:wght@400;600;700&family=Archivo:wght@600;700&display=swap" />
+<style>
+  :root{
+    --navy:#002060;--navy-deep:#001233;--gold:#c2a36b;--gold-deep:#a8854c;
+    --cream:#f7f3ec;--ink:#111a30;--body:#414961;--taupe:#857c6c;--line:#e6dfd1;
+    --r-lg:30px;--r-pill:999px;--ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{box-sizing:border-box;min-width:0;}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 100% at 15% 0%, #0b3179 0%, var(--navy) 50%, var(--navy-deep) 100%);
+    font-family:Mulish,system-ui,sans-serif;color:var(--body);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;padding:20px;}
+  .caja{background:#fff;border-radius:var(--r-lg);padding:46px 42px;max-width:440px;width:100%;
+    text-align:center;box-shadow:0 30px 80px -30px rgba(0,0,0,.5);}
+  .caja img{width:56px;display:block;margin:0 auto 20px;}
+  h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;color:var(--ink);
+    font-size:34px;margin:0 0 8px;font-style:normal;line-height:1.1;}
+  p{margin:0 0 26px;color:var(--taupe);font-size:15.5px;}
+  label{display:block;text-align:left;font-family:Archivo,sans-serif;font-size:10.5px;
+    letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--navy);margin:0 0 8px;}
+  input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--cream);
+    border:1px solid var(--line);border-radius:14px;padding:15px 18px;outline:none;}
+  input:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(0,32,96,.16);background:#fff;}
+  button{width:100%;margin-top:16px;font-family:Archivo,sans-serif;font-weight:700;font-size:12px;
+    letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--navy);border:0;
+    border-radius:var(--r-pill);padding:17px 20px;cursor:pointer;transition:background .3s var(--ease),transform .3s var(--ease);}
+  button:hover{background:#0b3179;transform:translateY(-1px);}
+  button[disabled]{opacity:.6;cursor:wait;transform:none;}
+  .aviso{display:none;margin:18px 0 0;font-size:14.5px;border-radius:14px;padding:14px 16px;}
+  .aviso.ok{background:#eef6ee;color:#2c5e2e;}
+  .aviso.mal{background:#faeeed;color:#8c2f28;}
+  .regreso{display:inline-block;margin-top:24px;font-size:13px;color:var(--taupe);text-decoration:none;}
+  .regreso:hover{color:var(--navy);}
+</style>
+</head>
+<body>
+<main class="caja">
+  <img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" width="56" height="56" />
+  <h1>Tu panel</h1>
+  <p>Escribe tu correo y te mandamos un enlace para entrar. Sin contraseñas.</p>
+  <form id="f">
+    <label for="email">Tu correo</label>
+    <input id="email" name="email" type="email" required autocomplete="email" placeholder="tucorreo@ejemplo.com" />
+    <button id="btn" type="submit">Mandarme el enlace</button>
+  </form>
+  <p class="aviso ok" id="ok">Listo. Si tu correo tiene acceso, el enlace ya va en camino — revisa tu bandeja (y Spam la primera vez). Vence en 15 minutos.</p>
+  <p class="aviso mal" id="mal">No se pudo mandar el enlace. Intenta otra vez en un momento.</p>
+  <a class="regreso" href="/">← Volver al sitio</a>
+</main>
+<script>
+(function () {
+  var f = document.getElementById('f');
+  var btn = document.getElementById('btn');
+  var ok = document.getElementById('ok');
+  var mal = document.getElementById('mal');
+
+  if (new URLSearchParams(location.search).get('e') === '1') {
+    mal.textContent = 'Tu enlace venció o no es válido. Pide uno nuevo.';
+    mal.style.display = 'block';
+  }
+
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    ok.style.display = 'none'; mal.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Mandando…';
+    fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: document.getElementById('email').value })
+    }).then(function (r) {
+      if (r.ok) { ok.style.display = 'block'; f.style.display = 'none'; }
+      else { mal.style.display = 'block'; }
+    }).catch(function () { mal.style.display = 'block'; })
+      .finally(function () { btn.disabled = false; btn.textContent = 'Mandarme el enlace'; });
+  });
+})();
+</script>
+</body>
+</html>

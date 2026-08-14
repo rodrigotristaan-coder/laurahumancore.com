@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/panel", "destination": "/api/panel" },
+    { "source": "/salir", "destination": "/api/salir" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

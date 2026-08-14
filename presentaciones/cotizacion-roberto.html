@@ -19,7 +19,8 @@
   :root{
     --navy:#002060;
     --navy-deep:#001233;
-    --blue:#1552c9;
+    /* pedido de Rodrigo (14-ago): fuera el azul claro #1552c9 — el acento azul es el navy */
+    --blue:#002060;
     --blue-pale:#eaf1fd;
     --gold:#c2a36b;
     --gold-deep:#a8854c;
@@ -38,7 +39,7 @@
   *{box-sizing:border-box;min-width:0;}
   html,body{margin:0;height:100%;}
   body{background:var(--cream);color:var(--body-solid);font-family:var(--font-body);
-    font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word;
+    font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word;
     print-color-adjust:exact;-webkit-print-color-adjust:exact;}
   img{max-width:100%;height:auto;}
   ::selection{background:var(--blue);color:#fff;}
@@ -73,12 +74,12 @@
   .v-deep::after{background:linear-gradient(120deg,rgba(0,18,51,.94),rgba(0,18,51,.9));}
   .v-blue::after{background:linear-gradient(150deg,rgba(21,82,201,.92) 0%,rgba(13,62,163,.94) 55%,rgba(0,32,96,.95) 100%);}
 
-  .eyebrow{font-family:var(--font-label);font-weight:700;font-size:12.5px;letter-spacing:.22em;
+  .eyebrow{font-family:var(--font-label);font-weight:700;font-size:13px;letter-spacing:.22em;
     text-transform:uppercase;color:var(--blue);margin:0 0 20px;}
   .on-navy .eyebrow,.on-deep .eyebrow{color:var(--gold);}
   .on-blue .eyebrow{color:#fff;}
-  .slab h2{font-size:clamp(40px,5.4vw,74px);margin:0 0 22px;max-width:20ch;}
-  .lead{font-size:clamp(18px,1.9vw,22px);max-width:62ch;margin:0;}
+  .slab h2{font-size:clamp(44px,5.8vw,80px);margin:0 0 24px;max-width:20ch;}
+  .lead{font-size:clamp(19px,2vw,23px);max-width:62ch;margin:0;}
   .on-white .lead,.on-cream .lead{color:var(--taupe);}
 
   /* marca fija por diapositiva */
@@ -96,8 +97,8 @@
   .tag-oro{display:inline-block;font-family:var(--font-label);font-weight:700;font-size:12px;
     letter-spacing:.18em;text-transform:uppercase;color:var(--navy-deep);background:var(--gold);
     border-radius:var(--r-pill);padding:11px 24px;margin-bottom:30px;}
-  .cover h1{font-size:clamp(48px,7vw,104px);max-width:14ch;margin:0 auto 26px;}
-  .cover .quien{font-size:clamp(18px,2vw,23px);color:rgba(255,255,255,.85);max-width:52ch;margin:0 auto;}
+  .cover h1{font-size:clamp(52px,7.4vw,112px);max-width:14ch;margin:0 auto 28px;}
+  .cover .quien{font-size:clamp(19px,2.1vw,24px);color:rgba(255,255,255,.85);max-width:52ch;margin:0 auto;}
   .cover .quien b{color:#fff;font-weight:700;}
   .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;justify-content:center;}
   .chips span{font-family:var(--font-label);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
@@ -110,43 +111,45 @@
   .cv .foto::after{content:"";position:absolute;inset:-14px;border:1px solid var(--line-blue);border-radius:50%;}
   .cv .role{font-family:var(--font-label);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
     color:var(--blue);font-weight:700;margin:0 0 16px;}
-  .cv .bio{font-size:clamp(18px,1.9vw,22px);margin:0 0 26px;max-width:58ch;}
+  .cv .bio{font-size:clamp(19px,2vw,23px);margin:0 0 26px;max-width:58ch;}
   .cv .bio b{color:var(--ink);font-weight:700;}
   .hitos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 26px;margin:0 0 26px;}
-  .hito{border-left:3px solid var(--line-blue);padding-left:16px;}
-  .hito .k{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  .hito{border-left:3px solid rgba(0,32,96,.25);padding-left:16px;}
+  .hito .k{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--gold-deep);font-weight:700;}
-  .hito .v{font-weight:700;color:var(--ink);font-size:18px;line-height:1.3;}
-  .hito .d{font-size:15.5px;color:var(--taupe);line-height:1.5;}
+  .hito .v{font-weight:700;color:var(--ink);font-size:19px;line-height:1.3;}
+  .hito .d{font-size:16.5px;color:var(--taupe);line-height:1.5;}
   .premios{display:flex;flex-wrap:wrap;gap:10px;}
-  .premios span{font-size:15px;font-weight:700;color:var(--navy);background:var(--blue-pale);
-    border:1px solid var(--line-blue);border-radius:var(--r-pill);padding:10px 20px;}
-  .premios span b{color:var(--gold-deep);}
+  .premios span{font-size:16px;font-weight:700;color:#fff;background:var(--navy);
+    border-radius:var(--r-pill);padding:11px 22px;}
+  .premios span b{color:var(--gold);}
 
   /* ---------- 03 · clientes (todo blanco, logos grandes) ---------- */
   .muro{display:grid;grid-template-columns:repeat(7,1fr);gap:34px 36px;align-items:center;
     justify-items:center;margin-top:48px;}
   .muro img{max-height:66px;width:auto;max-width:165px;}
-  .muro-cap{margin-top:44px;font-size:17.5px;color:var(--taupe);}
+  .muro-cap{margin-top:44px;font-size:18.5px;color:var(--taupe);}
   .muro-cap b{color:var(--ink);}
 
-  /* ---------- 04 · frase ---------- */
-  .quote-slide .slab{align-items:flex-start;}
+  /* ---------- 04 · frase (con la foto de Einstein) ---------- */
+  .quote-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;}
   .frase{font-family:var(--font-display);font-weight:600;color:#fff;
-    font-size:clamp(44px,6.4vw,94px);line-height:1.08;letter-spacing:-.015em;max-width:18ch;margin:0 0 32px;}
+    font-size:clamp(40px,5.2vw,82px);line-height:1.08;letter-spacing:-.015em;max-width:18ch;margin:0 0 32px;}
   .frase .hl{color:var(--gold);}
-  .autor{font-family:var(--font-label);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
-    color:rgba(255,255,255,.6);margin:0 0 44px;}
-  .remate{font-size:clamp(18.5px,2vw,23px);color:rgba(255,255,255,.88);max-width:52ch;margin:0;
+  .autor{font-family:var(--font-label);font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(255,255,255,.65);margin:0 0 44px;}
+  .remate{font-size:clamp(19.5px,2.1vw,24px);color:rgba(255,255,255,.88);max-width:52ch;margin:0;
     border-left:3px solid var(--gold);padding-left:22px;}
   .remate b{color:#fff;}
+  .einstein{margin:0;justify-self:end;max-width:400px;}
+  .einstein img{display:block;width:100%;border-radius:var(--r-lg);border:1px solid rgba(255,255,255,.22);}
 
   /* ---------- 05 · reto ---------- */
   .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px;}
-  .cardm{background:#fff;border-radius:var(--r-md);padding:34px 30px;color:var(--body-solid);}
-  .cardm h3{font-size:25px;margin:0 0 10px;color:var(--ink);}
-  .cardm p{font-size:16.5px;margin:0;line-height:1.55;}
-  .win{margin-top:30px;font-size:clamp(19px,2.1vw,25px);color:#fff;}
+  .cardm{background:#fff;border-radius:var(--r-md);padding:36px 32px;color:var(--body-solid);}
+  .cardm h3{font-size:27px;margin:0 0 10px;color:var(--ink);}
+  .cardm p{font-size:17.5px;margin:0;line-height:1.55;}
+  .win{margin-top:30px;font-size:clamp(20px,2.2vw,27px);color:#fff;}
   .win b{color:var(--gold);font-weight:800;}
 
   /* ---------- 06 · comparación ---------- */
@@ -154,51 +157,74 @@
   .lado{border-radius:var(--r-lg);padding:42px 40px;}
   .lado.aula{background:var(--cream);border:1px solid var(--line);}
   .lado.hc{background:var(--navy);color:rgba(255,255,255,.87);}
-  .lado h3{font-size:29px;margin:0 0 5px;}
+  .lado h3{font-size:31px;margin:0 0 5px;}
   .lado.hc h3{color:#fff;}
-  .lado .sub{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  .lado .sub{font-family:var(--font-label);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
     font-weight:700;color:var(--taupe);margin:0 0 20px;}
   .lado.hc .sub{color:var(--gold);}
   .lado ul{list-style:none;margin:0;padding:0;display:grid;gap:14px;}
-  .lado li{font-size:17px;line-height:1.55;padding-left:26px;position:relative;}
+  .lado li{font-size:18px;line-height:1.55;padding-left:26px;position:relative;}
   .lado.aula li::before{content:"—";position:absolute;left:0;color:var(--taupe);}
   .lado.hc li::before{content:"●";position:absolute;left:0;top:2px;font-size:9px;color:var(--gold);}
   .lado.hc li b{color:#fff;}
+  /* el "pero" honesto de cada camino */
+  .pero{margin:24px 0 0;padding:18px 22px;border-radius:var(--r-sm);font-size:16.5px;line-height:1.55;}
+  .lado.aula .pero{background:#fff;border:1px solid var(--line);color:var(--body-solid);}
+  .lado.hc .pero{background:rgba(255,255,255,.1);color:rgba(255,255,255,.88);}
+  .pero .et{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;display:block;margin-bottom:6px;}
+  .lado.aula .pero .et{color:var(--gold-deep);}
+  .lado.hc .pero .et{color:var(--gold);}
+  .lado.hc .pero b{color:#fff;}
 
-  /* ---------- 07 · método ---------- */
-  .ruta{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:10px;}
-  .paso{background:var(--blue-pale);border:1px solid var(--line-blue);border-radius:var(--r-md);padding:30px 28px;}
+  /* ---------- 07 · método: 5 fases en navy ---------- */
+  .ruta{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:10px;}
+  .paso{background:var(--navy);border-radius:var(--r-md);padding:28px 24px;color:rgba(255,255,255,.82);}
   .paso .cuando{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--blue);margin:0 0 12px;}
-  .paso h3{font-size:23px;margin:0 0 10px;}
-  .paso p{font-size:15.5px;margin:0;line-height:1.55;}
-  .paso.corte{background:var(--navy);border-color:var(--navy);color:rgba(255,255,255,.82);}
-  .paso.corte .cuando{color:var(--gold);}
-  .paso.corte h3{color:#fff;}
+    font-weight:700;color:var(--gold);margin:0 0 12px;}
+  .paso h3{font-size:22px;margin:0 0 10px;color:#fff;}
+  .paso p{font-size:15px;margin:0;line-height:1.55;}
+  .paso.corte{background:var(--navy-deep);outline:3px solid var(--gold);outline-offset:-3px;}
   .triangulo{margin-top:24px;background:var(--navy-deep);border-radius:var(--r-md);padding:28px 34px;
-    color:rgba(255,255,255,.87);font-size:clamp(17px,1.8vw,20.5px);}
+    color:rgba(255,255,255,.87);font-size:clamp(18px,1.9vw,21.5px);}
   .triangulo b{color:var(--gold);}
 
   /* ---------- 08 · inversión ---------- */
-  .lista-precio{font-size:17.5px;color:rgba(255,255,255,.7);margin:0 0 30px;}
+  .lista-precio{font-size:18.5px;color:rgba(255,255,255,.7);margin:0 0 30px;}
   .lista-precio b{color:rgba(255,255,255,.88);font-weight:700;text-decoration:line-through;
     text-decoration-color:rgba(194,163,107,.8);}
   .pagos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;}
   .pago{background:#fff;border-radius:var(--r-lg);padding:38px 32px;color:var(--body-solid);
     display:flex;flex-direction:column;position:relative;}
-  .pago .forma{font-family:var(--font-label);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  .pago .forma{font-family:var(--font-label);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
     font-weight:700;color:var(--blue);margin:0 0 5px;}
-  .pago .desc{font-family:var(--font-display);font-weight:700;font-size:28px;color:var(--ink);margin:0 0 16px;}
-  .pago .total{font-family:var(--font-display);font-weight:700;font-size:clamp(38px,3.8vw,52px);
+  .pago .desc{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--ink);margin:0 0 16px;}
+  .pago .total{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,4vw,54px);
     color:var(--ink);line-height:1;margin:0;}
-  .pago .como{font-size:15.5px;color:var(--taupe);margin:10px 0 16px;}
-  .pago .ahorro{margin-top:auto;font-size:15.5px;font-weight:700;color:var(--gold-deep);}
+  .pago .como{font-size:16.5px;color:var(--taupe);margin:10px 0 16px;}
+  .pago .ahorro{margin-top:auto;font-size:16.5px;font-weight:700;color:var(--gold-deep);}
   .pago.mejor{outline:3px solid var(--gold);outline-offset:-3px;}
   .pago.mejor .badge{position:absolute;top:-13px;left:26px;font-family:var(--font-label);font-weight:700;
     font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);
     background:var(--gold);border-radius:var(--r-pill);padding:6px 14px;}
   .pago.mejor .total{color:var(--navy);}
-  .nota-mxn{margin:24px 0 0;font-size:14px;color:rgba(255,255,255,.55);}
+  .nota-mxn{margin:24px 0 0;font-size:15px;color:rgba(255,255,255,.55);}
+
+  /* ---------- 09 · escala por número de líderes ---------- */
+  .escala{display:grid;gap:16px;max-width:940px;margin-top:10px;}
+  .fila{display:grid;grid-template-columns:1fr auto auto;gap:8px 36px;align-items:center;
+    background:#fff;border-radius:var(--r-md);padding:26px 36px;color:var(--body-solid);position:relative;}
+  .fila .q{font-family:var(--font-label);font-weight:700;font-size:14px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--navy);}
+  .fila .c,.fila .s{text-align:right;}
+  .fila .v{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,2.6vw,34px);color:var(--ink);line-height:1.1;}
+  .fila .k{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--taupe);font-weight:600;}
+  .fila.pick{outline:3px solid var(--gold);outline-offset:-3px;}
+  .fila.pick .s .v{color:var(--navy);}
+  .fila .tagp{position:absolute;top:-13px;left:36px;font-family:var(--font-label);font-weight:700;
+    font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);
+    background:var(--gold);border-radius:var(--r-pill);padding:6px 15px;}
 
   /* ---------- 09 · cierre ---------- */
   .cierre .slab{align-items:flex-start;}
@@ -212,7 +238,7 @@
   .btn-gold:hover{transform:translateY(-2px);}
   .btn-borde{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
   .btn-borde:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
-  .pie{margin-top:44px;font-size:14.5px;color:rgba(255,255,255,.55);}
+  .pie{margin-top:44px;font-size:15.5px;color:rgba(255,255,255,.55);}
 
   /* ---------- navegación fija ---------- */
   .dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);display:grid;gap:10px;z-index:50;}
@@ -248,6 +274,11 @@
     .muro img{max-height:46px;}
     .cards3,.versus,.ruta,.pagos{grid-template-columns:1fr;}
     .pago.mejor{order:-1;}
+    .quote-grid{grid-template-columns:1fr;gap:34px;}
+    .einstein{justify-self:center;max-width:240px;}
+    .fila{grid-template-columns:1fr 1fr;padding:22px 24px;}
+    .fila .q{grid-column:1 / -1;}
+    .fila .c{text-align:left;}
     .dots{display:none;}
     .ayuda{display:none;}
     .contador{display:none;}
@@ -274,7 +305,7 @@
     <div class="slab">
       <div class="bg bg-playa v-navy"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">01 / 09</div>
+      <div class="num">01 / 10</div>
       <span class="tag-oro" data-reveal>Propuesta especial · Agosto 2026</span>
       <h1 data-reveal style="--d:.08s">Propuesta especial para <span class="hl">Roberto</span></h1>
       <p class="quien" data-reveal style="--d:.16s"><b>Dueño y Director General de Integra Engineering.</b>
@@ -290,7 +321,7 @@
   <section class="slide on-white" data-t="Laura">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">02 / 09</div>
+      <div class="num">02 / 10</div>
       <div class="cv">
         <div class="foto" data-reveal>
           <img src="/assets/laura-portrait.webp" alt="Laura de la Peña" width="280" height="279" />
@@ -325,7 +356,7 @@
   <section class="slide on-white" data-t="Empresas">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">03 / 09</div>
+      <div class="num">03 / 10</div>
       <p class="eyebrow" data-reveal>Trayectoria</p>
       <h2 data-reveal style="--d:.06s">Las empresas donde ha formado <span class="hl">líderes</span></h2>
       <div class="muro" data-reveal style="--d:.14s">
@@ -351,20 +382,27 @@
     <div class="slab">
       <div class="bg bg-playa v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">04 / 09</div>
-      <p class="frase" data-reveal>«Locura es hacer <span class="hl">lo mismo</span> esperando resultados distintos.»</p>
-      <p class="autor" data-reveal style="--d:.1s">Atribuida a Albert Einstein</p>
-      <p class="remate" data-reveal style="--d:.18s">Ascender a un gran técnico sin prepararlo no produce un gerente:
-        produce <b>un gran técnico saturado</b>.</p>
+      <div class="num">04 / 10</div>
+      <div class="quote-grid">
+        <div>
+          <p class="frase" data-reveal>“Locura es hacer <span class="hl">lo mismo</span> esperando resultados distintos.”</p>
+          <p class="autor" data-reveal style="--d:.1s">— Albert Einstein</p>
+          <p class="remate" data-reveal style="--d:.18s">Ascender a un gran técnico sin prepararlo no produce un gerente:
+            produce <b>un gran técnico saturado</b>.</p>
+        </div>
+        <figure class="einstein" data-reveal style="--d:.14s">
+          <img src="/assets/einstein.webp" alt="Albert Einstein" width="740" height="762" />
+        </figure>
+      </div>
     </div>
   </section>
 
   <!-- 05 · EL RETO -->
-  <section class="slide on-blue" data-t="El reto">
+  <section class="slide on-navy" data-t="El reto">
     <div class="slab">
-      <div class="bg bg-problema v-blue"></div>
+      <div class="bg bg-problema v-navy"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">05 / 09</div>
+      <div class="num">05 / 10</div>
       <p class="eyebrow" data-reveal>El reto de Integra</p>
       <h2 data-reveal style="--d:.06s">5 líderes técnicos van a ser <span class="hl">gerentes</span></h2>
       <div class="cards3">
@@ -389,7 +427,7 @@
   <section class="slide on-white" data-t="Dos caminos">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">06 / 09</div>
+      <div class="num">06 / 10</div>
       <p class="eyebrow" data-reveal>Dos caminos</p>
       <h2 data-reveal style="--d:.06s">Un aula general, o un desarrollo <span class="hl">1 a 1</span></h2>
       <div class="versus">
@@ -403,6 +441,8 @@
             <li>Avanza al ritmo del calendario, no del líder.</li>
             <li>El reporte llega al final, si llega.</li>
           </ul>
+          <p class="pero"><span class="et">El riesgo</span>Otro diplomado en el CV sube el ego académico —
+            y hay gerentes que con el papel en la mano salen a buscarse otra empresa.</p>
         </div>
         <div class="lado hc" data-reveal style="--d:.18s">
           <h3>HUMAN-CORE 1 a 1</h3>
@@ -414,6 +454,8 @@
             <li><b>Feedback directo a ti</b> durante todo el programa.</li>
             <li>Reportes de fortalezas, debilidades y áreas de oportunidad.</li>
           </ul>
+          <p class="pero"><span class="et">Lo que no es</span>No da valor curricular: no es un papel que abra
+            puertas afuera. Es desarrollo a la medida que <b>se queda en tu empresa</b>.</p>
         </div>
       </div>
     </div>
@@ -423,29 +465,34 @@
   <section class="slide on-white" data-t="El método">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">07 / 09</div>
+      <div class="num">07 / 10</div>
       <p class="eyebrow" data-reveal>Cómo trabaja Laura</p>
-      <h2 data-reveal style="--d:.06s">Seis meses, cuatro <span class="hl">hitos</span></h2>
+      <h2 data-reveal style="--d:.06s">Seis meses, cinco <span class="hl">fases</span></h2>
       <div class="ruta">
         <div class="paso" data-reveal style="--d:.12s">
-          <p class="cuando">Arranque</p>
-          <h3>Diagnóstico individual</h3>
-          <p>Evaluación de cada gerente y reporte inicial de fortalezas, debilidades y áreas de oportunidad.</p>
+          <p class="cuando">Fase 1 · Arranque</p>
+          <h3>Diagnóstico</h3>
+          <p>Evaluación individual de cada gerente: fortalezas, debilidades y áreas de oportunidad.</p>
         </div>
-        <div class="paso" data-reveal style="--d:.18s">
-          <p class="cuando">Mes 1 — 6</p>
+        <div class="paso" data-reveal style="--d:.17s">
+          <p class="cuando">Fase 2 · Mes 1 — 3</p>
           <h3>Coaching 1 a 1</h3>
           <p>Sesiones individuales con objetivos propios por líder, sin sacarlos de la operación.</p>
         </div>
-        <div class="paso corte" data-reveal style="--d:.24s">
-          <p class="cuando">Mes 3</p>
-          <h3>Corte de caja</h3>
-          <p>Revisión de avances contigo. Se ajustan los objetivos de cada gerente para el resto del semestre.</p>
+        <div class="paso corte" data-reveal style="--d:.22s">
+          <p class="cuando">Fase 3 · Mes 3</p>
+          <h3>Reporte trimestral</h3>
+          <p>Corte de caja contigo: avances de cada gerente y ajuste de objetivos para el resto del semestre.</p>
         </div>
-        <div class="paso" data-reveal style="--d:.3s">
-          <p class="cuando">Mes 6</p>
-          <h3>Dictamen de cada líder</h3>
-          <p>Potencial a largo plazo: quién tiene mente de aprendiz y madera de gerente, y qué sigue para cada uno.</p>
+        <div class="paso" data-reveal style="--d:.27s">
+          <p class="cuando">Fase 4 · Mes 3 — 6</p>
+          <h3>Coaching 1 a 1</h3>
+          <p>Segunda mitad del programa, ya con los objetivos ajustados del reporte.</p>
+        </div>
+        <div class="paso" data-reveal style="--d:.32s">
+          <p class="cuando">Fase 5 · Mes 6</p>
+          <h3>Diagnóstico final</h3>
+          <p>Dictamen de cada líder: potencial a largo plazo, mente de aprendiz y madera de gerente.</p>
         </div>
       </div>
       <div class="triangulo" data-reveal style="--d:.36s">Además, Laura <b>triangula contigo como Director
@@ -459,7 +506,7 @@
     <div class="slab">
       <div class="bg bg-team v-navy"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">08 / 09</div>
+      <div class="num">08 / 10</div>
       <p class="eyebrow" data-reveal>Inversión · 5 gerentes · 6 meses</p>
       <h2 data-reveal style="--d:.06s">15% de descuento <span class="hl">por grupo</span></h2>
       <p class="lista-precio" data-reveal style="--d:.1s">Precio de lista: $62,871 por líder · <b>$314,355 el semestre</b></p>
@@ -491,12 +538,49 @@
     </div>
   </section>
 
-  <!-- 09 · CIERRE -->
+  <!-- 09 · ESCALA POR NÚMERO DE LÍDERES -->
+  <section class="slide on-deep" data-t="Por número de líderes">
+    <div class="slab">
+      <div class="bg bg-team v-deep"></div>
+      <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
+      <div class="num">09 / 10</div>
+      <p class="eyebrow" data-reveal>Si empiezan menos de 5</p>
+      <h2 data-reveal style="--d:.06s">La escala por número de <span class="hl">líderes</span></h2>
+      <p class="lead" data-reveal style="--d:.1s">El programa funciona desde 1 líder — y la inversión
+        por líder baja conforme crece el grupo.</p>
+      <div class="escala">
+        <div class="fila" data-reveal style="--d:.14s">
+          <div class="q">1 a 2 gerentes</div>
+          <div class="c"><div class="v">$59,760</div><div class="k">por líder</div></div>
+          <div class="s"><div class="v">$119,520</div><div class="k">semestre · 2 líderes</div></div>
+        </div>
+        <div class="fila" data-reveal style="--d:.19s">
+          <div class="q">3 gerentes</div>
+          <div class="c"><div class="v">$57,600</div><div class="k">por líder</div></div>
+          <div class="s"><div class="v">$172,800</div><div class="k">semestre</div></div>
+        </div>
+        <div class="fila" data-reveal style="--d:.24s">
+          <div class="q">4 gerentes</div>
+          <div class="c"><div class="v">$55,440</div><div class="k">por líder</div></div>
+          <div class="s"><div class="v">$221,760</div><div class="k">semestre</div></div>
+        </div>
+        <div class="fila pick" data-reveal style="--d:.29s">
+          <span class="tagp">Tu propuesta · la mejor tarifa por líder</span>
+          <div class="q">5 gerentes</div>
+          <div class="c"><div class="v">$53,280</div><div class="k">por líder</div></div>
+          <div class="s"><div class="v">$266,400</div><div class="k">semestre</div></div>
+        </div>
+      </div>
+      <p class="nota-mxn" data-reveal style="--d:.34s">Precios del semestre en MXN, en un pago al inicio.</p>
+    </div>
+  </section>
+
+  <!-- 10 · CIERRE -->
   <section class="slide cierre on-deep" data-t="Siguiente paso">
     <div class="slab">
       <div class="bg bg-playa v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">09 / 09</div>
+      <div class="num">10 / 10</div>
       <p class="eyebrow" data-reveal>Siguiente paso</p>
       <h2 data-reveal style="--d:.06s">¿Empezamos con tus 5 <span class="hl">gerentes</span>?</h2>
       <p class="lead" style="color:rgba(255,255,255,.78);" data-reveal>
@@ -515,7 +599,7 @@
 
 <nav class="dots" id="dots" aria-label="Diapositivas"></nav>
 <div class="ayuda">← → para navegar</div>
-<div class="contador" id="contador">01 / 09</div>
+<div class="contador" id="contador">01 / 10</div>
 
 <script>
 document.documentElement.classList.add('js');

@@ -196,17 +196,19 @@
   .marquee__mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
     mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
   .marquee__track{display:flex;align-items:center;gap:64px;width:max-content;animation:slide 46s linear infinite;}
-  .marquee:hover .marquee__track{animation-play-state:paused;}
+  /* la cinta NO se pausa con el mouse (pedido 14-ago) */
   .marquee__track img{height:46px;width:auto;display:block;opacity:.92;transition:opacity .35s var(--ease),transform .35s var(--ease);}
   .marquee__track img:hover{opacity:1;transform:scale(1.06);}
   @keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-  /* la segunda cinta corre al revés: solo en móvil, donde una sola se ve corta */
-  .marquee__row2{display:none;}
+  /* cintas 2 y 3: solo en móvil, donde una sola se ve corta; la 2 al revés y
+     la 3 a otra velocidad para que no vayan sincronizadas */
+  .marquee__row2,.marquee__row3{display:none;}
   .marquee__track.rev{animation-direction:reverse;}
+  .marquee__track.lenta{animation-duration:58s;}
   @media screen and (max-width:760px){
     .marquee__track{gap:40px;}
     .marquee__track img{height:34px;}
-    .marquee__row2{display:block;margin-top:18px;}
+    .marquee__row2,.marquee__row3{display:block;margin-top:18px;}
   }
 
   /* ---------- FUNDADORA ---------- */
@@ -426,6 +428,7 @@
     <p class="marquee__cap">De corporativos globales a empresas medianas mexicanas · <b>estás en buena compañía</b></p>
     <div class="marquee__mask"><div class="marquee__track" id="track"></div></div>
     <div class="marquee__mask marquee__row2"><div class="marquee__track rev" id="track2"></div></div>
+    <div class="marquee__mask marquee__row3"><div class="marquee__track lenta" id="track3"></div></div>
   </section>
 </div>
 
@@ -842,6 +845,15 @@
         return '<img src="assets/logos/' + n + '.webp" alt="" loading="lazy" decoding="async" height="46" />';
       }).join('');
       track2.innerHTML = html2 + html2;
+    }
+    var track3 = document.getElementById('track3');
+    if (track3) {
+      /* la tercera arranca por otro tercio de la lista */
+      var tercio = LOGOS.slice(7).concat(LOGOS.slice(0, 7));
+      var html3 = tercio.map(function (n) {
+        return '<img src="assets/logos/' + n + '.webp" alt="" loading="lazy" decoding="async" height="46" />';
+      }).join('');
+      track3.innerHTML = html3 + html3;
     }
   }
 

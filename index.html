@@ -106,8 +106,9 @@
   .sec-head h2{font-size:clamp(34px,5.2vw,58px);margin:20px 0 16px;}
   .sec-head .lead{font-size:clamp(17px,2vw,20px);color:var(--taupe);}
   .on-blue .sec-head .lead,.on-dark .sec-head .lead{color:rgba(255,255,255,.78);}
-  /* énfasis: la palabra que carga el mensaje va en otro tono */
-  .hl{color:var(--blue);}
+  /* énfasis: la palabra que carga el mensaje va en dorado (como en las
+     cotizaciones): oscuro sobre claro, brillante sobre navy */
+  .hl{color:var(--gold-deep);}
   .on-blue .hl,.on-dark .hl{color:var(--gold);}
 
   /* ---------- botones ---------- */
@@ -125,8 +126,12 @@
   .btn:hover .arr{transform:translateX(5px);}
 
   /* ---------- reveals + typewriter ---------- */
-  .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s);}
-  .js [data-reveal].in{opacity:1;transform:none;}
+  /* la animación hc-safety es la red de seguridad EN CSS: aunque el JS truene
+     en algún navegador, nada se queda invisible más de ~4 s */
+  .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s);
+    animation:hc-safety .8s var(--ease) 4s forwards;}
+  .js [data-reveal].in{opacity:1;transform:none;animation:none;}
+  @keyframes hc-safety{to{opacity:1;transform:none;}}
   /* la palabra que rota reserva por JS el ancho de la más larga, así la línea
      nunca se re-acomoda mientras escribe o borra */
   .type{display:inline-block;text-align:center;white-space:nowrap;max-width:100%;}
@@ -841,6 +846,20 @@
   }
 
   function init() {
+    /* reveals al entrar en viewport — van PRIMERO: si algo más de init truena,
+       esto ya quedó registrado y nada se queda invisible */
+    var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    if ('IntersectionObserver' in window) {
+      var ro = new IntersectionObserver(function (ents, obs) {
+        ents.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      reveals.forEach(function (el) { ro.observe(el); });
+      /* red de seguridad JS (la de CSS es hc-safety) */
+      setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 4000);
+    } else {
+      reveals.forEach(function (el) { el.classList.add('in'); });
+    }
+
     /* typewriter del hero */
     var tw = document.getElementById('tw');
     if (tw && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -870,19 +889,6 @@
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
-
-    /* reveals al entrar en viewport */
-    var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
-    if ('IntersectionObserver' in window) {
-      var ro = new IntersectionObserver(function (ents, obs) {
-        ents.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-      }, { rootMargin: '0px 0px -10% 0px' });
-      reveals.forEach(function (el) { ro.observe(el); });
-      /* red de seguridad: nada se queda invisible */
-      setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 4000);
-    } else {
-      reveals.forEach(function (el) { el.classList.add('in'); });
-    }
 
     var yr = document.getElementById('yr');
     if (yr) yr.textContent = new Date().getFullYear();

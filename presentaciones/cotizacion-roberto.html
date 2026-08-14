@@ -261,8 +261,12 @@
     border-radius:var(--r-pill);padding:8px 16px;z-index:50;}
 
   /* ---------- reveals ---------- */
-  .js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s);}
-  .js [data-reveal].in{opacity:1;transform:none;}
+  /* hc-safety = red de seguridad EN CSS: aunque el JS truene o el observer no
+     dispare, nada se queda invisible más de ~4 s */
+  .js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s);
+    animation:hc-safety .7s var(--ease) 4s forwards;}
+  .js [data-reveal].in{opacity:1;transform:none;animation:none;}
+  @keyframes hc-safety{to{opacity:1;transform:none;}}
   @media(prefers-reduced-motion:reduce){
     .js [data-reveal]{opacity:1;transform:none;transition:none;}
     .deck{scroll-behavior:auto;}
@@ -275,6 +279,12 @@
     .slab{padding:76px 26px 44px;border-radius:var(--r-lg);}
     .brand{top:26px;left:26px;}
     .num{top:30px;right:26px;}
+    .cover h1{font-size:clamp(36px,10vw,52px);}
+    .slab h2{font-size:clamp(30px,7.4vw,40px);}
+    .paso h3{font-size:27px;}
+    .paso p{font-size:18px;}
+    .frase-t{font-size:clamp(26px,7vw,36px);}
+    .einstein{max-width:210px;}
     .cv{grid-template-columns:1fr;gap:30px;}
     .cv .foto img{max-width:200px;}
     .hitos{grid-template-columns:1fr;}
@@ -651,17 +661,26 @@ document.documentElement.classList.add('js');
 
   if ('IntersectionObserver' in window){
     if (nEmp) nEmp.textContent = '+0';
-    /* los reveals se disparan cuando CADA diapo entra a cuadro — sin timeout global,
-       que marcaba todo como visto a los 3 s y mataba la animación al hacer scroll */
-    var obs = new IntersectionObserver(function(entries){
+    /* reveals por ELEMENTO, no por diapo: en móvil una diapo puede ser más alta
+       que la pantalla y un umbral por diapo (45%) jamás disparaba → diapos en
+       blanco. Un elemento chico siempre alcanza su umbral. */
+    var obsEl = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (e.isIntersecting){
-          pinta(slides.indexOf(e.target));
-          e.target.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });
+          e.target.classList.add('in');
           if (e.target.querySelector('#nEmp')) cuentaEmpresas();
+          obsEl.unobserve(e.target);
         }
       });
-    }, {root:null, threshold:.45});
+    }, {root:null, threshold:.05});
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ obsEl.observe(el); });
+
+    /* diapo actual para dots y contador: umbral bajo por lo mismo */
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ pinta(slides.indexOf(e.target)); }
+      });
+    }, {root:null, threshold:.15});
     slides.forEach(function(s){ obs.observe(s); });
   } else {
     document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });

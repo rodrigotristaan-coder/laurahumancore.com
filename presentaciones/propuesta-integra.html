@@ -118,8 +118,6 @@
   .logo-cliente img{display:block;width:clamp(240px,26vw,360px);height:auto;margin:0 auto;}
   .cover .dg{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,2.6vw,34px);
     color:#fff;line-height:1.15;margin:0 auto 22px;}
-  .cover .quien{font-size:clamp(19px,2.1vw,24px);color:rgba(255,255,255,.85);max-width:52ch;margin:0 auto;}
-  .cover .quien b{color:#fff;font-weight:700;}
   .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;justify-content:center;}
   .chips span{font-family:var(--font-label);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
     color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:var(--r-pill);padding:10px 18px;}
@@ -156,6 +154,8 @@
   .frase-t{font-family:var(--font-display);font-weight:600;color:#fff;
     font-size:clamp(30px,3.7vw,52px);line-height:1.14;letter-spacing:-.015em;max-width:40ch;margin:0 auto 26px;}
   .frase-t b{color:var(--gold);font-weight:700;}
+  /* (17-ago, Laura) "un gran técnico saturado" va en su propio renglón; los grupos no se parten */
+  .frase-t .remate{white-space:nowrap;}
   .quote-sub{font-family:var(--font-display);font-weight:600;color:rgba(255,255,255,.85);
     font-size:clamp(20px,2.3vw,28px);margin:0 auto;max-width:52ch;}
   .autor{font-family:var(--font-label);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
@@ -173,10 +173,10 @@
   /* ---------- 06 · comparación ---------- */
   .versus{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:4px;align-items:stretch;}
   .lado{border-radius:var(--r-lg);padding:24px 32px;display:flex;flex-direction:column;}
-  /* la tarjeta navy tiene menos viñetas: su "Lo que no es" baja al fondo para emparejar con la de aula */
-  .lado.hc .pero{margin-top:auto;}
+  /* la tarjeta navy tiene menos viñetas: la lista flota centrada y "Lo que no es" queda al fondo, emparejando con la de aula */
+  .lado.hc ul{margin:auto 0;gap:12px;}
   .lado.aula{background:var(--cream);border:1px solid var(--line);}
-  .lado.hc{background:var(--navy);color:rgba(255,255,255,.87);}
+  .lado.hc{background:var(--navy);color:rgba(255,255,255,.87);text-align:center;} /* (17-ago, Laura) todo centrado */
   .lado h3{font-size:31px;margin:0 0 5px;}
   .lado.hc h3{color:#fff;}
   .lado .sub{font-family:var(--font-label);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
@@ -185,7 +185,8 @@
   .lado ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;}
   .lado li{font-size:17px;line-height:1.42;padding-left:26px;position:relative;}
   .lado.aula li::before{content:"—";position:absolute;left:0;color:var(--taupe);}
-  .lado.hc li::before{content:"●";position:absolute;left:0;top:2px;font-size:9px;color:var(--gold);}
+  .lado.hc li{padding-left:0;}
+  .lado.hc li::before{content:"●";display:inline-block;margin-right:9px;vertical-align:3px;font-size:9px;color:var(--gold);}
   .lado.hc li b{color:#fff;}
   /* el "pero" honesto de cada camino */
   .pero{margin:12px 0 0;padding:12px 18px;border-radius:var(--r-sm);font-size:16px;line-height:1.45;}
@@ -301,6 +302,7 @@
     .paso .cuando{white-space:normal;}
     .paso p{font-size:18px;}
     .frase-t{font-size:clamp(26px,7vw,36px);}
+    .frase-t .remate{white-space:normal;}
     .einstein{max-width:210px;}
     .cv{grid-template-columns:1fr;gap:30px;}
     .cv .foto img{max-width:200px;}
@@ -354,7 +356,6 @@
         <img src="/assets/logos/integra-engineering.png" alt="Integra Engineering" width="598" height="158" />
       </div>
       <p class="dg" data-reveal style="--d:.14s">Dirección General · <span class="hl">Roberto Alarcón</span></p>
-      <p class="quien" data-reveal style="--d:.16s">Más de 20 años ofreciendo <b>ingeniería de capital humano</b>.</p>
       <div class="chips" data-reveal style="--d:.24s">
         <span>5 líderes técnicos</span><span>Rumbo a gerencia</span><span>Programa 1 a 1 · 3 meses</span>
       </div>
@@ -427,8 +428,8 @@
       <div class="bg bg-playa v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">04 / 09</div>
-      <p class="frase-t" data-reveal>Ascender a un gran técnico sin prepararlo no produce un gerente:
-        produce <b>un gran técnico saturado</b>.</p>
+      <p class="frase-t" data-reveal>Ascender a un gran técnico sin prepararlo <span class="remate">no produce un gerente:</span><br />
+        <span class="remate">produce <b>un gran técnico saturado</b>.</span></p>
       <p class="quote-sub" data-reveal style="--d:.1s">“Locura es hacer lo mismo esperando resultados distintos.”</p>
       <p class="autor" data-reveal style="--d:.14s">— Albert Einstein</p>
       <figure class="einstein" data-reveal style="--d:.2s">
@@ -519,7 +520,7 @@
         </div>
         <div class="paso" data-reveal style="--d:.17s">
           <p class="cuando">Fase 2 · Mes 1–3</p>
-          <h3>Coaching 1 a 1</h3>
+          <h3>Mentoría personalizada 1 a 1</h3>
           <p>Sesiones individuales con objetivos propios por líder, sin sacarlos de la operación.</p>
         </div>
         <div class="paso" data-reveal style="--d:.22s">

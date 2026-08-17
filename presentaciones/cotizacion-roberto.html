@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Propuesta especial para Roberto — HUMAN-CORE System</title>
+<title>Propuesta especial para Integra Engineering — HUMAN-CORE System</title>
 <meta name="robots" content="noindex" />
 <meta name="description" content="Propuesta de desarrollo gerencial 1 a 1 para Integra Engineering — HUMAN-CORE System, Laura de la Peña." />
 <meta name="theme-color" content="#002060" />
@@ -103,7 +103,13 @@
   .tag-oro{display:inline-block;font-family:var(--font-label);font-weight:700;font-size:12px;
     letter-spacing:.18em;text-transform:uppercase;color:var(--navy-deep);background:var(--gold);
     border-radius:var(--r-pill);padding:11px 24px;margin-bottom:30px;}
-  .cover h1{font-size:clamp(52px,7.4vw,112px);max-width:14ch;margin:0 auto 28px;}
+  /* dos renglones en compu: "Propuesta especial para / Integra Engineering" */
+  .cover h1{font-size:clamp(40px,5.6vw,84px);max-width:24ch;margin:0 auto 18px;}
+  /* logo del cliente (PNG sin fondo, blanco + naranja: nace para fondo oscuro) */
+  .logo-cliente{margin:0 auto 26px;}
+  .logo-cliente img{display:block;width:clamp(180px,20vw,250px);height:auto;margin:0 auto;}
+  .cover .dg{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,2.6vw,34px);
+    color:#fff;line-height:1.15;margin:0 auto 22px;}
   .cover .quien{font-size:clamp(19px,2.1vw,24px);color:rgba(255,255,255,.85);max-width:52ch;margin:0 auto;}
   .cover .quien b{color:#fff;font-weight:700;}
   .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;justify-content:center;}
@@ -182,17 +188,23 @@
   .lado.hc .pero .et{color:var(--gold);}
   .lado.hc .pero b{color:#fff;}
 
-  /* ---------- 07 · método: 5 fases en crema, TODAS con marco dorado y 1.5x ---------- */
+  /* ---------- 07 · método: 5 fases que ALTERNAN blanco / navy (16-ago), marco dorado en todas, 1.5x ---------- */
   .ruta{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:10px;}
-  .paso{background:var(--cream);border-radius:var(--r-md);padding:36px 28px;color:var(--body-solid);
+  .paso{background:#fff;border-radius:var(--r-md);padding:30px 24px;color:var(--body-solid);
     outline:3px solid var(--gold);outline-offset:-3px;}
-  .paso .cuando{font-family:var(--font-label);font-size:13.5px;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--gold-deep);margin:0 0 14px;}
-  .paso h3{font-size:32px;margin:0 0 12px;color:var(--ink);line-height:1.08;}
-  .paso p{font-size:20px;margin:0;line-height:1.45;}
-  .triangulo{margin-top:24px;background:var(--navy-deep);border-radius:var(--r-md);padding:28px 34px;
-    color:rgba(255,255,255,.87);font-size:clamp(18px,1.9vw,21.5px);}
-  .triangulo b{color:var(--gold);}
+  .paso:nth-child(even){background:var(--navy);color:rgba(255,255,255,.87);}
+  /* "Fase N" más grande y de otro color: navy sobre blanco, dorado sobre navy.
+     Cabe en UNA línea (16px, tracking corto) para que la diapo siga entrando en una laptop */
+  .paso .cuando{font-family:var(--font-label);font-size:16px;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:800;color:var(--navy);margin:0 0 12px;line-height:1.3;white-space:nowrap;}
+  .paso:nth-child(even) .cuando{color:var(--gold);}
+  .paso h3{font-size:31px;margin:0 0 10px;color:var(--ink);line-height:1.08;}
+  .paso:nth-child(even) h3{color:#fff;}
+  .paso p{font-size:19px;margin:0;line-height:1.42;}
+  /* el bloque de feedback va en crema */
+  .triangulo{margin-top:20px;background:var(--cream);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:22px 30px;color:var(--body-solid);font-size:clamp(18px,1.9vw,21.5px);}
+  .triangulo b{color:var(--navy);}
 
   /* ---------- 08 · inversión ---------- */
   .lista-precio{font-size:18.5px;color:rgba(255,255,255,.7);margin:0 0 30px;}
@@ -200,37 +212,47 @@
   .lista-precio b{color:rgba(255,255,255,.88);font-weight:700;text-decoration:line-through;
     text-decoration-color:rgba(194,163,107,.8);}
   .pagos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;}
-  .pago{background:#fff;border-radius:var(--r-lg);padding:38px 32px;color:var(--body-solid);
+  .pago{background:#fff;border-radius:var(--r-lg);padding:30px 30px 28px;color:var(--body-solid);
     display:flex;flex-direction:column;position:relative;}
   .pago .forma{font-family:var(--font-label);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
     font-weight:700;color:var(--blue);margin:0 0 5px;}
-  .pago .desc{font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--ink);margin:0 0 16px;}
-  .pago .total{font-family:var(--font-display);font-weight:700;font-size:clamp(40px,4vw,54px);
-    color:var(--ink);line-height:1;margin:0;}
-  .pago .como{font-size:16.5px;color:var(--taupe);margin:10px 0 16px;}
-  .pago .ahorro{margin-top:auto;font-size:16.5px;font-weight:700;color:var(--gold-deep);}
-  .pago.mejor{outline:3px solid var(--gold);outline-offset:-3px;}
+  /* (16-ago) el número héroe es la MENSUALIDAD equivalente; el total del semestre baja a nota.
+     Orden de mayor a menor mensualidad: la de "un solo pago" cierra como la más barata y destacada. */
+  .pago .mes{font-family:var(--font-display);font-weight:700;font-size:clamp(44px,4.4vw,60px);
+    color:var(--ink);line-height:1;margin:6px 0 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+  .pago .mes .per{font-family:var(--font-label);font-weight:600;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--taupe);}
+  .pago .lider{font-size:17.5px;font-weight:700;color:var(--ink);margin:0 0 12px;}
+  .pago .total-nota{font-size:15px;color:var(--taupe);margin:0 0 12px;line-height:1.45;}
+  .pago .ahorro{margin-top:auto;font-size:16px;font-weight:700;color:var(--gold-deep);}
+  .pago .extra{font-size:14.5px;font-weight:700;color:var(--rojo);margin:6px 0 0;}
+  .pago .extra.ok{color:var(--navy);}
+  .pago.mejor{outline:3px solid var(--gold);outline-offset:-3px;transform:scale(1.035);z-index:1;}
   .pago.mejor .badge{position:absolute;top:-13px;left:26px;font-family:var(--font-label);font-weight:700;
     font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);
     background:var(--gold);border-radius:var(--r-pill);padding:6px 14px;}
-  .pago.mejor .total{color:var(--navy);}
+  .pago.mejor .mes{color:var(--navy);}
+  .pago.mejor .mes .per{color:var(--gold-deep);}
   .nota-mxn{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.55);}
 
   /* ---------- 09 · escala por número de líderes ---------- */
-  .escala{display:grid;gap:14px;max-width:980px;margin-top:10px;}
-  .fila{display:grid;grid-template-columns:1fr auto auto auto;gap:8px 34px;align-items:center;
-    background:#fff;border-radius:var(--r-md);padding:26px 36px;color:var(--body-solid);position:relative;}
+  .escala{display:grid;gap:12px;max-width:1120px;margin-top:22px;}
+  /* (16-ago) el héroe es el equivalente MENSUAL (por líder y por grupo); el total del semestre
+     baja a una columna muda a la derecha */
+  .fila{display:grid;grid-template-columns:1fr auto auto auto auto;gap:8px 30px;align-items:center;
+    background:#fff;border-radius:var(--r-md);padding:16px 32px;color:var(--body-solid);position:relative;}
   .fila .ah{font-family:var(--font-label);font-weight:700;font-size:12px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--navy-deep);background:var(--gold);border-radius:var(--r-pill);
     padding:8px 16px;justify-self:start;}
   .fila .q{font-family:var(--font-label);font-weight:700;font-size:14px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--navy);}
-  .fila .c,.fila .s{text-align:right;}
+  .fila .c,.fila .s,.fila .t{text-align:right;}
   .fila .v{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.4vw,31px);color:var(--ink);line-height:1.1;}
   .fila .k{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--taupe);font-weight:600;}
+  .fila .t .v2{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,1.9vw,24px);color:var(--taupe);line-height:1.1;}
   .fila.pick{outline:3px solid var(--gold);outline-offset:-3px;}
-  .fila.pick .s .v{color:var(--navy);}
+  .fila.pick .s .v,.fila.pick .c .v{color:var(--navy);}
   .fila .tagp{position:absolute;top:-13px;left:36px;font-family:var(--font-label);font-weight:700;
     font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);
     background:var(--gold);border-radius:var(--r-pill);padding:6px 15px;}
@@ -283,6 +305,7 @@
     .cover h1{font-size:clamp(36px,10vw,52px);}
     .slab h2{font-size:clamp(30px,7.4vw,40px);}
     .paso h3{font-size:27px;}
+    .paso .cuando{white-space:normal;}
     .paso p{font-size:18px;}
     .frase-t{font-size:clamp(26px,7vw,36px);}
     .einstein{max-width:210px;}
@@ -292,13 +315,15 @@
     .muro{grid-template-columns:repeat(3,1fr);gap:20px 22px;}
     .muro img{max-height:46px;}
     .cards3,.versus,.ruta,.pagos{grid-template-columns:1fr;}
-    .pago.mejor{order:-1;}
+    .pago.mejor{order:-1;transform:none;}
+    .logo-cliente img{width:170px;}
     .quote-grid{grid-template-columns:1fr;gap:34px;}
     .einstein{justify-self:center;max-width:240px;}
     .fila{grid-template-columns:1fr 1fr;padding:22px 24px;}
     .fila .q{grid-column:1 / -1;}
     .fila .ah{grid-column:1 / -1;}
     .fila .c{text-align:left;}
+    .fila .t{grid-column:1 / -1;text-align:left;}
     .dots{display:none;}
     .ayuda{display:none;}
     .contador{display:none;}
@@ -312,6 +337,7 @@
     .slide{height:100vh;min-height:0;page-break-after:always;break-after:page;padding:0;}
     .slab{border-radius:0;}
     .dots,.ayuda,.contador{display:none;}
+    .pago.mejor{transform:none;}
     .js [data-reveal]{opacity:1;transform:none;transition:none;}
   }
 </style>
@@ -327,9 +353,12 @@
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">01 / 10</div>
       <span class="tag-oro" data-reveal>Propuesta especial · Agosto 2026</span>
-      <h1 data-reveal style="--d:.08s">Propuesta especial para <span class="hl">Roberto Alarcón</span></h1>
-      <p class="quien" data-reveal style="--d:.16s"><b>Socio fundador y Director General de Integra Engineering.</b>
-        Más de 20 años rentando mano de obra especializada: carpinteros, eléctricos y más oficios.</p>
+      <div class="logo-cliente" data-reveal style="--d:.04s">
+        <img src="/assets/logos/integra-engineering.png" alt="Integra Engineering" width="598" height="158" />
+      </div>
+      <h1 data-reveal style="--d:.08s">Propuesta especial para <span class="hl">Integra Engineering</span></h1>
+      <p class="dg" data-reveal style="--d:.12s">Dirección General · Roberto Alarcón</p>
+      <p class="quien" data-reveal style="--d:.16s">Más de 20 años ofreciendo <b>ingeniería de capital humano</b>.</p>
       <div class="chips" data-reveal style="--d:.24s">
         <span>5 líderes técnicos</span><span>Rumbo a gerencia</span><span>Programa 1 a 1 · 6 meses</span>
       </div>
@@ -348,7 +377,7 @@
         <div>
           <p class="eyebrow" data-reveal>Quién lo dirige</p>
           <h2 data-reveal style="--d:.06s">Laura <span class="hl">de la Peña</span></h2>
-          <p class="role" data-reveal style="--d:.1s">Mentor Coach · Alta dirección personal y empresarial</p>
+          <p class="role" data-reveal style="--d:.1s">Strategic Leadership Coach · Alta dirección</p>
           <p class="bio" data-reveal style="--d:.14s"><b>Más de 25 años formando líderes, gerentes y directores
             generales</b>, y equipos de alto desempeño. Socia fundadora de <b>Gnosis Awareness</b>, donde dirige
             la transformación de líderes.</p>
@@ -419,8 +448,8 @@
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">05 / 10</div>
       <p class="eyebrow" data-reveal>El reto de Integra</p>
-      <h2 data-reveal style="--d:.06s">5 líderes técnicos convertidos en <span class="hl">gerentes</span></h2>
-      <p class="win" data-reveal style="--d:.1s">Lo que esperas es claro: <b>que desarrollen sus habilidades gerenciales.</b></p>
+      <h2 data-reveal style="--d:.06s">5 técnicos desarrollando sus <span class="hl">habilidades gerenciales</span></h2>
+      <p class="win" data-reveal style="--d:.1s">Lo que se espera: <b>que desarrollen sus habilidades gerenciales.</b></p>
       <div class="cards3">
         <div class="cardm" data-reveal style="--d:.12s">
           <h3>Son los mejores en su oficio</h3>
@@ -491,27 +520,27 @@
           <p>Evaluación individual de cada gerente: fortalezas, debilidades y áreas de oportunidad.</p>
         </div>
         <div class="paso" data-reveal style="--d:.17s">
-          <p class="cuando">Fase 2 · Mes 1 — 3</p>
+          <p class="cuando">Fase 2 · Mes 1–3</p>
           <h3>Coaching 1 a 1</h3>
           <p>Sesiones individuales con objetivos propios por líder, sin sacarlos de la operación.</p>
         </div>
         <div class="paso" data-reveal style="--d:.22s">
           <p class="cuando">Fase 3 · Mes 3</p>
           <h3>Reporte trimestral</h3>
-          <p>Corte de caja contigo: avances de cada gerente y ajuste de objetivos para el resto del semestre.</p>
+          <p>Corte de caja con DG: avances de cada gerente y ajuste de objetivos para el resto del semestre.</p>
         </div>
         <div class="paso" data-reveal style="--d:.27s">
-          <p class="cuando">Fase 4 · Mes 3 — 6</p>
+          <p class="cuando">Fase 4 · Mes 3–6</p>
           <h3>Coaching 1 a 1</h3>
           <p>Segunda mitad del programa, ya con los objetivos ajustados del reporte.</p>
         </div>
         <div class="paso" data-reveal style="--d:.32s">
           <p class="cuando">Fase 5 · Mes 6</p>
-          <h3>Diagnóstico final</h3>
-          <p>Dictamen de cada líder: potencial a largo plazo, mente de aprendiz y madera de gerente.</p>
+          <h3>Reporte de resultados</h3>
+          <p>Resultados y evaluación de fortalezas y áreas de oportunidad de cada líder en su nuevo rol como gerente.</p>
         </div>
       </div>
-      <div class="triangulo" data-reveal style="--d:.36s"><b>Feedback periódico y oportuno con el DG</b> para
+      <div class="triangulo" data-reveal style="--d:.36s"><b>Feedback periódico y oportuno con DG</b> para
         el logro de los objetivos de la empresa.</div>
     </div>
   </section>
@@ -523,35 +552,39 @@
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">08 / 10</div>
       <p class="eyebrow" data-reveal>Inversión · 5 líderes · 6 meses</p>
-      <h2 data-reveal style="--d:.06s">Precio especial para <span class="hl">Roberto</span></h2>
+      <h2 data-reveal style="--d:.06s">Precio especial para <span class="hl">Integra Engineering</span></h2>
       <p class="lista-precio" data-reveal style="--d:.1s">Precio normal: $69,300 por líder ·
-        <span class="esp">Precio especial para Roberto: $62,871</span> ·
+        <span class="esp">Precio especial para Integra Engineering: $62,871</span> ·
         <b>$314,355 por 5 líderes el semestre</b></p>
       <div class="pagos">
-        <div class="pago mejor" data-reveal style="--d:.16s">
-          <span class="badge">Mejor precio</span>
-          <p class="forma">Un pago al inicio</p>
-          <p class="como">$53,280 por líder</p>
-          <p class="total">$266,400</p>
-          <p class="como">Total por 5 líderes · en 1 solo pago</p>
-          <p class="ahorro">Ahorras $80,100 (23%)</p>
+        <div class="pago" data-reveal style="--d:.16s">
+          <p class="forma">Pago mensual</p>
+          <p class="mes">$47,670<span class="per">/ mes</span></p>
+          <p class="lider">$9,534 al mes por líder</p>
+          <p class="total-nota">Total del semestre: $286,020 · en 6 pagos</p>
+          <p class="ahorro">Ahorras $60,480 (17%)</p>
+          <p class="extra">+$19,620 vs. un solo pago</p>
         </div>
         <div class="pago" data-reveal style="--d:.22s">
           <p class="forma">Dos pagos</p>
-          <p class="como">$55,320 por líder</p>
-          <p class="total">$276,600</p>
-          <p class="como">Total por 5 líderes · en 2 pagos de $138,300</p>
+          <p class="mes">$46,100<span class="per">/ mes*</span></p>
+          <p class="lider">$9,220 al mes por líder</p>
+          <p class="total-nota">Total del semestre: $276,600 · en 2 pagos de $138,300</p>
           <p class="ahorro">Ahorras $69,900 (20%)</p>
+          <p class="extra">+$10,200 vs. un solo pago</p>
         </div>
-        <div class="pago" data-reveal style="--d:.28s">
-          <p class="forma">Pago mensual</p>
-          <p class="como">$57,204 por líder</p>
-          <p class="total">$286,020</p>
-          <p class="como">Total por 5 líderes · en 6 pagos de $47,670</p>
-          <p class="ahorro">Ahorras $60,480 (17%)</p>
+        <div class="pago mejor" data-reveal style="--d:.28s">
+          <span class="badge">Recomendado · mejor precio</span>
+          <p class="forma">Un solo pago al inicio</p>
+          <p class="mes">$44,400<span class="per">/ mes*</span></p>
+          <p class="lider">$8,880 al mes por líder</p>
+          <p class="total-nota">Total del semestre: $266,400 · en 1 solo pago</p>
+          <p class="ahorro">Ahorras $80,100 (23%) — el mayor ahorro</p>
+          <p class="extra ok">La mensualidad más baja de las tres</p>
         </div>
       </div>
-      <p class="nota-mxn" data-reveal style="--d:.34s">Precios en pesos mexicanos (MXN). Programa de 6 meses (un semestre) para 5 líderes. Ahorros contra el precio normal de $69,300 por líder.</p>
+      <p class="nota-mxn" data-reveal style="--d:.34s">MXN · programa de 6 meses para 5 líderes. *Equivalente mensual: total del semestre entre 6;
+        en dos pagos y un solo pago se liquida por adelantado. Ahorros contra el precio normal de $69,300 por líder.</p>
     </div>
   </section>
 
@@ -563,35 +596,40 @@
       <div class="num">09 / 10</div>
       <p class="eyebrow" data-reveal>Precio por tamaño de grupo</p>
       <h2 data-reveal style="--d:.06s">La escala por número de <span class="hl">líderes</span></h2>
-      <p class="lead" data-reveal style="--d:.1s">El mismo programa de 6 meses, para cualquier tamaño de
-        grupo — así baja la inversión por líder mientras más líderes sumes.</p>
+      <p class="lead" data-reveal style="--d:.1s;max-width:none;">El mismo programa de 6 meses, visto al mes — mientras más líderes sumes, menos paga cada uno.</p>
       <div class="escala">
-        <div class="fila" data-reveal style="--d:.14s">
+        <div class="fila pick" data-reveal style="--d:.14s">
+          <span class="tagp">Integra · tu grupo</span>
           <div class="q">5 líderes</div>
           <div class="ah">Ahorra $80,100 (23%)</div>
-          <div class="c"><div class="v">$53,280</div><div class="k">por líder · por semestre</div></div>
-          <div class="s"><div class="v">$266,400</div><div class="k">semestre · 5 líderes</div></div>
+          <div class="c"><div class="v">$8,880</div><div class="k">al mes · por líder</div></div>
+          <div class="s"><div class="v">$44,400</div><div class="k">al mes · 5 líderes</div></div>
+          <div class="t"><div class="v2">$266,400</div><div class="k">el semestre · un pago</div></div>
         </div>
         <div class="fila" data-reveal style="--d:.19s">
           <div class="q">4 líderes</div>
           <div class="ah">Ahorra $55,440 (20%)</div>
-          <div class="c"><div class="v">$55,440</div><div class="k">por líder · por semestre</div></div>
-          <div class="s"><div class="v">$221,760</div><div class="k">semestre · 4 líderes</div></div>
+          <div class="c"><div class="v">$9,240</div><div class="k">al mes · por líder</div></div>
+          <div class="s"><div class="v">$36,960</div><div class="k">al mes · 4 líderes</div></div>
+          <div class="t"><div class="v2">$221,760</div><div class="k">el semestre · un pago</div></div>
         </div>
         <div class="fila" data-reveal style="--d:.24s">
           <div class="q">3 líderes</div>
           <div class="ah">Ahorra $35,100 (17%)</div>
-          <div class="c"><div class="v">$57,600</div><div class="k">por líder · por semestre</div></div>
-          <div class="s"><div class="v">$172,800</div><div class="k">semestre · 3 líderes</div></div>
+          <div class="c"><div class="v">$9,600</div><div class="k">al mes · por líder</div></div>
+          <div class="s"><div class="v">$28,800</div><div class="k">al mes · 3 líderes</div></div>
+          <div class="t"><div class="v2">$172,800</div><div class="k">el semestre · un pago</div></div>
         </div>
         <div class="fila" data-reveal style="--d:.29s">
           <div class="q">1 a 2 líderes</div>
           <div class="ah">Ahorra $19,080 (14%)</div>
-          <div class="c"><div class="v">$59,760</div><div class="k">por líder · por semestre</div></div>
-          <div class="s"><div class="v">$119,520</div><div class="k">semestre · 2 líderes</div></div>
+          <div class="c"><div class="v">$9,960</div><div class="k">al mes · por líder</div></div>
+          <div class="s"><div class="v">$19,920</div><div class="k">al mes · 2 líderes</div></div>
+          <div class="t"><div class="v2">$119,520</div><div class="k">el semestre · un pago</div></div>
         </div>
       </div>
-      <p class="nota-mxn" data-reveal style="--d:.34s">Precios del semestre (6 meses) en MXN, en un pago al inicio. Ahorros contra el precio normal de $69,300 por líder.</p>
+      <p class="nota-mxn" data-reveal style="--d:.34s">Equivalente mensual (total del semestre entre 6 meses) del programa de 6 meses, en un pago al inicio.
+        Precios en MXN. Ahorros contra el precio normal de $69,300 por líder.</p>
     </div>
   </section>
 

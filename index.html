@@ -125,13 +125,14 @@
   .arr{transition:transform .3s var(--ease);}
   .btn:hover .arr{transform:translateX(5px);}
 
-  /* ---------- reveals + typewriter ---------- */
-  /* la animación hc-safety es la red de seguridad EN CSS: aunque el JS truene
-     en algún navegador, nada se queda invisible más de ~4 s */
-  .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s);
-    animation:hc-safety .8s var(--ease) 4s forwards;}
-  .js [data-reveal].in{opacity:1;transform:none;animation:none;}
-  @keyframes hc-safety{to{opacity:1;transform:none;}}
+  /* ---------- reveals + typewriter ----------
+     SIN red de seguridad global por tiempo (17-ago): la vieja `hc-safety` revelaba
+     la página entera a los ~4.8 s de cargar, así que toda sección a la que se
+     llegara después aparecía sin animación. La red ahora es POR SECCIÓN y vive en
+     el JS; y la clase .js (la que esconde) se pone hasta que la maquinaria quedó
+     armada, así que si algo truena antes, nada se esconde. */
+  .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s);}
+  .js [data-reveal].in{opacity:1;transform:none;}
   /* la palabra que rota reserva por JS el ancho de la más larga, así la línea
      nunca se re-acomoda mientras escribe o borra */
   .type{display:inline-block;text-align:center;white-space:nowrap;max-width:100%;}
@@ -812,7 +813,58 @@
 <script>
 (function () {
   "use strict";
-  document.documentElement.classList.add('js');
+
+  /* ---------- reveals en cascada, por sección (17-ago) ----------
+     Cada sección revela sus [data-reveal] en ORDEN DE DOM, con el retraso puesto
+     por JS (por eso se anulan los --d escritos a mano: si no, se sumarían). Va al
+     principio del script y de forma síncrona —el <script> está al final del body—
+     para que un error de cualquier otra cosa no deje la página en blanco. */
+  var revs = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  function grupo(el){ return (el.closest && (el.closest('.sec') || el.closest('footer'))) || el; }
+  var grupos = [];
+  revs.forEach(function (el) {
+    el.style.setProperty('--d', '0s');
+    var g = grupo(el);
+    if (grupos.indexOf(g) === -1) grupos.push(g);
+  });
+  function arranca(g) {
+    if (!g || g.hcRev) return;
+    g.hcRev = true;
+    var els = Array.prototype.slice.call(g.querySelectorAll('[data-reveal]'));
+    if (g.hasAttribute && g.hasAttribute('data-reveal')) els.unshift(g);
+    var paso = els.length > 12 ? 45 : 95;   /* secciones con muchas piezas, cascada más rápida */
+    els.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add('in'); }, i * paso);
+    });
+  }
+
+  document.documentElement.classList.add('js');   /* recién aquí se esconde nada */
+
+  if ('IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function (ents, obs) {
+      ents.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        arranca(grupo(e.target));
+        obs.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    revs.forEach(function (el) { ro.observe(el); });
+    /* red de seguridad POR SECCIÓN (nunca global por tiempo): si el observer no
+       entrega —pestaña en segundo plano, navegador estrangulando—, cualquier
+       sección que YA esté en pantalla arranca igual. Se apaga sola. */
+    var reloj = setInterval(function () {
+      var faltan = 0;
+      grupos.forEach(function (g) {
+        if (g.hcRev) return;
+        faltan++;
+        var r = g.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.9 && r.bottom > 0) arranca(g);
+      });
+      if (!faltan) clearInterval(reloj);
+    }, 900);
+  } else {
+    revs.forEach(function (el) { el.classList.add('in'); });
+  }
 
   /* cinta de logos: el set se duplica para que el loop no tenga costura */
   var LOGOS = ['ge','technipfmc','pepsico','axa','essity','quakerstate','talos','corev','tasvaluo',
@@ -858,19 +910,7 @@
   }
 
   function init() {
-    /* reveals al entrar en viewport — van PRIMERO: si algo más de init truena,
-       esto ya quedó registrado y nada se queda invisible */
-    var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
-    if ('IntersectionObserver' in window) {
-      var ro = new IntersectionObserver(function (ents, obs) {
-        ents.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-      }, { rootMargin: '0px 0px -10% 0px' });
-      reveals.forEach(function (el) { ro.observe(el); });
-      /* red de seguridad JS (la de CSS es hc-safety) */
-      setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 4000);
-    } else {
-      reveals.forEach(function (el) { el.classList.add('in'); });
-    }
+    /* (los reveals se arman arriba, al inicio del script) */
 
     /* typewriter del hero */
     var tw = document.getElementById('tw');

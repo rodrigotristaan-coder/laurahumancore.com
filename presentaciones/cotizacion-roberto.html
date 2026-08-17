@@ -187,23 +187,25 @@
   .lado.hc .pero .et{color:var(--gold);}
   .lado.hc .pero b{color:#fff;}
 
-  /* ---------- 07 · método: 5 fases que ALTERNAN blanco / navy (16-ago), marco dorado en todas, 1.5x ---------- */
+  /* ---------- 07 · método: 5 fases que ALTERNAN blanco / navy (16-ago), 1.5x.
+     (17-ago) SIN marco dorado ni letras doradas en las fases: el dorado se reserva al bloque de feedback ---------- */
   .ruta{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:10px;}
   .paso{background:#fff;border-radius:var(--r-md);padding:30px 24px;color:var(--body-solid);
-    outline:3px solid var(--gold);outline-offset:-3px;}
-  .paso:nth-child(even){background:var(--navy);color:rgba(255,255,255,.87);}
-  /* "Fase N" más grande y de otro color: navy sobre blanco, dorado sobre navy.
+    border:1px solid var(--line);}
+  .paso:nth-child(even){background:var(--navy);border-color:var(--navy);color:rgba(255,255,255,.87);}
+  /* "Fase N" más grande: navy sobre blanco, blanco sobre navy.
      Cabe en UNA línea (16px, tracking corto) para que la diapo siga entrando en una laptop */
   .paso .cuando{font-family:var(--font-label);font-size:16px;letter-spacing:.08em;text-transform:uppercase;
     font-weight:800;color:var(--navy);margin:0 0 12px;line-height:1.3;white-space:nowrap;}
-  .paso:nth-child(even) .cuando{color:var(--gold);}
+  .paso:nth-child(even) .cuando{color:#fff;}
   .paso h3{font-size:31px;margin:0 0 10px;color:var(--ink);line-height:1.08;}
   .paso:nth-child(even) h3{color:#fff;}
   .paso p{font-size:19px;margin:0;line-height:1.42;}
-  /* el bloque de feedback va en crema */
-  .triangulo{margin-top:20px;background:var(--cream);border:1px solid var(--line);border-radius:var(--r-md);
-    padding:22px 30px;color:var(--body-solid);font-size:clamp(18px,1.9vw,21.5px);}
-  .triangulo b{color:var(--navy);}
+  /* el bloque de feedback: crema, MARCO DORADO y énfasis (17-ago) */
+  .triangulo{margin-top:20px;background:var(--cream);border-radius:var(--r-md);
+    outline:3px solid var(--gold);outline-offset:-3px;
+    padding:24px 32px;color:var(--ink);font-size:clamp(20px,2.1vw,24px);font-weight:600;}
+  .triangulo b{color:var(--gold-deep);font-weight:800;}
 
   /* ---------- 08 · inversión ---------- */
   .lista-precio{font-size:18.5px;color:rgba(255,255,255,.7);margin:0 0 30px;}

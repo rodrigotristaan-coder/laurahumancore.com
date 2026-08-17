@@ -176,6 +176,7 @@
   /* la tarjeta navy tiene menos viñetas: la lista flota centrada y "Lo que no es" queda al fondo, emparejando con la de aula */
   .lado.hc ul{margin:auto 0;gap:12px;}
   .lado.aula{background:var(--cream);border:1px solid var(--line);}
+  .lado.aula h3{margin-bottom:16px;} /* (17-ago) ya sin subtítulo "Diplomado tradicional" */
   .lado.hc{background:var(--navy);color:rgba(255,255,255,.87);text-align:center;} /* (17-ago, Laura) todo centrado */
   .lado h3{font-size:31px;margin:0 0 5px;}
   .lado.hc h3{color:#fff;}
@@ -251,7 +252,20 @@
     font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-deep);
     background:var(--gold);border-radius:var(--r-pill);padding:6px 15px;}
 
-  /* ---------- 09 · cierre ---------- */
+  /* ---------- 09 · formas de pago: sobre blanco, filas crema; dos importes (un pago ó mensual) con "ó" en medio ---------- */
+  .pagos{max-width:1100px;margin-top:14px;gap:8px;}
+  .pagos .fila{grid-template-columns:1fr auto auto auto;gap:4px 26px;background:var(--cream);border:1px solid var(--line);
+    padding:7px 32px;}
+  .pagos .fila .c{grid-column:auto;min-width:200px;}
+  .pagos .fila .v{font-size:clamp(24px,2.3vw,30px);}
+  .pagos .fila .o{font-family:var(--font-display);font-weight:600;font-size:clamp(20px,2vw,26px);color:var(--taupe);}
+  .pagos .fila.pick{background:var(--navy);border-color:transparent;padding-top:18px;padding-bottom:14px;}
+  .pagos .fila.pick .v{font-size:clamp(28px,2.7vw,36px);}
+  .pagos .fila.pick .o{color:rgba(255,255,255,.6);}
+  .pagos + .nota-mxn{margin-top:10px;}
+  .on-white .nota-mxn{color:var(--taupe);}
+
+  /* ---------- 10 · cierre ---------- */
   .cierre .slab{align-items:flex-start;}
   .cierre h2{max-width:none;}
   .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
@@ -323,6 +337,11 @@
     .fila .tagp{position:static;grid-column:1 / -1;justify-self:start;white-space:nowrap;font-size:9.5px;
       padding:6px 12px;margin:0 0 2px;}
     .fila .tot{font-size:17px;}
+    .pagos .fila{grid-template-columns:1fr auto 1fr;padding:16px 20px;}
+    .pagos .fila .q{grid-column:1 / -1;}
+    .pagos .fila .c{min-width:0;text-align:left;}
+    .pagos .fila .c + .o + .c{text-align:right;}
+    .pagos .fila .v{font-size:26px;}
     .dots{display:none;}
     .ayuda{display:none;}
     .contador{display:none;}
@@ -349,7 +368,7 @@
     <div class="slab">
       <div class="bg bg-playa v-navy"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">01 / 09</div>
+      <div class="num">01 / 10</div>
       <span class="tag-oro" data-reveal>Propuesta especial · Agosto 2026</span>
       <h1 data-reveal style="--d:.06s">Propuesta especial para</h1>
       <div class="logo-cliente" data-reveal style="--d:.1s">
@@ -366,7 +385,7 @@
   <section class="slide on-white" data-t="Laura">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">02 / 09</div>
+      <div class="num">02 / 10</div>
       <div class="cv">
         <div class="foto" data-reveal>
           <img src="/assets/laura-portrait.webp" alt="Laura de la Peña" width="280" height="279" />
@@ -375,9 +394,8 @@
           <p class="eyebrow" data-reveal>Quién lo dirige</p>
           <h2 data-reveal style="--d:.06s">Laura <span class="hl">de la Peña</span></h2>
           <p class="role" data-reveal style="--d:.1s">Strategic Leadership Coach · Alta dirección</p>
-          <p class="bio" data-reveal style="--d:.14s"><b>Más de 25 años formando líderes, gerentes y directores
-            generales</b>, y equipos de alto desempeño. Socia fundadora de <b>Gnosis Awareness</b>, donde dirige
-            la transformación de líderes.</p>
+          <p class="bio" data-reveal style="--d:.14s"><b>Más de 25 años formando Líderes, Gerentes, Directores y
+            Equipos de Alto Desempeño.</b> Fundadora y Creadora de Human-Core System.</p>
           <div class="hitos" data-reveal style="--d:.2s">
             <div class="hito"><div class="k">1993 — 1998</div><div class="v">Hewlett Packard</div>
               <div class="d">Comunicación interna y dirección de relaciones públicas y gobierno.</div></div>
@@ -401,7 +419,7 @@
   <section class="slide on-white" data-t="Empresas">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">03 / 09</div>
+      <div class="num">03 / 10</div>
       <p class="eyebrow" data-reveal>Trayectoria</p>
       <h2 data-reveal style="--d:.06s">Empresas donde hemos formado <span class="hl">líderes</span></h2>
       <div class="muro" data-reveal style="--d:.14s">
@@ -427,9 +445,9 @@
     <div class="slab">
       <div class="bg bg-playa v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">04 / 09</div>
-      <p class="frase-t" data-reveal>Ascender a un gran técnico sin prepararlo <span class="remate">no produce un gerente:</span><br />
-        <span class="remate">produce <b>un gran técnico saturado</b>.</span></p>
+      <div class="num">04 / 10</div>
+      <p class="frase-t" data-reveal>Ascender a un gran elemento sin prepararlo <span class="remate">no produce un Gerente.</span><br />
+        <span class="remate">Produce <b>un gran elemento saturado</b>.</span></p>
       <p class="quote-sub" data-reveal style="--d:.1s">“Locura es hacer lo mismo esperando resultados distintos.”</p>
       <p class="autor" data-reveal style="--d:.14s">— Albert Einstein</p>
       <figure class="einstein" data-reveal style="--d:.2s">
@@ -443,12 +461,12 @@
     <div class="slab">
       <div class="bg bg-problema v-navy"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">05 / 09</div>
-      <p class="eyebrow" data-reveal>El reto de Integra</p>
-      <h2 data-reveal style="--d:.06s">5 técnicos desarrollando sus <span class="hl">habilidades gerenciales</span></h2>
+      <div class="num">05 / 10</div>
+      <p class="eyebrow" data-reveal>El Gran Reto:</p>
+      <h2 data-reveal style="--d:.06s">Especialistas desarrollando sus <span class="hl">habilidades Gerenciales</span></h2>
       <div class="cards3">
         <div class="cardm" data-reveal style="--d:.12s">
-          <h3>Son los mejores en su oficio</h3>
+          <h3>Son expertos en lo que hacen</h3>
           <p>Dominan la operación.</p>
         </div>
         <div class="cardm" data-reveal style="--d:.18s">
@@ -456,8 +474,8 @@
           <p>Planear, delegar, dirigir personas y responder por resultados es otro oficio.</p>
         </div>
         <div class="cardm" data-reveal style="--d:.24s">
-          <h3>Todos siguen en operaciones</h3>
-          <p>Su desarrollo tiene que convivir con el día a día, sin frenar la obra.</p>
+          <h3>La operación no puede parar</h3>
+          <p>Su desarrollo tiene que convivir con el día a día, sin frenar su trabajo.</p>
         </div>
       </div>
     </div>
@@ -467,21 +485,20 @@
   <section class="slide on-white" data-t="Dos caminos">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">06 / 09</div>
+      <div class="num">06 / 10</div>
       <p class="eyebrow" data-reveal>Dos caminos</p>
       <h2 data-reveal style="--d:.06s;font-size:clamp(30px,3.2vw,46px);">Un aula general ó un <span class="hl">programa de liderazgo
         personalizado por líder</span></h2>
       <div class="versus">
         <div class="lado aula" data-reveal style="--d:.12s">
           <h3>Aula general</h3>
-          <p class="sub">Diplomado tradicional</p>
           <ul>
             <li>Temario fijo, igual para todos los grupos.</li>
             <li>Casos generales: demasiados y de otras industrias.</li>
             <li>Tu gerente es uno más en la sala.</li>
             <li>Avanza al ritmo del calendario, no del líder.</li>
             <li>Mayor demanda de tiempo y de hrs improductivas.</li>
-            <li>Pérdida de productividad laboral al tener que trasladarse fuera del trabajo.</li>
+            <li>Pérdida de productividad laboral al trasladarse fuera de su área de trabajo.</li>
             <li>Precio mucho más elevado y sin garantía de resultados.</li>
           </ul>
           <p class="pero"><span class="et">El riesgo</span>Otro diplomado en el CV sube el ego académico —
@@ -497,7 +514,7 @@
             <li><b>Feedback bidireccional con DG</b>.</li>
             <li><b>Entrega de reportes</b> de fortalezas, debilidades y áreas de oportunidad.</li>
           </ul>
-          <p class="pero"><span class="et">Lo que no es</span>No es un papel que abra puertas afuera:
+          <p class="pero">No es un papel que abra puertas afuera:
             es desarrollo a la medida que <b>se queda en tu empresa</b>.</p>
         </div>
       </div>
@@ -508,7 +525,7 @@
   <section class="slide on-white" data-t="El método">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">07 / 09</div>
+      <div class="num">07 / 10</div>
       <p class="eyebrow" data-reveal>Cómo trabajamos</p>
       <h2 data-reveal style="--d:.06s">Tres meses, tres <span class="hl">fases</span></h2>
       <div class="ruta">
@@ -538,7 +555,7 @@
     <div class="slab">
       <div class="bg bg-team v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">08 / 09</div>
+      <div class="num">08 / 10</div>
       <p class="eyebrow" data-reveal>Inversión · Programa de 3 meses</p>
       <h2 data-reveal style="--d:.06s">Programa gerencial para <span class="hl">mandos medios</span></h2>
       <p class="lista-precio" data-reveal style="--d:.1s">Precio por líder · 3 meses: <b>$34,800</b></p>
@@ -553,7 +570,8 @@
         </div>
         <div class="fila" data-reveal style="--d:.19s">
           <div class="q">3 a 4 gerentes</div>
-          <div class="c"><div class="v">$29,400</div><div class="k">por líder · 3 meses</div></div>
+          <div class="ah">−15%</div>
+          <div class="c"><div class="v">$29,580</div><div class="k">por líder · 3 meses</div></div>
         </div>
         <div class="fila" data-reveal style="--d:.24s">
           <div class="q">1 a 2 gerentes</div>
@@ -564,20 +582,64 @@
     </div>
   </section>
 
-  <!-- 09 · CIERRE -->
+  <!-- 09 · FORMAS DE PAGO (tabla de Laura, 17-ago pm): total del trimestre en un pago ó 3 mensualidades, por número de gerentes -->
+  <section class="slide on-white" data-t="Formas de pago">
+    <div class="slab">
+      <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
+      <div class="num">09 / 10</div>
+      <p class="eyebrow" data-reveal>Inversión · Programa de 3 meses</p>
+      <h2 data-reveal style="--d:.06s">Formas de <span class="hl">pago</span></h2>
+      <div class="escala pagos">
+        <div class="fila pick" data-reveal style="--d:.1s">
+          <span class="tagp">Mejor opción</span>
+          <div class="q">5 Gerentes</div>
+          <div class="c"><div class="v">$139,200</div><div class="k">3 meses · un solo pago</div></div>
+          <div class="o">ó</div>
+          <div class="c"><div class="v">$46,400</div><div class="k">mensuales · 3 pagos</div></div>
+        </div>
+        <div class="fila" data-reveal style="--d:.14s">
+          <div class="q">4 Gerentes</div>
+          <div class="c"><div class="v">$118,320</div><div class="k">3 meses · un solo pago</div></div>
+          <div class="o">ó</div>
+          <div class="c"><div class="v">$39,440</div><div class="k">mensuales · 3 pagos</div></div>
+        </div>
+        <div class="fila" data-reveal style="--d:.18s">
+          <div class="q">3 Gerentes</div>
+          <div class="c"><div class="v">$88,200</div><div class="k">3 meses · un solo pago</div></div>
+          <div class="o">ó</div>
+          <div class="c"><div class="v">$29,400</div><div class="k">mensuales · 3 pagos</div></div>
+        </div>
+        <div class="fila" data-reveal style="--d:.22s">
+          <div class="q">2 Gerentes</div>
+          <div class="c"><div class="v">$62,820</div><div class="k">3 meses · un solo pago</div></div>
+          <div class="o">ó</div>
+          <div class="c"><div class="v">$20,940</div><div class="k">mensuales · 3 pagos</div></div>
+        </div>
+        <div class="fila" data-reveal style="--d:.26s">
+          <div class="q">1 Gerente</div>
+          <div class="c"><div class="v">$31,410</div><div class="k">3 meses · un solo pago</div></div>
+          <div class="o">ó</div>
+          <div class="c"><div class="v">$10,470</div><div class="k">mensuales · 3 pagos</div></div>
+        </div>
+      </div>
+      <p class="nota-mxn" data-reveal style="--d:.3s">Precios en pesos mexicanos (MXN) por el programa completo de 3 meses.</p>
+    </div>
+  </section>
+
+  <!-- 10 · CIERRE -->
   <section class="slide cierre on-deep" data-t="Siguiente paso">
     <div class="slab">
       <div class="bg bg-playa v-deep"></div>
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
-      <div class="num">09 / 09</div>
+      <div class="num">10 / 10</div>
       <p class="eyebrow" data-reveal>Objetivo claro y necesario para el crecimiento de la empresa</p>
-      <h2 data-reveal style="--d:.06s">5 líderes en camino a convertirse en <span class="hl">Gerentes</span></h2>
+      <h2 data-reveal style="--d:.06s">Talentos en camino a convertirse en <span class="hl">Gerentes</span></h2>
       <p class="lead" style="color:rgba(255,255,255,.78);" data-reveal>
         En 3 meses tienes gerentes en desarrollo, reportes por líder y un dictamen claro
-        del potencial de cada uno a largo plazo.</p>
+        del potencial de cada uno a mediano y largo plazo.</p>
       <div class="btns" data-reveal style="--d:.14s">
-        <a class="btn btn-gold" href="mailto:contacto@laurahumancore.com?subject=Propuesta%20Integra%20Engineering%20%E2%80%94%205%20gerentes">Escribir a Laura →</a>
-        <a class="btn btn-borde" href="https://laurahumancore.com">laurahumancore.com →</a>
+        <a class="btn btn-gold" href="mailto:contacto@laurahumancore.com?subject=Propuesta%20HUMAN-CORE%20System%20%E2%80%94%20Programa%20gerencial">Contactar vía mail →</a>
+        <a class="btn btn-borde" href="https://laurahumancore.com">Pág. Web: laurahumancore.com →</a>
       </div>
       <p class="pie" data-reveal style="--d:.2s">Propuesta preparada el 17 de agosto de 2026, exclusiva para
         Integra Engineering · DG Roberto Alarcón. contacto@laurahumancore.com</p>
@@ -588,7 +650,7 @@
 
 <nav class="dots" id="dots" aria-label="Diapositivas"></nav>
 <div class="ayuda">← → para navegar</div>
-<div class="contador" id="contador">01 / 09</div>
+<div class="contador" id="contador">01 / 10</div>
 
 <script>
 document.documentElement.classList.add('js');

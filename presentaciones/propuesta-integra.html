@@ -227,9 +227,9 @@
 
   /* ---------- escala por número de gerentes: 1-2 / 3-4 / 5+ (orden de Laura); la de 5+ va en NAVY,
      marco dorado y con el total del trimestre, para que se vea como la mejor opción ---------- */
-  .escala{display:grid;gap:12px;max-width:1040px;margin-top:14px;}
+  .escala{display:grid;gap:12px;max-width:1040px;margin-top:26px;}
   .fila{display:grid;grid-template-columns:1fr auto auto;gap:8px 34px;align-items:center;
-    background:#fff;border-radius:var(--r-md);padding:16px 36px;color:var(--body-solid);position:relative;}
+    background:#fff;border-radius:var(--r-md);padding:14px 36px;color:var(--body-solid);position:relative;}
   .fila .q{font-family:var(--font-label);font-weight:700;font-size:16px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--navy);}
   .fila .ah{font-family:var(--font-label);font-weight:800;font-size:14px;letter-spacing:.1em;
@@ -544,21 +544,21 @@
       <p class="lista-precio" data-reveal style="--d:.1s">Precio normal por líder · 3 meses: <b>$34,650</b></p>
       <p class="esp-lbl" data-reveal style="--d:.12s">Precio especial para <span class="hl">Integra Engineering</span>:</p>
       <div class="escala">
-        <div class="fila" data-reveal style="--d:.14s">
-          <div class="q">1 a 2 gerentes</div>
-          <div class="c"><div class="v">$29,700</div><div class="k">por líder · 3 meses</div></div>
+        <div class="fila pick" data-reveal style="--d:.14s">
+          <span class="tagp">La mejor opción · Integra</span>
+          <div class="q">5 gerentes en adelante</div>
+          <div class="ah">−10%</div>
+          <div class="c"><div class="v">$26,730</div><div class="k">por líder · 3 meses</div></div>
+          <div class="tot">Trimestre por 5 gerentes: <b>$133,650</b> en un solo pago · ó <b>3 pagos mensuales de $45,000</b></div>
         </div>
         <div class="fila" data-reveal style="--d:.19s">
           <div class="q">3 a 4 gerentes</div>
           <div class="ah">−5%</div>
           <div class="c"><div class="v">$28,215</div><div class="k">por líder · 3 meses</div></div>
         </div>
-        <div class="fila pick" data-reveal style="--d:.24s">
-          <span class="tagp">La mejor opción · Integra</span>
-          <div class="q">5 gerentes en adelante</div>
-          <div class="ah">−10%</div>
-          <div class="c"><div class="v">$26,730</div><div class="k">por líder · 3 meses</div></div>
-          <div class="tot">Trimestre por 5 gerentes: <b>$133,650</b> en un solo pago · ó <b>3 pagos mensuales de $45,000</b></div>
+        <div class="fila" data-reveal style="--d:.24s">
+          <div class="q">1 a 2 gerentes</div>
+          <div class="c"><div class="v">$29,700</div><div class="k">por líder · 3 meses</div></div>
         </div>
       </div>
       <p class="nota-mxn" data-reveal style="--d:.3s">Precios en pesos mexicanos (MXN), por líder, para el programa completo de 3 meses.</p>

@@ -103,11 +103,11 @@
   .tag-oro{display:inline-block;font-family:var(--font-label);font-weight:700;font-size:12px;
     letter-spacing:.18em;text-transform:uppercase;color:var(--navy-deep);background:var(--gold);
     border-radius:var(--r-pill);padding:11px 24px;margin-bottom:30px;}
-  /* dos renglones en compu: "Propuesta especial para / Integra Engineering" */
-  .cover h1{font-size:clamp(40px,5.6vw,84px);max-width:24ch;margin:0 auto 18px;}
-  /* logo del cliente (PNG sin fondo, blanco + naranja: nace para fondo oscuro) */
-  .logo-cliente{margin:0 auto 26px;}
-  .logo-cliente img{display:block;width:clamp(180px,20vw,250px);height:auto;margin:0 auto;}
+  /* el H1 es solo "Propuesta especial para"; el nombre de la empresa lo dice el LOGO (17-ago) */
+  .cover h1{font-size:clamp(40px,5.6vw,84px);max-width:24ch;margin:0 auto 22px;}
+  /* logo del cliente (PNG sin fondo, blanco + naranja: nace para fondo oscuro), en el lugar del nombre */
+  .logo-cliente{margin:0 auto 30px;}
+  .logo-cliente img{display:block;width:clamp(240px,26vw,360px);height:auto;margin:0 auto;}
   .cover .dg{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,2.6vw,34px);
     color:#fff;line-height:1.15;margin:0 auto 22px;}
   .cover .quien{font-size:clamp(19px,2.1vw,24px);color:rgba(255,255,255,.85);max-width:52ch;margin:0 auto;}
@@ -316,7 +316,7 @@
     .muro img{max-height:46px;}
     .cards3,.versus,.ruta,.pagos{grid-template-columns:1fr;}
     .pago.mejor{order:-1;transform:none;}
-    .logo-cliente img{width:170px;}
+    .logo-cliente img{width:210px;}
     .quote-grid{grid-template-columns:1fr;gap:34px;}
     .einstein{justify-self:center;max-width:240px;}
     .fila{grid-template-columns:1fr 1fr;padding:22px 24px;}
@@ -353,11 +353,11 @@
       <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">01 / 10</div>
       <span class="tag-oro" data-reveal>Propuesta especial · Agosto 2026</span>
-      <div class="logo-cliente" data-reveal style="--d:.04s">
+      <h1 data-reveal style="--d:.06s">Propuesta especial para</h1>
+      <div class="logo-cliente" data-reveal style="--d:.1s">
         <img src="/assets/logos/integra-engineering.png" alt="Integra Engineering" width="598" height="158" />
       </div>
-      <h1 data-reveal style="--d:.08s">Propuesta especial para <span class="hl">Integra Engineering</span></h1>
-      <p class="dg" data-reveal style="--d:.12s">Dirección General · Roberto Alarcón</p>
+      <p class="dg" data-reveal style="--d:.14s">Dirección General · Roberto Alarcón</p>
       <p class="quien" data-reveal style="--d:.16s">Más de 20 años ofreciendo <b>ingeniería de capital humano</b>.</p>
       <div class="chips" data-reveal style="--d:.24s">
         <span>5 líderes técnicos</span><span>Rumbo a gerencia</span><span>Programa 1 a 1 · 6 meses</span>

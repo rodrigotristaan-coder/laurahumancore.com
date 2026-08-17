@@ -258,8 +258,7 @@
   .pagos-slide .slab{align-items:center;text-align:center;}
   .pagos{max-width:1100px;margin-top:14px;gap:8px;}
   .pagos .fila{grid-template-columns:minmax(0,200px) minmax(0,235px) auto minmax(0,235px);
-    justify-content:center;gap:4px 30px;background:var(--cream);border:1px solid var(--line);
-    padding:7px 32px;text-align:center;}
+    justify-content:center;gap:4px 30px;padding:7px 32px;text-align:center;}
   .pagos .fila .q{text-align:center;}
   .pagos .fila .c{grid-column:auto;min-width:0;text-align:center;}
   .pagos .fila .tagp{left:50%;transform:translateX(-50%);}
@@ -272,6 +271,9 @@
   .on-white .nota-mxn{color:var(--taupe);}
 
   /* ---------- 10 · cierre ---------- */
+  /* (17-ago) el velo v-deep tapaba la playa por completo: aquí se abre —más claro
+     del lado derecho, donde no hay texto— para que la foto se vea de verdad */
+  .cierre .bg::after{background:linear-gradient(115deg,rgba(0,18,51,.92) 0%,rgba(0,18,51,.8) 42%,rgba(0,18,51,.52) 100%);}
   .cierre .slab{align-items:flex-start;}
   .cierre h2{max-width:none;}
   .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
@@ -297,13 +299,13 @@
     letter-spacing:.16em;color:var(--taupe);background:var(--cream);border:1px solid var(--line);
     border-radius:var(--r-pill);padding:8px 16px;z-index:50;}
 
-  /* ---------- reveals ---------- */
-  /* hc-safety = red de seguridad EN CSS: aunque el JS truene o el observer no
-     dispare, nada se queda invisible más de ~4 s */
-  .js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s);
-    animation:hc-safety .7s var(--ease) 4s forwards;}
-  .js [data-reveal].in{opacity:1;transform:none;animation:none;}
-  @keyframes hc-safety{to{opacity:1;transform:none;}}
+  /* ---------- reveals ----------
+     Sin red de seguridad global por tiempo: una que revelara todo a los N segundos
+     mataba la animación de las diapos a las que se llega después (era el caso a
+     partir de la 4ª). La red ahora es por diapositiva y vive en el JS; si el JS
+     truena antes de armarla, la clase .js nunca se pone y nada se esconde. */
+  .js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s);}
+  .js [data-reveal].in{opacity:1;transform:none;}
   @media(prefers-reduced-motion:reduce){
     .js [data-reveal]{opacity:1;transform:none;transition:none;}
     .deck{scroll-behavior:auto;}
@@ -589,9 +591,10 @@
   </section>
 
   <!-- 09 · FORMAS DE PAGO (tabla de Laura, 17-ago pm): total del trimestre en un pago ó 3 mensualidades, por número de gerentes -->
-  <section class="slide on-white pagos-slide" data-t="Formas de pago">
+  <section class="slide on-deep pagos-slide" data-t="Formas de pago">
     <div class="slab">
-      <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
+      <div class="bg bg-team v-deep"></div>
+      <div class="brand"><img src="/assets/logo-white.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">09 / 10</div>
       <p class="eyebrow" data-reveal>Inversión · Programa de 3 meses</p>
       <h2 data-reveal style="--d:.06s">Formas de <span class="hl">pago</span></h2>
@@ -659,7 +662,6 @@
 <div class="contador" id="contador">01 / 10</div>
 
 <script>
-document.documentElement.classList.add('js');
 (function(){
   var deck = document.getElementById('deck');
   var slides = Array.prototype.slice.call(deck.querySelectorAll('.slide'));
@@ -711,6 +713,7 @@ document.documentElement.classList.add('js');
      para no llenar el markup de atributos: chips de la portada, hitos y premios
      del CV, cada logo del muro, cada viñeta de los dos caminos y los botones
      del cierre. */
+  document.documentElement.classList.add('js');   /* recién aquí se esconde: si algo truena antes, todo queda visible */
   var DETALLES = '.chips span, .hito, .premios span, .muro img, .lado li, .lado .pero, .btns .btn';
   document.querySelectorAll(DETALLES).forEach(function(el){ el.setAttribute('data-reveal',''); });
   /* el retraso lo pone JS (abajo), así que se anulan los --d escritos a mano:
@@ -771,6 +774,15 @@ document.documentElement.classList.add('js');
       if (s) arranca(s);
     });
   }, {passive:true});
+
+  /* red de seguridad por diapositiva: si el observer no entrega (pestaña en
+     segundo plano, navegador estrangulando) igual arranca la diapo en cuadro.
+     Se apaga sola cuando las 10 ya corrieron. */
+  var reloj = setInterval(function(){
+    var s = slides[idx()];
+    if (s) arranca(s);
+    if (slides.every(function(x){ return x.hcRev; })) clearInterval(reloj);
+  }, 900);
 
   document.addEventListener('keydown', function(ev){
     if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown' || ev.key === 'PageDown'){ ev.preventDefault(); ir(idx()+1); }

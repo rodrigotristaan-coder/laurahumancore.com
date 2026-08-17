@@ -172,21 +172,23 @@
 
   /* ---------- 06 · comparación ---------- */
   .versus{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:4px;align-items:stretch;}
-  .lado{border-radius:var(--r-lg);padding:28px 34px;}
+  .lado{border-radius:var(--r-lg);padding:24px 32px;display:flex;flex-direction:column;}
+  /* la tarjeta navy tiene menos viñetas: su "Lo que no es" baja al fondo para emparejar con la de aula */
+  .lado.hc .pero{margin-top:auto;}
   .lado.aula{background:var(--cream);border:1px solid var(--line);}
   .lado.hc{background:var(--navy);color:rgba(255,255,255,.87);}
   .lado h3{font-size:31px;margin:0 0 5px;}
   .lado.hc h3{color:#fff;}
   .lado .sub{font-family:var(--font-label);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--taupe);margin:0 0 20px;}
+    font-weight:700;color:var(--taupe);margin:0 0 14px;}
   .lado.hc .sub{color:var(--gold);}
-  .lado ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
-  .lado li{font-size:17.5px;line-height:1.5;padding-left:26px;position:relative;}
+  .lado ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;}
+  .lado li{font-size:17px;line-height:1.42;padding-left:26px;position:relative;}
   .lado.aula li::before{content:"—";position:absolute;left:0;color:var(--taupe);}
   .lado.hc li::before{content:"●";position:absolute;left:0;top:2px;font-size:9px;color:var(--gold);}
   .lado.hc li b{color:#fff;}
   /* el "pero" honesto de cada camino */
-  .pero{margin:14px 0 0;padding:14px 20px;border-radius:var(--r-sm);font-size:16.5px;line-height:1.5;}
+  .pero{margin:12px 0 0;padding:12px 18px;border-radius:var(--r-sm);font-size:16px;line-height:1.45;}
   .lado.aula .pero{background:#fff;border:1px solid var(--line);color:var(--body-solid);}
   .lado.hc .pero{background:rgba(255,255,255,.1);color:rgba(255,255,255,.88);}
   .pero .et{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
@@ -466,7 +468,7 @@
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">06 / 09</div>
       <p class="eyebrow" data-reveal>Dos caminos</p>
-      <h2 data-reveal style="--d:.06s">Un aula general ó un <span class="hl">programa de liderazgo
+      <h2 data-reveal style="--d:.06s;font-size:clamp(30px,3.2vw,46px);">Un aula general ó un <span class="hl">programa de liderazgo
         personalizado por líder</span></h2>
       <div class="versus">
         <div class="lado aula" data-reveal style="--d:.12s">
@@ -477,7 +479,10 @@
             <li>Casos generales: demasiados y de otras industrias.</li>
             <li>Tu gerente es uno más en la sala.</li>
             <li>Avanza al ritmo del calendario, no del líder.</li>
-            <li>El reporte llega al final, si llega.</li>
+            <li>Precio mucho más elevado.</li>
+            <li>Mayor demanda de tiempo.</li>
+            <li>Resultados no garantizados.</li>
+            <li>Pérdida de productividad laboral al tener que trasladarse fuera del trabajo.</li>
           </ul>
           <p class="pero"><span class="et">El riesgo</span>Otro diplomado en el CV sube el ego académico —
             hay gerentes que con un certificado en mano salen a buscar mejores opciones en otras empresas.</p>

@@ -253,10 +253,16 @@
     background:var(--gold);border-radius:var(--r-pill);padding:6px 15px;}
 
   /* ---------- 09 · formas de pago: sobre blanco, filas crema; dos importes (un pago ó mensual) con "ó" en medio ---------- */
+  /* (17-ago, Rodrigo) todo el contenido de la diapo va centrado; las columnas
+     se quedan fijas para que los importes sí alineen entre filas */
+  .pagos-slide .slab{align-items:center;text-align:center;}
   .pagos{max-width:1100px;margin-top:14px;gap:8px;}
-  .pagos .fila{grid-template-columns:1fr auto auto auto;gap:4px 26px;background:var(--cream);border:1px solid var(--line);
-    padding:7px 32px;}
-  .pagos .fila .c{grid-column:auto;min-width:200px;}
+  .pagos .fila{grid-template-columns:minmax(0,200px) minmax(0,235px) auto minmax(0,235px);
+    justify-content:center;gap:4px 30px;background:var(--cream);border:1px solid var(--line);
+    padding:7px 32px;text-align:center;}
+  .pagos .fila .q{text-align:center;}
+  .pagos .fila .c{grid-column:auto;min-width:0;text-align:center;}
+  .pagos .fila .tagp{left:50%;transform:translateX(-50%);}
   .pagos .fila .v{font-size:clamp(24px,2.3vw,30px);}
   .pagos .fila .o{font-family:var(--font-display);font-weight:600;font-size:clamp(20px,2vw,26px);color:var(--taupe);}
   .pagos .fila.pick{background:var(--navy);border-color:transparent;padding-top:18px;padding-bottom:14px;}
@@ -337,11 +343,11 @@
     .fila .tagp{position:static;grid-column:1 / -1;justify-self:start;white-space:nowrap;font-size:9.5px;
       padding:6px 12px;margin:0 0 2px;}
     .fila .tot{font-size:17px;}
-    .pagos .fila{grid-template-columns:1fr auto 1fr;padding:16px 20px;}
+    .pagos .fila{grid-template-columns:1fr auto 1fr;padding:16px 20px;justify-content:stretch;}
     .pagos .fila .q{grid-column:1 / -1;}
-    .pagos .fila .c{min-width:0;text-align:left;}
-    .pagos .fila .c + .o + .c{text-align:right;}
+    .pagos .fila .c{min-width:0;text-align:center;}
     .pagos .fila .v{font-size:26px;}
+    .pagos .fila .tagp{position:static;justify-self:center;transform:none;}
     .dots{display:none;}
     .ayuda{display:none;}
     .contador{display:none;}
@@ -583,7 +589,7 @@
   </section>
 
   <!-- 09 · FORMAS DE PAGO (tabla de Laura, 17-ago pm): total del trimestre en un pago ó 3 mensualidades, por número de gerentes -->
-  <section class="slide on-white" data-t="Formas de pago">
+  <section class="slide on-white pagos-slide" data-t="Formas de pago">
     <div class="slab">
       <div class="brand"><img src="/assets/logo-navy-sm.webp" alt="HUMAN-CORE" /><span>HUMAN-CORE System</span></div>
       <div class="num">09 / 10</div>
@@ -700,18 +706,41 @@ document.documentElement.classList.add('js');
   }
   window.addEventListener('beforeprint', function(){ empListo = true; if (nEmp) nEmp.textContent = '+21'; });
 
+  /* ---------- reveals en cascada (17-ago) ----------
+     Detalles que también entran uno por uno. Se marcan aquí y no en el HTML
+     para no llenar el markup de atributos: chips de la portada, hitos y premios
+     del CV, cada logo del muro, cada viñeta de los dos caminos y los botones
+     del cierre. */
+  var DETALLES = '.chips span, .hito, .premios span, .muro img, .lado li, .lado .pero, .btns .btn';
+  document.querySelectorAll(DETALLES).forEach(function(el){ el.setAttribute('data-reveal',''); });
+  /* el retraso lo pone JS (abajo), así que se anulan los --d escritos a mano:
+     si no, se sumarían al de la cascada y el final de cada diapo llegaría tarde */
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ el.style.setProperty('--d','0s'); });
+
+  /* Una diapo arranca su cascada completa en cuanto ENTRA SU PRIMER elemento, y
+     el orden lo pone el DOM — no el observer, que puede disparar desordenado
+     (y en móvil, con diapos más altas que la pantalla, ni siquiera dispara todo). */
+  function arranca(slide){
+    if (slide.hcRev) return;
+    slide.hcRev = true;
+    var els = Array.prototype.slice.call(slide.querySelectorAll('[data-reveal]'));
+    var paso = els.length > 12 ? 45 : 95;   /* diapos con muchas piezas, cascada más rápida */
+    els.forEach(function(el, i){
+      setTimeout(function(){
+        el.classList.add('in');
+        if (el.querySelector('#nEmp')) cuentaEmpresas();
+      }, i * paso);
+    });
+  }
+
   if ('IntersectionObserver' in window){
     if (nEmp) nEmp.textContent = '+0';
-    /* reveals por ELEMENTO, no por diapo: en móvil una diapo puede ser más alta
-       que la pantalla y un umbral por diapo (45%) jamás disparaba → diapos en
-       blanco. Un elemento chico siempre alcanza su umbral. */
     var obsEl = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if (e.isIntersecting){
-          e.target.classList.add('in');
-          if (e.target.querySelector('#nEmp')) cuentaEmpresas();
-          obsEl.unobserve(e.target);
-        }
+        if (!e.isIntersecting) return;
+        var s = e.target.closest ? e.target.closest('.slide') : null;
+        if (s) arranca(s); else e.target.classList.add('in');
+        obsEl.unobserve(e.target);
       });
     }, {root:null, threshold:.05});
     document.querySelectorAll('[data-reveal]').forEach(function(el){ obsEl.observe(el); });
@@ -727,6 +756,21 @@ document.documentElement.classList.add('js');
     document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });
     empListo = true;
   }
+
+  /* Arranque y respaldo del cascadeo: la primera diapo entra siempre al cargar y,
+     al desplazarse, se dispara la diapo en cuadro. Así el orden no depende solo
+     del observer (que no entrega nada si la pestaña está en segundo plano). */
+  arranca(slides[0]);
+  var pendiente = false;
+  deck.addEventListener('scroll', function(){
+    if (pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(function(){
+      pendiente = false;
+      var s = slides[idx()];
+      if (s) arranca(s);
+    });
+  }, {passive:true});
 
   document.addEventListener('keydown', function(ev){
     if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown' || ev.key === 'PageDown'){ ev.preventDefault(); ir(idx()+1); }

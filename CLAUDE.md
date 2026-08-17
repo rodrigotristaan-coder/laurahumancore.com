@@ -19,6 +19,9 @@ laurahumancore.com/
 │   ├── presentacion-ventas.html          HC Deck v1 — 16 slides, fotos estáticas, énfasis de venta (autocontenida)
 │   ├── presentacion-ventas-v2.html       HC Deck v2 (v2.3) — video-loop emocional por slide; los mp4 van en media/ por URL relativa
 │   ├── presentacion-ventas-v2-fotos.html HC Deck v2-fotos (v2.3) — mismo look sin video, fotogramas WebP en base64 (autocontenida ~2.8 MB)
+│   ├── propuesta-integra.html            deck PRIVADO de 10 diapos para Integra Engineering /
+│   │                                     Roberto Alarcón (noindex, precio visible, lenguaje "mate
+│   │                                     sólido"). Reveals en CASCADA por diapositiva — ver abajo.
 │   ├── media/                            16 clips mp4 (Mixkit Free License) del deck v2
 │   └── design-system.html                design system de decks v2.3 + web v2 (al día 5-ago)
 ├── assets/           (imágenes optimizadas WebP al tamaño de uso)
@@ -130,6 +133,13 @@ del campo `sistemas`. Si sube el precio, se cambia ahí y en ningún otro lado.
   el label se asocia al primero y hacer clic en "Teléfono" enfocaba la lada.
   Si no escriben teléfono, la lada viaja vacía para no dejar un "+52" suelto en Excel.
 - Respeta `prefers-reduced-motion`.
+- ⚠️ **Los reveals de `index.html` traen una red de seguridad GLOBAL de 4 s** (`hc-safety`): a los
+  ~4.7 s de cargar revela toda la página, así que las secciones a las que se llega después aparecen
+  **sin animación**. En `presentaciones/propuesta-integra.html` esto ya se corrigió (17-ago) con
+  **cascada por sección**: cada bloque revela sus `[data-reveal]` en orden de DOM con retraso puesto
+  por JS, disparado por IntersectionObserver + arranque al cargar + respaldo en `scroll` + un
+  `setInterval` que se apaga solo; y la clase `.js` (la que esconde) se agrega **al final** de armar
+  la maquinaria, para que un error deje todo visible en vez de en blanco. Falta portarlo aquí.
 
 ## Discovery (repo aparte)
 

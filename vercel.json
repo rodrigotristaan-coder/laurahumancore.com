@@ -2,9 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    { "source": "/presentaciones/cotizacion-roberto", "destination": "/presentaciones/propuesta-integra", "permanent": false }
-  ],
   "rewrites": [
     { "source": "/panel", "destination": "/api/panel" },
     { "source": "/salir", "destination": "/api/salir" }

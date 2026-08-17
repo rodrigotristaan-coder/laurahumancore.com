@@ -33,11 +33,10 @@ laurahumancore.com/
 │   ├── bg-playa.webp         FONDO: playa nocturna (1600px, velo navy encima)
 │   ├── logos/                21 logos de clientes recortados del muro (cinta)
 │   ├── sistemas/             fotos de los 3 sistemas + fondo del problema
-│   ├── favicon.png
-│   └── ⚠️ SIN USO (ningún HTML los referencia; pendiente borrarlos):
-│       logo-gold-mask.webp (el hero v2 ya no lleva máscara), logo-gold.webp,
-│       logo-gold-sm.webp, clientes.webp (solo fue la fuente de los 21 recortes),
-│       sistemas/bg-impacto.webp y sistemas/sys-cultura.webp (la foto vieja)
+│   └── favicon.png
+│       (17-ago: se borraron los 6 assets sin uso — logo-gold{,-sm,-mask}.webp,
+│        clientes.webp, sistemas/bg-impacto.webp y sistemas/sys-cultura.webp;
+│        están en el historial de git si alguna vez hacen falta)
 ├── vercel.json       ← static, cache de assets + headers de seguridad (CSP ENFORCED)
 ├── robots.txt · sitemap.xml
 └── README.md         ← deploy (Vercel / GitHub)
@@ -193,7 +192,6 @@ que los fondos sobrevivan; la v2 oculta los videos e imprime la foto).
    `</head>` **y** sumar `connect.facebook.net` a `script-src` y `www.facebook.com`
    a `img-src` en la CSP, que ya está enforced.
 2. **Google Search Console**: alta del dominio + enviar sitemap.
-3. **Borrar los assets sin uso** listados arriba en el árbol de archivos.
 
 ---
 

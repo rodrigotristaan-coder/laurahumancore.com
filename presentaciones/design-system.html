@@ -373,11 +373,45 @@
 <!-- ============ 07 USO ============ -->
 <section class="sec">
   <div class="wrap">
-    <span class="num">07 · Uso</span>
+    <span class="num">07 · Variante mate sólida</span>
+    <h2>Propuestas a la medida</h2>
+    <p class="intro">Nació el 14-ago-2026 con la propuesta de Integra Engineering y ya es la cuarta forma válida de armar un deck. No sustituye a las anteriores: se usa cuando la pieza es <strong>para un solo cliente</strong>, se proyecta en junta y tiene que leerse de lejos.</p>
+    <div class="board"><span class="bt">Reglas de la variante</span>
+      <ul class="list">
+        <li><strong>Bloques de color planos, sin video.</strong> Los fondos fotográficos llevan un velo casi opaco (90–94 %): la foto da textura, nunca compite con el texto.</li>
+        <li><strong>Las diapositivas alternan</strong> blanco / navy / navy profundo, igual que la web v2, y cada una es una burbuja de radio grande sobre el crema.</li>
+        <li><strong>El dorado es marco, no relleno:</strong> la opción que se quiere empujar es la <em>única</em> con <code>outline:3px solid var(--gold)</code> y etiqueta dorada. Nada más lleva marco.</li>
+        <li><strong>Un número héroe por diapositiva.</strong> El precio grande es <em>lo que se paga</em>; los equivalentes (mensualidad, ahorro) van como nota, nunca compitiendo con el total.</li>
+        <li><strong>Si el velo tapa la foto, no hay foto.</strong> Un velo al 94 % sobre una playa nocturna se ve igual que un rectángulo navy: o se abre el velo del lado sin texto, o se cambia la imagen.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="num">08 · Movimiento</span>
+    <h2>Cómo entra el contenido</h2>
+    <p class="intro">Todo lo que se revela al hacer scroll usa el mismo patrón desde el 17-ago-2026, en la landing y en los decks.</p>
+    <div class="board"><span class="bt">Cascada por sección</span>
+      <ul class="list">
+        <li>Cada sección (o diapositiva) revela sus <code>[data-reveal]</code> <strong>en orden de DOM</strong>, con el retraso puesto por JS: <strong>95 ms</strong> por pieza, o <strong>45 ms</strong> si trae más de 12. Los <code>--d</code> escritos a mano se anulan.</li>
+        <li>Dispara el <code>IntersectionObserver</code>, más arranque al cargar y respaldo al hacer scroll; un reloj de 900 ms rescata a la sección que ya esté en pantalla y <strong>se apaga solo</strong>.</li>
+        <li>La clase <code>.js</code> —la que esconde— se agrega <strong>hasta el final</strong> de armar la maquinaria: si algo truena antes, la página se queda visible en vez de en blanco.</li>
+        <li><strong>Nunca una red de seguridad global por tiempo.</strong> La vieja (<code>hc-safety</code>, 4 s) revelaba el documento entero, así que toda sección a la que se llegara después aparecía sin animación. Se eliminó de la landing y de los decks.</li>
+        <li><strong>Verificación:</strong> Chrome headless con <code>--virtual-time-budget=&lt;ms&gt; --screenshot</code> captura el instante exacto de la cascada. Las pestañas en segundo plano no sirven: ahí no corren ni el observer ni <code>requestAnimationFrame</code>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="num">09 · Uso</span>
     <h2>Cómo se presenta y se comparte</h2>
     <div class="board">
       <ul class="list">
-        <li><strong>Tres decks vivos:</strong> <code>presentacion-ventas</code> (v1, fotos estáticas, copy anterior a v2.3) · <code>presentacion-ventas-v2</code> (video, la experiencia completa) · <code>presentacion-ventas-v2-fotos</code> (misma v2 sin video, autocontenida ~2.8 MB). Los tres se sirven sin <code>.html</code> y con <code>noindex</code>.</li>
+        <li><strong>Cuatro decks vivos:</strong> aparte va <code>propuesta-integra</code> (privado, variante mate sólida, 10 diapositivas, con precio a la vista porque el link es exclusivo). Los tres genéricos: <code>presentacion-ventas</code> (v1, fotos estáticas, copy anterior a v2.3) · <code>presentacion-ventas-v2</code> (video, la experiencia completa) · <code>presentacion-ventas-v2-fotos</code> (misma v2 sin video, autocontenida ~2.8 MB). Los tres se sirven sin <code>.html</code> y con <code>noindex</code>.</li>
         <li><strong>Presentar:</strong> abrir el HTML en el navegador, F11 (pantalla completa). Navegación con ← → ↑ ↓, espacio, PageUp/Down, Home/End, o scroll.</li>
         <li><strong>PDF:</strong> Imprimir → Guardar como PDF. El CSS de impresión saca una diapositiva por página en 1280×720, sin cromo. Los media queries móviles van como <code>@media screen and (…)</code> para no colarse al PDF, y los fondos sobreviven con <code>print-color-adjust:exact</code>. La v2 oculta los videos e imprime su fotograma.</li>
         <li><strong>Compartir:</strong> v1 y v2-fotos son autocontenidas y abren sin internet. <strong>La v2 con video NO:</strong> sus mp4 van por URL relativa desde <code>presentaciones/media/</code>, así que el archivo suelto cae a las fotos — para la experiencia completa se manda el link del dominio.</li>
@@ -389,7 +423,7 @@
 </section>
 
 <footer class="footer">
-  <div class="wrap">Decks v2.3 · Web v2 · HUMAN-CORE System — Laura de la Peña · Satori Agency · Agosto 2026</div>
+  <div class="wrap">Decks v2.3 + variante mate sólida · Web v2 · HUMAN-CORE System — Laura de la Peña · Satori Agency · Agosto 2026</div>
 </footer>
 
 </body>

@@ -208,16 +208,18 @@
   .triangulo b{color:var(--gold-deep);font-weight:800;}
 
   /* ---------- 08 · inversión: precio normal + escala por número de gerentes (17-ago) ---------- */
-  .lista-precio{font-size:clamp(19px,2vw,23px);color:rgba(255,255,255,.75);margin:0 0 20px;}
+  .lista-precio{font-size:clamp(19px,2vw,23px);color:rgba(255,255,255,.75);margin:0 0 6px;}
+  .esp-lbl{font-family:var(--font-display);font-weight:600;font-size:clamp(23px,2.4vw,30px);color:#fff;
+    line-height:1.15;margin:0;}
   .lista-precio b{color:rgba(255,255,255,.9);font-weight:700;text-decoration:line-through;
     text-decoration-color:rgba(194,163,107,.85);}
-  .nota-mxn{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.55);}
+  .nota-mxn{margin:14px 0 0;font-size:15px;color:rgba(255,255,255,.55);}
 
   /* ---------- escala por número de gerentes: 1-2 / 3-4 / 5+ (orden de Laura); la de 5+ va en NAVY,
      marco dorado y con el total del trimestre, para que se vea como la mejor opción ---------- */
-  .escala{display:grid;gap:14px;max-width:1040px;margin-top:16px;}
+  .escala{display:grid;gap:12px;max-width:1040px;margin-top:14px;}
   .fila{display:grid;grid-template-columns:1fr auto auto;gap:8px 34px;align-items:center;
-    background:#fff;border-radius:var(--r-md);padding:18px 36px;color:var(--body-solid);position:relative;}
+    background:#fff;border-radius:var(--r-md);padding:16px 36px;color:var(--body-solid);position:relative;}
   .fila .q{font-family:var(--font-label);font-weight:700;font-size:16px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--navy);}
   .fila .ah{font-family:var(--font-label);font-weight:800;font-size:14px;letter-spacing:.1em;
@@ -225,13 +227,13 @@
   .fila .c{text-align:right;grid-column:3;}
   .fila .v{font-family:var(--font-display);font-weight:700;font-size:clamp(30px,3vw,40px);color:var(--ink);line-height:1.05;}
   .fila .k{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--taupe);font-weight:600;}
+    color:var(--taupe);font-weight:600;white-space:nowrap;}
   .fila.pick{background:var(--navy);color:rgba(255,255,255,.85);outline:3px solid var(--gold);outline-offset:-3px;
-    padding-top:26px;padding-bottom:22px;}
+    padding-top:24px;padding-bottom:20px;}
   .fila.pick .q{color:var(--gold);font-size:17px;}
   .fila.pick .v{color:#fff;font-size:clamp(34px,3.4vw,46px);}
   .fila.pick .k{color:rgba(255,255,255,.65);}
-  .fila .tot{grid-column:1 / -1;margin-top:10px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);
+  .fila .tot{grid-column:1 / -1;margin-top:8px;padding-top:10px;border-top:1px solid rgba(255,255,255,.18);
     font-size:clamp(18px,1.9vw,22px);color:rgba(255,255,255,.88);}
   .fila .tot b{color:var(--gold);font-weight:800;}
   .fila .tagp{position:absolute;top:-13px;left:36px;font-family:var(--font-label);font-weight:700;
@@ -299,10 +301,16 @@
     .logo-cliente img{width:210px;}
     .quote-grid{grid-template-columns:1fr;gap:34px;}
     .einstein{justify-self:center;max-width:240px;}
-    .fila{grid-template-columns:1fr auto;padding:22px 24px;}
-    .fila .q{grid-column:1 / -1;}
+    .fila{grid-template-columns:1fr auto;padding:20px 22px;gap:10px 16px;}
+    .fila .q{grid-column:1 / -1;font-size:15px;}
     .fila .ah{grid-column:1;justify-self:start;}
     .fila .c{text-align:right;grid-column:2;}
+    .fila .v{font-size:32px;}
+    .fila.pick .v{font-size:36px;}
+    .fila.pick{padding-top:18px;}
+    .fila .tagp{position:static;grid-column:1 / -1;justify-self:start;white-space:nowrap;font-size:9.5px;
+      padding:6px 12px;margin:0 0 2px;}
+    .fila .tot{font-size:17px;}
     .dots{display:none;}
     .ayuda{display:none;}
     .contador{display:none;}
@@ -521,6 +529,7 @@
       <p class="eyebrow" data-reveal>Inversión · Programa de 3 meses</p>
       <h2 data-reveal style="--d:.06s">Programa gerencial para <span class="hl">mandos medios</span></h2>
       <p class="lista-precio" data-reveal style="--d:.1s">Precio normal por líder · 3 meses: <b>$34,650</b></p>
+      <p class="esp-lbl" data-reveal style="--d:.12s">Precio especial para <span class="hl">Integra Engineering</span>:</p>
       <div class="escala">
         <div class="fila" data-reveal style="--d:.14s">
           <div class="q">1 a 2 gerentes</div>
@@ -539,7 +548,7 @@
           <div class="tot">Trimestre por 5 gerentes: <b>$133,650</b> en un solo pago · ó <b>3 pagos mensuales de $45,000</b></div>
         </div>
       </div>
-      <p class="nota-mxn" data-reveal style="--d:.3s">Precios en pesos mexicanos (MXN), por líder, para el programa completo de 3 meses. Descuentos sobre el precio de 1 a 2 gerentes.</p>
+      <p class="nota-mxn" data-reveal style="--d:.3s">Precios en pesos mexicanos (MXN), por líder, para el programa completo de 3 meses.</p>
     </div>
   </section>
 

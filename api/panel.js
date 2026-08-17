@@ -23,7 +23,7 @@ const DATOS = [
   {
     titulo: 'Cotizaciones activas',
     items: [
-      { n: 'Roberto · Integra Engineering', d: 'Propuesta del Programa de Liderazgo para sus 5 gerentes: 10 diapositivas con tu CV, el reto, el método de 5 fases y 3 formas de pago. Link exclusivo, no aparece en buscadores.', u: 'https://laurahumancore.com/presentaciones/cotizacion-roberto' }
+      { n: 'Roberto Alarcón · Integra Engineering', d: 'Programa gerencial para mandos medios (3 meses) para sus 5 gerentes: 9 diapositivas con tu CV, el reto, el método de 3 fases y la tarifa por número de gerentes. Link exclusivo, no aparece en buscadores.', u: 'https://laurahumancore.com/presentaciones/propuesta-integra' }
     ]
   },
   {

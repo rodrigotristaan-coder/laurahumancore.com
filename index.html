@@ -1038,5 +1038,7 @@
   else init();
 })();
 </script>
+<!-- feedback interno: solo se carga con ?fb=1 (ver /fb.js) -->
+<script>if(/[?&]fb=1/.test(location.search)){var s=document.createElement("script");s.src="/fb.js";s.defer=true;document.body.appendChild(s);}</script>
 </body>
 </html>

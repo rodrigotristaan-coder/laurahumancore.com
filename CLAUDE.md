@@ -23,7 +23,8 @@ laurahumancore.com/
 │   │                                     Roberto Alarcón (noindex, precio visible, lenguaje "mate
 │   │                                     sólido"). Reveals en CASCADA por diapositiva — ver abajo.
 │   ├── media/                            16 clips mp4 (Mixkit Free License) del deck v2
-│   └── design-system.html                design system de decks v2.3 + web v2 (al día 5-ago)
+│   └── design-system.html                design system: decks v2.3 + variante "mate sólida" +
+│                                          movimiento (al día 17-ago, 9 secciones)
 ├── assets/           (imágenes optimizadas WebP al tamaño de uso)
 │   ├── logo-white.webp       logo blanco (nav)
 │   ├── logo-navy-sm.webp     logo navy chico (footer)
@@ -37,6 +38,7 @@ laurahumancore.com/
 │       (17-ago: se borraron los 6 assets sin uso — logo-gold{,-sm,-mask}.webp,
 │        clientes.webp, sistemas/bg-impacto.webp y sistemas/sys-cultura.webp;
 │        están en el historial de git si alguna vez hacen falta)
+├── fb.js             ← "Señalar y anotar": feedback visual interno — ver abajo
 ├── vercel.json       ← static, cache de assets + headers de seguridad (CSP ENFORCED)
 ├── robots.txt · sitemap.xml
 └── README.md         ← deploy (Vercel / GitHub)
@@ -132,13 +134,40 @@ del campo `sistemas`. Si sube el precio, se cambia ahí y en ningún otro lado.
   el label se asocia al primero y hacer clic en "Teléfono" enfocaba la lada.
   Si no escriben teléfono, la lada viaja vacía para no dejar un "+52" suelto en Excel.
 - Respeta `prefers-reduced-motion`.
-- ⚠️ **Los reveals de `index.html` traen una red de seguridad GLOBAL de 4 s** (`hc-safety`): a los
-  ~4.7 s de cargar revela toda la página, así que las secciones a las que se llega después aparecen
-  **sin animación**. En `presentaciones/propuesta-integra.html` esto ya se corrigió (17-ago) con
-  **cascada por sección**: cada bloque revela sus `[data-reveal]` en orden de DOM con retraso puesto
-  por JS, disparado por IntersectionObserver + arranque al cargar + respaldo en `scroll` + un
-  `setInterval` que se apaga solo; y la clase `.js` (la que esconde) se agrega **al final** de armar
-  la maquinaria, para que un error deje todo visible en vez de en blanco. Falta portarlo aquí.
+- **Reveals en CASCADA por sección** (17-ago, commits `b76c642` en la landing y `fa04d11` en el deck).
+  Cada sección/diapositiva revela sus `[data-reveal]` **en orden de DOM** con el retraso puesto por
+  JS (95 ms por pieza; 45 ms si trae más de 12), disparada por IntersectionObserver + arranque al
+  cargar + respaldo en `scroll` + un `setInterval` de 900 ms que **se apaga solo**. Los `--d`
+  escritos a mano en el HTML **se anulan**: el orden lo pone el DOM.
+  ⚠️ **NUNCA vuelvas a poner una red de seguridad GLOBAL por tiempo.** La vieja (`hc-safety`, 4 s,
+  más un `setTimeout(4000)` en el JS de la landing) revelaba el documento entero, así que toda
+  sección a la que se llegara después aparecía **sin animación** — fue justo el bug que reportó
+  Rodrigo. En su lugar: la clase `.js` (la que esconde) se agrega **al final** de armar la
+  maquinaria, para que un error deje la página visible en vez de en blanco.
+  Para verificar animaciones: `Google Chrome --headless=new --virtual-time-budget=<ms> --screenshot`.
+  Las pestañas del MCP de Chrome quedan en segundo plano y ahí **no corren** ni el observer ni `rAF`.
+
+## `fb.js` — "Señalar y anotar" (feedback visual interno, 17-ago)
+
+Herramienta propia para que Rodrigo (o Laura) **señalen un elemento en vez de describirlo**:
+clic en la pieza → devuelve su **selector CSS**, su **texto actual** y la nota, en markdown listo
+para pegar en el chat con Claude. Sustituye a paquetes tipo `agentation`, que exigen React y build.
+
+- **Se enciende con `?fb=1`** en cualquier URL (`/?fb=1`, `/presentaciones/propuesta-integra?fb=1`).
+  Cada página trae un loader de 2 líneas antes de `</body>` que **solo inyecta `/fb.js` si viene ese
+  parámetro**: para el visitante normal el archivo ni se pide.
+- **Sin dependencias y del mismo origen ⇒ NO toca la CSP.** Si algún día se mueve a un CDN, sí habría
+  que abrirla.
+- Modos: **Señalar** (nota + selector), **Texto** (editar en vivo sobre la página, guarda
+  "antes → después") y **Congelar** (pausa animaciones, transiciones y videos).
+- Los **selectores** salen cortos y únicos **dentro de su diapositiva/sección** (el contexto ya dice
+  "Diapo 08 · Inversión"), con `:nth-of-type` cuando hay hermanos idénticos —las filas de precio— y
+  con el `#id` de la sección al frente para pegarlos en devtools. Ignora las clases `.in`/`.act`,
+  que las pone el JS al animar.
+- UI en **shadow DOM** (el CSS del sitio no la toca ni ella al sitio). Notas en `localStorage` por
+  página. API `window.__fb` (`notas()`, `markdown()`, `anota(el, nota)`, `selector(el)`, `limpia()`)
+  — con eso se prueba sin mouse desde headless.
+- Está en la landing, los 4 decks y el design system. **Falta copiarlo al repo del discovery.**
 
 ## Discovery (repo aparte)
 
@@ -175,7 +204,7 @@ que los fondos sobrevivan; la v2 oculta los videos e imprime la foto).
 
 ---
 
-## Estado (al 2026-08-05)
+## Estado (al 2026-08-17)
 
 - **GA4** `G-LKP371EQ8Q` en vivo (+ evento `generate_lead`).
 - **SEO**: robots.txt + sitemap.xml; canonical/OG al dominio real.
@@ -192,6 +221,7 @@ que los fondos sobrevivan; la v2 oculta los videos e imprime la foto).
    `</head>` **y** sumar `connect.facebook.net` a `script-src` y `www.facebook.com`
    a `img-src` en la CSP, que ya está enforced.
 2. **Google Search Console**: alta del dominio + enviar sitemap.
+3. **Copiar `fb.js` + su loader al repo del discovery** (`~/discovery-laurahumancore`).
 
 ---
 
